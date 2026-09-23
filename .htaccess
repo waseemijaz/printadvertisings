@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^printadvertisings\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.printadvertisings\.com$
+RewriteRule ^(.*)$ "https\:\/\/printadvertisings\.com\/$1" [R=301,L]

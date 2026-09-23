@@ -1,0 +1,338 @@
+/*
+Theme Name: Print Advertising
+Author: ModinaTheme
+Author URI: https://themeforest.net/user/modinatheme/
+Description: Printing Company & Design Services HTML Template
+Version: 1.0.0
+*/
+
+/*
+=================================
+|***    Table of contents:   ***|
+=================================
+
+1. General styles
+2. Typography
+3. Helpers
+4. Preloader
+5. Go up button
+6. Header and navigation
+7. Hero Section
+8. About us
+9. Services
+10. Fun facts
+11. Projects
+12. Pricing
+13. Testimonial
+14. CTA
+15. Team
+16. Video Banner
+17. Shop
+18. Marquee
+19. Blog
+20. Footer
+
+Main Style file-> assets/css/main.css 
+*/
+
+.shop-category-page .shop-category-section {
+    padding: 70px 0 90px;
+    background: linear-gradient(180deg, #f7f5ff 0%, #ffffff 100%);
+}
+
+.shop-category-page .breadcrumb-wrapper {
+    padding: 86px 0 96px;
+}
+
+.shop-category-page .header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.shop-category-page .header-main .header-left {
+    flex: 0 0 auto;
+}
+
+.shop-category-page .header-main .mean__menu-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.shop-category-page .header-main .main-menu {
+    width: auto;
+}
+
+.shop-category-page .breadcrumb-wrapper .page-heading {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.shop-category-page .breadcrumb-wrapper .page-heading h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.shop-category-page .breadcrumb-wrapper .page-heading p {
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.65;
+}
+
+.shop-category-page .shop-category-banner-wrap {
+    padding: 30px 0 20px;
+    background: #fff;
+}
+
+.shop-category-page .shop-category-banner {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    min-height: 320px;
+    box-shadow: 0 16px 36px rgba(18, 24, 52, 0.12);
+}
+
+.shop-category-page .shop-category-banner img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.shop-category-page .shop-category-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(18, 24, 52, 0.72) 0%, rgba(18, 24, 52, 0.28) 48%, rgba(18, 24, 52, 0.1) 100%);
+}
+
+.shop-category-page .shop-category-banner-content {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    z-index: 2;
+    max-width: 500px;
+}
+
+.shop-category-page .shop-category-banner-content h2 {
+    color: #fff;
+    font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+    line-height: 1.15;
+    margin-bottom: 10px;
+}
+
+.shop-category-page .shop-category-banner-content p {
+    color: #eaf0ff;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+.shop-category-page .shop-category-intro {
+    max-width: 760px;
+    margin: 0 auto 36px;
+    text-align: center;
+}
+
+.shop-category-page .shop-category-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(37, 211, 102, 0.12);
+    color: #128C7E;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.shop-category-page .shop-category-intro h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e2337;
+    margin-bottom: 12px;
+}
+
+.shop-category-page .shop-category-intro p {
+    font-size: 1.02rem;
+    color: #5e6172;
+    line-height: 1.7;
+}
+
+.shop-category-page .shop-block-heading {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #1e2337;
+}
+
+.shop-category-page .shop-item-card {
+    border: 1px solid #ece8ff;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(18, 24, 52, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.shop-category-page .shop-category-section .row.g-4 > [class*="col-"] {
+    display: flex;
+}
+
+.shop-category-page .shop-item-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(18, 24, 52, 0.14);
+}
+
+.shop-category-page .shop-item-media {
+    padding: 0;
+    background: linear-gradient(135deg, #f4f0ff 0%, #eef7ff 100%);
+}
+
+.shop-category-page .shop-item-media img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.shop-category-page .shop-img-focus-left {
+    object-position: 20% center;
+}
+
+.shop-category-page .shop-img-focus-center {
+    object-position: center center;
+}
+
+.shop-category-page .shop-img-focus-right {
+    object-position: 80% center;
+}
+
+.shop-category-page .shop-img-focus-top {
+    object-position: center 20%;
+}
+
+.shop-category-page .shop-img-focus-bottom {
+    object-position: center 80%;
+}
+
+.shop-category-page .shop-item-content {
+    padding: 24px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.shop-category-page .shop-card-tag {
+    display: inline-block;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #f7f6ff;
+    color: #6b5bd5;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.shop-category-page .shop-item-content h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e2337;
+    margin: 0;
+}
+
+.shop-category-page .shop-item-content p {
+    color: #5e6172;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+.shop-category-page .shop-item-content .theme-btn {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 15px 18px;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+}
+
+.shop-category-page .shop-category-cta {
+    border-radius: 26px;
+    padding: 48px 24px;
+    background: linear-gradient(135deg, #f4f0ff 0%, #eef7ff 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.shop-category-page .shop-category-cta h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1e2337;
+    margin-bottom: 10px;
+}
+
+.shop-category-page .shop-category-cta p {
+    font-size: 1rem;
+    color: #5e6172;
+    max-width: 650px;
+    margin: 0 auto 18px;
+}
+
+@media (max-width: 767px) {
+    .shop-category-page .breadcrumb-wrapper {
+        padding: 72px 0 78px;
+    }
+
+    .shop-category-page .shop-category-banner-wrap {
+        padding: 20px 0 10px;
+    }
+
+    .shop-category-page .shop-category-banner,
+    .shop-category-page .shop-category-banner img {
+        min-height: 250px;
+    }
+
+    .shop-category-page .shop-category-banner-content {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+    }
+
+    .shop-category-page .header-main {
+        gap: 12px;
+    }
+
+    .shop-category-page .breadcrumb-wrapper .page-heading p {
+        font-size: 1rem;
+    }
+
+    .shop-category-page .shop-category-section {
+        padding: 56px 0 72px;
+    }
+
+    .shop-category-page .shop-category-intro h2 {
+        font-size: 1.6rem;
+    }
+
+    .shop-category-page .shop-category-cta {
+        padding: 36px 18px;
+    }
+
+    .shop-category-page .shop-item-content {
+        padding: 20px 18px 24px;
+    }
+}

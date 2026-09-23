@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+  <title id="title">Category image coming soon</title>
+  <desc id="desc">A neutral placeholder for a category photograph</desc>
+  <rect width="1200" height="500" fill="#eaf6fb"/>
+  <rect x="0" y="0" width="1200" height="500" fill="#0d7ea6" opacity="0.06"/>
+  <rect x="470" y="150" width="260" height="200" rx="20" fill="#ffffff" stroke="#cfe9f2" stroke-width="4"/>
+  <path d="M512 300l55-65 46 44 52-74 63 95" fill="none" stroke="#9fd2e4" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="650" cy="205" r="22" fill="#bfe3ef"/>
+  <text x="600" y="400" text-anchor="middle" fill="#0d7ea6" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="2">CATEGORY IMAGE</text>
+  <text x="600" y="432" text-anchor="middle" fill="#4d8fa3" font-family="Arial, sans-serif" font-size="18">Add your category photo</text>
+</svg>

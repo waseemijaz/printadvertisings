@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-labelledby="title desc">
+  <title id="title">Product image coming soon</title>
+  <desc id="desc">A neutral placeholder for a product photograph</desc>
+  <rect width="800" height="640" fill="#f8f9fc"/>
+  <rect x="86" y="70" width="628" height="500" rx="28" fill="#fff" stroke="#e9ebf2" stroke-width="4"/>
+  <path d="M250 460h300" stroke="#d9dce7" stroke-width="14" stroke-linecap="round"/>
+  <rect x="290" y="210" width="220" height="190" rx="18" fill="#f0f1f6"/>
+  <path d="M320 360l46-55 38 37 44-62 52 80" fill="none" stroke="#b7bbca" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="438" cy="270" r="20" fill="#c9cdd9"/>
+  <text x="400" y="505" text-anchor="middle" fill="#74798b" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="2">PRODUCT IMAGE</text>
+  <text x="400" y="540" text-anchor="middle" fill="#a0a4b2" font-family="Arial, sans-serif" font-size="18">Add your product photo</text>
+</svg>

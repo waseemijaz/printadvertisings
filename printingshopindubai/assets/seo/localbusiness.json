@@ -1,0 +1,16 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "P R I N T Advertising",
+  "image": "https://printadvertisings.com/img/brand/logo.png",
+  "url": "https://printadvertisings.com/",
+  "telephone": "+971582023571",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Shop No - 5, Al-Saffar Building, Deira, Frij Murar",
+    "addressLocality": "Dubai",
+    "addressCountry": "AE"
+  },
+  "openingHours": "Mo-Sa 10:00-23:00",
+  "description": "Same day printing services in Dubai with premium quality and fast turnaround."
+}
