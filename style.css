@@ -495,3 +495,119 @@ body.pa-menu-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Homepage-only mobile refinements. Desktop and tablet rules remain unchanged. */
+@media (max-width: 767px) {
+    body.home-landing .pa-utility-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 3px 6px;
+        width: calc(100% - 24px);
+        min-height: 0;
+        padding: 4px 0;
+    }
+    body.home-landing .pa-utility-contact {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 2px 8px;
+        min-width: 0;
+    }
+    body.home-landing .pa-utility-contact a {
+        min-width: 0;
+        font-size: 10px;
+        line-height: 1.25;
+    }
+    body.home-landing .pa-utility-contact a:first-child { grid-column: 1; grid-row: 1; }
+    body.home-landing .pa-utility-contact a:last-child { grid-column: 2; grid-row: 1; white-space: nowrap; }
+    body.home-landing .pa-utility-contact .pa-utility-location {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+    body.home-landing .pa-social-links { gap: 3px; }
+    body.home-landing .pa-social-links a { width: 21px; height: 22px; }
+    body.home-landing .pa-social-links svg { width: 13px; height: 13px; }
+
+    body.home-landing .pa-mainbar-inner { gap: 4px 10px; padding: 5px 0; }
+    body.home-landing .pa-brand img { width: clamp(126px, 38vw, 150px); max-height: 38px; }
+    body.home-landing .pa-menu-toggle { width: 38px; height: 38px; padding: 8px; }
+    body.home-landing .pa-header-actions { gap: 7px; padding-top: 5px; }
+    body.home-landing .pa-header-button { min-height: 38px; padding: 0 8px; font-size: 12px; }
+
+    body.home-landing .pa-category-rail { width: 100%; }
+    body.home-landing .pa-category-inner {
+        width: 100%;
+        padding: 0 12px;
+        scrollbar-width: none;
+        scroll-padding-inline: 12px;
+        scroll-snap-type: x proximity;
+    }
+    body.home-landing .pa-category-inner::-webkit-scrollbar { display: none; }
+    body.home-landing .pa-category-inner a { min-height: 34px; padding: 0 10px; font-size: 11px; scroll-snap-align: start; }
+
+    body.home-landing .landing-hero { padding: 16px 0 20px; }
+    body.home-landing .landing-hero-grid { gap: 13px; }
+    body.home-landing .landing-hero-copy { min-width: 0; }
+    body.home-landing .landing-kicker { margin-bottom: 7px; font-size: 10px; letter-spacing: .11em; }
+    body.home-landing .landing-hero-copy h1 {
+        max-width: 100%;
+        margin-bottom: 10px;
+        font-size: clamp(1.75rem, 7.8vw, 2.3rem);
+        letter-spacing: -.045em;
+        line-height: 1.06;
+        text-wrap: balance;
+    }
+    body.home-landing .landing-hero-copy > p { margin-bottom: 12px; font-size: 15px; line-height: 1.48; }
+    body.home-landing .landing-hero-actions { gap: 7px; }
+    body.home-landing .landing-hero-actions .theme-btn { min-height: 46px; padding: 0 18px; font-size: 13px; }
+    body.home-landing .landing-text-link { min-height: 34px; display: inline-flex; align-items: center; font-size: 13px; }
+    body.home-landing .landing-proof { margin-top: 8px; font-size: 11px; line-height: 1.4; }
+    body.home-landing .landing-hero-rotator {
+        aspect-ratio: 1.4 / 1;
+        max-height: min(60vw, 258px);
+        border-radius: 11px;
+    }
+    body.home-landing .landing-hero-slide { padding: 8px; }
+    body.home-landing .landing-hero-controls { right: 8px; bottom: 8px; gap: 5px; padding: 3px 5px; }
+    body.home-landing .landing-hero-arrow { width: 28px; height: 28px; }
+    body.home-landing .landing-art-badge { left: 7px; bottom: 20px; width: 58px; height: 58px; font-size: 9px; }
+
+    body.home-landing .landing-bestsellers { padding: 36px 0 32px; }
+    body.home-landing .landing-carousel-heading { gap: 12px; margin-bottom: 16px; }
+    body.home-landing .landing-carousel-heading h2 { font-size: clamp(1.55rem, 6.8vw, 2rem); }
+    body.home-landing .landing-carousel-heading .landing-kicker { margin-bottom: 4px; }
+    body.home-landing .landing-carousel-button { width: 38px; height: 38px; }
+    body.home-landing .landing-product-carousel { grid-auto-columns: minmax(84vw, 1fr); gap: 12px; padding-bottom: 12px; }
+    body.home-landing .landing-product-media { height: clamp(155px, 49vw, 205px); padding: 14px; }
+    body.home-landing .landing-product-card h3 { margin: 13px 14px 4px; font-size: 15px; }
+    body.home-landing .landing-product-card p { margin: 0 14px 15px; font-size: 12px; }
+    body.home-landing .landing-trust-strip { padding: 18px 0; }
+    body.home-landing .landing-trust-strip .container { gap: 8px; }
+    body.home-landing .landing-trust-label { font-size: 13px; }
+    body.home-landing .landing-trust-items { gap: 6px 12px; font-size: 11px; }
+
+    body.home-landing .float {
+        right: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
+        width: 48px;
+        height: 48px;
+        font-size: 26px;
+    }
+    body.home-landing .float svg { width: 26px; height: 26px; }
+}
+
+@media (max-width: 360px) {
+    body.home-landing .pa-utility-inner { width: calc(100% - 20px); gap: 2px 4px; }
+    body.home-landing .pa-utility-contact { gap: 2px 5px; }
+    body.home-landing .pa-utility-contact a { font-size: 9px; }
+    body.home-landing .pa-brand img { width: 126px; }
+    body.home-landing .pa-header-actions { gap: 5px; }
+    body.home-landing .pa-header-button { font-size: 11px; }
+    body.home-landing .landing-hero { padding: 14px 0 18px; }
+    body.home-landing .landing-hero-grid { gap: 11px; }
+    body.home-landing .landing-hero-copy h1 { font-size: 1.75rem; }
+    body.home-landing .landing-hero-copy > p { font-size: 14px; }
+    body.home-landing .landing-hero-rotator { max-height: 60vw; }
+}

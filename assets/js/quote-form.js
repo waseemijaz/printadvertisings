@@ -24,8 +24,8 @@
         '<input type="hidden" name="csrf_token" value=""><input type="hidden" name="category" value="">' +
         '<div class="pa-quote-fields">' +
         '<label class="pa-quote-field" for="pa-quote-name"><span>Name <b>*</b></span><input id="pa-quote-name" name="name" type="text" autocomplete="name" maxlength="120" required></label>' +
-        '<label class="pa-quote-field" for="pa-quote-phone"><span>WhatsApp / Phone <b>*</b></span><input id="pa-quote-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" pattern="[+0-9() .-]{7,30}" required></label>' +
-        '<label class="pa-quote-field" for="pa-quote-product"><span>What do you need printed? <small>Optional</small></span><select id="pa-quote-product" name="product"><option value="">Choose a category or product</option><optgroup label="Categories">' + categoryOptions + '</optgroup><optgroup label="Popular products">' + productOptions + '</optgroup></select></label>' +
+        '<label class="pa-quote-field" for="pa-quote-phone"><span>WhatsApp / Phone <b>*</b></span><input id="pa-quote-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" required></label>' +
+        '<label class="pa-quote-field" for="pa-quote-product"><span>What do you need printed? <small>Optional</small></span><select id="pa-quote-product" class="pa-native-select" name="product"><option value="">Choose a category or product</option><optgroup label="Categories">' + categoryOptions + '</optgroup><optgroup label="Popular products">' + productOptions + '</optgroup></select></label>' +
         '<label class="pa-quote-field" for="pa-quote-quantity"><span>Approximate quantity <small>Optional</small></span><input id="pa-quote-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="1000000000" step="1" placeholder="e.g. 500"></label>' +
         '<label class="pa-quote-field pa-quote-field--wide" for="pa-quote-email"><span>Email <small>Optional</small></span><input id="pa-quote-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254"></label>' +
         '<label class="pa-quote-field pa-quote-field--wide" for="pa-quote-message"><span>Additional requirements <small>Optional</small></span><textarea id="pa-quote-message" name="message" rows="3" maxlength="2000" placeholder="Anything else we should know?"></textarea></label>' +
@@ -35,11 +35,30 @@
     document.body.appendChild(dialog);
 
     var form = dialog.querySelector('form');
+    var phoneInput = form.elements.phone;
     var panel = dialog.querySelector('.pa-quote-dialog');
     var closeButton = dialog.querySelector('.pa-quote-close');
     var returnFocus = null;
     var previousOverflow = '';
     var tokenPromise = null;
+
+    function phoneValidationMessage(value) {
+        value = value.trim();
+        if (!value) return '';
+        if (value.length < 7 || value.length > 30) return 'Enter a phone number between 7 and 30 characters.';
+        var digits = 0;
+        for (var i = 0; i < value.length; i++) {
+            var character = value.charAt(i);
+            if (character >= '0' && character <= '9') digits++;
+            else if ('+(). -'.indexOf(character) === -1) return 'Use digits and standard phone punctuation only.';
+        }
+        if (digits < 7 || digits > 20) return 'Enter a phone number with 7 to 20 digits.';
+        return '';
+    }
+
+    phoneInput.addEventListener('input', function () {
+        phoneInput.setCustomValidity(phoneValidationMessage(phoneInput.value));
+    });
 
     function requestToken() {
         if (tokenPromise) return tokenPromise;
@@ -148,6 +167,7 @@
         var submit = form.querySelector('[type="submit"]');
         var success = form.querySelector('.pa-quote-success');
         status.textContent = '';
+        phoneInput.setCustomValidity(phoneValidationMessage(phoneInput.value));
         if (!form.reportValidity()) return;
         submit.disabled = true;
         submit.textContent = 'Sending…';
