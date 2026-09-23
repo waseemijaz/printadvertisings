@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="style.css?v=7">
 
 <link rel="stylesheet" href="assets/css/global-shell.css?v=1">
+<link rel="stylesheet" href="assets/css/quote-form.css?v=1">
 </head>
 
 <body class="home-landing">
@@ -2467,41 +2468,41 @@
                     </div>
                     <div class="col-xl-6">
                         <div class="contact-items">
-                            <form action="" method="POST" id="contact-form">
-                                <div class="row g-4">
-                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="form-clt">
-                                            <input type="text" name="name" placeholder="What’s Your Name ?" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                        <div class="form-clt">
-                                            <input type="email" name="email" id="email2" placeholder="Email Address"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="form-clt">
-                                            <input type="text" name="topic" placeholder="Select Discussion Topic">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                                        <div class="form-clt">
-                                            <input type="text" name="budget" placeholder="What’s your budget ?">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="form-clt">
-                                            <textarea name="message" placeholder="A brief discussion about this project"
-                                                required></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
-                                        <button type="submit" class="theme-btn w-100">
-                                            SEND MESSAGE
-                                        </button>
-                                    </div>
+                            <form action="send-mail-disable.php" method="POST" id="quote-form" class="pa-quote-form">
+                                <input type="hidden" name="csrf_token" value="">
+                                <div class="pa-quote-fields">
+                                    <label class="pa-quote-field" for="quote-name"><span>Name <b>*</b></span>
+                                        <input id="quote-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+                                    </label>
+                                    <label class="pa-quote-field" for="quote-phone"><span>WhatsApp / Phone <b>*</b></span>
+                                        <input id="quote-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" pattern="[+0-9() .-]{7,30}" title="Enter a valid phone number, including country code if possible." required>
+                                    </label>
+                                    <label class="pa-quote-field" for="quote-product"><span>What do you need printed? <small>Optional</small></span>
+                                        <select id="quote-product" class="pa-native-select" name="product">
+                                            <option value="">Choose a category or product</option>
+                                            <optgroup label="Categories">
+                                                <option value="/stationery.html">Business Stationery</option><option value="/marketing.html">Marketing Print</option><option value="/apparel.html">Apparel &amp; Textiles</option><option value="/gifts.html">Corporate Gifts</option><option value="/calendars.html">Calendars &amp; Diaries</option><option value="/drinkware.html">Drinkware</option><option value="/express.html">Express Print</option>
+                                            </optgroup>
+                                            <optgroup label="Popular products">
+                                                <option value="/products/business-cards.html">Business Cards</option><option value="/products/letterheads.html">Letterheads</option><option value="/products/flyers-leaflets.html">Flyers &amp; Leaflets</option><option value="/products/express-business-cards.html">Express Business Cards</option><option value="/products/custom-t-shirt-printing.html">Custom T-Shirt Printing</option><option value="/products/corporate-uniforms.html">Corporate Uniforms</option><option value="/products/custom-notebooks.html">Custom Notebooks</option><option value="/products/custom-mugs.html">Custom Mugs</option><option value="/products/water-bottles.html">Water Bottles</option><option value="/products/gift-boxes.html">Gift Boxes</option><option value="/products/outdoor-banners.html">Outdoor Banners</option><option value="/products/promotional-displays.html">Promotional Displays</option>
+                                            </optgroup>
+                                        </select>
+                                    </label>
+                                    <label class="pa-quote-field" for="quote-quantity"><span>Approximate quantity <small>Optional</small></span>
+                                        <input id="quote-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="1000000000" step="1" placeholder="e.g. 500">
+                                    </label>
+                                    <label class="pa-quote-field" for="quote-email"><span>Email <small>Optional</small></span>
+                                        <input id="quote-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254">
+                                    </label>
+                                    <label class="pa-quote-field pa-quote-field--wide" for="quote-message"><span>Additional requirements <small>Optional</small></span>
+                                        <textarea id="quote-message" name="message" rows="3" maxlength="2000" placeholder="Anything else we should know?"></textarea>
+                                    </label>
                                 </div>
+                                <div class="pa-quote-honeypot" aria-hidden="true"><label for="quote-website">Leave this field empty</label><input id="quote-website" name="website_url" type="text" tabindex="-1" autocomplete="off"></div>
+                                <p class="pa-quote-privacy">We'll use your details only to respond to your enquiry.</p>
+                                <div class="pa-quote-actions"><button type="submit" class="theme-btn">Request a Quote</button><a class="pa-quote-whatsapp" href="https://wa.me/971582023571?text=Hello%20Print%20Advertising%2C%20I%20would%20like%20to%20discuss%20a%20print%20enquiry." target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+                                <p class="pa-quote-status" aria-live="polite" role="status" tabindex="-1"></p>
+                                <div class="pa-quote-success" hidden tabindex="-1" aria-live="polite"><strong>Thank you — your enquiry has been received.</strong><span>Our print team will get back to you shortly.</span></div>
                             </form>
                         </div>
                     </div>
@@ -2660,8 +2661,9 @@
     <script src="assets/js/wow.min.js"></script>
     <!--<< Main.js >>-->
     <script src="assets/js/main.js?v=7"></script>
-    <script src="assets/js/landing-ui.js?v=1"></script>
+<script src="assets/js/landing-ui.js?v=1"></script>
 <script src="assets/js/global-shell.js?v=1" defer></script>
+<script src="assets/js/quote-form.js?v=1" defer></script>
 </body>
 
 

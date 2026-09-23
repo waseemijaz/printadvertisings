@@ -1,25 +1,3 @@
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/js/viewport.jquery.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/gsap/gsap.js"></script>
-<script src="assets/js/gsap/gsap-scroll-to-plugin.js"></script>
-<script src="assets/js/gsap/gsap-scroll-smoother.js"></script>
-<script src="assets/js/gsap/gsap-scroll-trigger.js"></script>
-<script src="assets/js/gsap/gsap-split-text.js"></script>
-<script src="assets/js/jquery.nice-select.min.js"></script>
-<script src="assets/js/jquery.waypoints.js"></script>
-<script src="assets/js/jquery.counterup.min.js"></script>
-<script src="assets/js/swiper-bundle.min.js"></script>
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/ajax-mail.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/global-shell.js?v=1" defer></script>
-</body>
-
-</html>
-<!-- Remove everything after this line: only one contact page should exist. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,8 +37,9 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="assets/css/global-shell.css?v=1">
+<link rel="stylesheet" href="assets/css/quote-form.css?v=1">
 </head>
 
 <body>
@@ -209,36 +188,68 @@
             <div class="contact-form-items">
                 <div class="title text-center">
                     <h2 class="split-text right">Let's Get in Touch</h2>
-                    <p>Your email address will not be published. Required fields are marked *</p>
+                    <p>Share a few details and our Dubai print team will get back to you.</p>
                 </div>
-                <form action="send-mail-disable.php" id="contact-form" method="POST">
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="form-clt">
-                                <input type="text" name="name" id="name" placeholder="Your Name*">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-clt">
-                                <input type="text" name="email" id="email" placeholder="Your Email*">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-clt">
-                                <input type="text" name="text" id="text" placeholder="Website (Optional)">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-clt">
-                                <textarea name="message" id="message" placeholder="Write Message*"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <button type="submit" class="theme-btn">SEND YOUR MESSAGE</button>
-                        </div>
-                        <div class="col-lg-12">
-                            <p class="form-message mt-3 mb-0"></p>
-                        </div>
+                <form action="send-mail-disable.php" id="quote-form" class="pa-quote-form" method="POST">
+                    <input type="hidden" name="csrf_token" value="">
+                    <div class="pa-quote-fields">
+                        <label class="pa-quote-field" for="quote-name"><span>Name <b>*</b></span>
+                            <input id="quote-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+                        </label>
+                        <label class="pa-quote-field" for="quote-phone"><span>WhatsApp / Phone <b>*</b></span>
+                            <input id="quote-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" pattern="[+0-9() .-]{7,30}" title="Enter a valid phone number, including country code if possible." required>
+                        </label>
+                        <label class="pa-quote-field" for="quote-product"><span>What do you need printed? <small>Optional</small></span>
+                            <select id="quote-product" class="pa-native-select" name="product">
+                                <option value="">Choose a category or product</option>
+                                <optgroup label="Categories">
+                                    <option value="/stationery.html">Business Stationery</option>
+                                    <option value="/marketing.html">Marketing Print</option>
+                                    <option value="/apparel.html">Apparel &amp; Textiles</option>
+                                    <option value="/gifts.html">Corporate Gifts</option>
+                                    <option value="/calendars.html">Calendars &amp; Diaries</option>
+                                    <option value="/drinkware.html">Drinkware</option>
+                                    <option value="/express.html">Express Print</option>
+                                </optgroup>
+                                <optgroup label="Popular products">
+                                    <option value="/products/business-cards.html">Business Cards</option>
+                                    <option value="/products/letterheads.html">Letterheads</option>
+                                    <option value="/products/flyers-leaflets.html">Flyers &amp; Leaflets</option>
+                                    <option value="/products/express-business-cards.html">Express Business Cards</option>
+                                    <option value="/products/custom-t-shirt-printing.html">Custom T-Shirt Printing</option>
+                                    <option value="/products/corporate-uniforms.html">Corporate Uniforms</option>
+                                    <option value="/products/custom-notebooks.html">Custom Notebooks</option>
+                                    <option value="/products/custom-mugs.html">Custom Mugs</option>
+                                    <option value="/products/water-bottles.html">Water Bottles</option>
+                                    <option value="/products/gift-boxes.html">Gift Boxes</option>
+                                    <option value="/products/outdoor-banners.html">Outdoor Banners</option>
+                                    <option value="/products/promotional-displays.html">Promotional Displays</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <label class="pa-quote-field" for="quote-quantity"><span>Approximate quantity <small>Optional</small></span>
+                            <input id="quote-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="1000000000" step="1" placeholder="e.g. 500">
+                        </label>
+                        <label class="pa-quote-field" for="quote-email"><span>Email <small>Optional</small></span>
+                            <input id="quote-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254">
+                        </label>
+                        <label class="pa-quote-field pa-quote-field--wide" for="quote-message"><span>Additional requirements <small>Optional</small></span>
+                            <textarea id="quote-message" name="message" rows="3" maxlength="2000" placeholder="Anything else we should know?"></textarea>
+                        </label>
+                    </div>
+                    <div class="pa-quote-honeypot" aria-hidden="true">
+                        <label for="quote-website">Leave this field empty</label>
+                        <input id="quote-website" name="website_url" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <p class="pa-quote-privacy">We'll use your details only to respond to your enquiry.</p>
+                    <div class="pa-quote-actions">
+                        <button type="submit" class="theme-btn">Request a Quote</button>
+                        <a class="pa-quote-whatsapp" href="https://wa.me/971582023571?text=Hello%20Print%20Advertising%2C%20I%20would%20like%20to%20discuss%20a%20print%20enquiry." target="_blank" rel="noopener">Chat on WhatsApp</a>
+                    </div>
+                    <p class="pa-quote-status" aria-live="polite" role="status" tabindex="-1"></p>
+                    <div class="pa-quote-success" hidden tabindex="-1" aria-live="polite">
+                        <strong>Thank you — your enquiry has been received.</strong>
+                        <span>Our print team will get back to you shortly.</span>
                     </div>
                 </form>
             </div>
@@ -280,8 +291,9 @@
     <script src="assets/js/jquery.meanmenu.min.js"></script>
     <script src="assets/js/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/ajax-mail.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/global-shell.js?v=1" defer></script>
+    <script src="assets/js/quote-form.js?v=1" defer></script>
 </body>
 
 </html>

@@ -220,7 +220,7 @@
         new WOW().init();
 
         //>> Nice Select Start <<//
-        $('select').niceSelect();
+        $('select').not('.pa-native-select').niceSelect();
 
         //>> Service Slider Start <<//
         if ($('.service-slider').length > 0) {

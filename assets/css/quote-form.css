@@ -1,0 +1,43 @@
+/* Compact quote form shared by the homepage and contact page. */
+.pa-quote-form,
+.pa-quote-form * { box-sizing: border-box; }
+.pa-quote-form { width: 100%; max-width: 780px; margin: 0 auto; color: #171531; text-align: left; }
+.pa-quote-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pa-quote-field { display: grid; align-content: start; gap: 7px; min-width: 0; margin: 0; color: #302d42; font-size: 13px; font-weight: 700; line-height: 1.4; }
+.pa-quote-field > span { display: flex; align-items: baseline; gap: 6px; }
+.pa-quote-field b { color: #6515d4; }
+.pa-quote-field small { color: #777386; font-size: 11px; font-weight: 500; }
+.pa-quote-field input,
+.pa-quote-field select,
+.pa-quote-field textarea { display: block; width: 100%; min-width: 0; min-height: 52px; margin: 0; padding: 13px 14px; border: 1px solid #dcd9e5; border-radius: 7px; outline: 0; background: #fff; color: #211d38; font: 400 16px/1.4 Arial, Helvetica, sans-serif; box-shadow: none; }
+.pa-quote-field select { padding-right: 34px; }
+.pa-quote-field textarea { min-height: 108px; resize: vertical; }
+.pa-quote-field input::placeholder,
+.pa-quote-field textarea::placeholder { color: #858293; opacity: 1; }
+.pa-quote-field input:focus,
+.pa-quote-field select:focus,
+.pa-quote-field textarea:focus { border-color: #7b43cf; box-shadow: 0 0 0 3px rgba(101, 21, 212, .12); }
+.pa-quote-field--wide { grid-column: 1 / -1; }
+.pa-quote-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+.pa-quote-privacy { margin: 12px 0 15px; color: #696678; font-size: 12px; line-height: 1.5; }
+.pa-quote-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.pa-quote-actions > button,
+.pa-quote-actions > a { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 20px; border-radius: 6px; font-size: 13px; font-weight: 750; line-height: 1.3; text-align: center; text-decoration: none; }
+.pa-quote-actions > button { border: 1px solid #6515d4; background: #6515d4; color: #fff; cursor: pointer; }
+.pa-quote-actions > button:hover { border-color: #5010ae; background: #5010ae; }
+.pa-quote-actions > button:disabled { cursor: wait; opacity: .7; }
+.pa-quote-actions > .pa-quote-whatsapp { border: 1px solid #b8dfd2; background: #fff; color: #176c55; }
+.pa-quote-actions > .pa-quote-whatsapp:hover { background: #f2faf7; }
+.pa-quote-status { min-height: 0; margin: 10px 0 0; color: #a32929; font-size: 13px; line-height: 1.5; }
+.pa-quote-status:empty { display: none; }
+.pa-quote-success { display: grid; gap: 5px; padding: 18px; border: 1px solid #b8dfd2; border-radius: 8px; background: #f2faf7; color: #176c55; font-size: 14px; line-height: 1.5; }
+.pa-quote-success span { color: #465d56; font-size: 13px; }
+.pa-quote-form [hidden] { display: none !important; }
+@media (max-width: 560px) {
+    body.pa-quote-form-visible .float { visibility: hidden; pointer-events: none; }
+    .pa-quote-fields { grid-template-columns: minmax(0, 1fr); gap: 13px; }
+    .pa-quote-field--wide { grid-column: auto; }
+    .pa-quote-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+    .pa-quote-actions > button,
+    .pa-quote-actions > a { width: 100%; min-height: 52px; }
+}
