@@ -96,8 +96,8 @@ body.home-landing .value-strip .value-card p { margin: 0; color: var(--pa-shell-
     .pa-mega-menu { position: static; display: none; grid-template-columns: 1fr; gap: 10px; width: 100%; padding: 6px 0 14px 14px; border: 0; border-radius: 0; box-shadow: none; transform: none; }
     .pa-nav-dropdown[open] > .pa-mega-menu { display: grid; }
     .pa-mega-column h3 { margin-top: 8px; }
-    .pa-header-actions { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: 1fr 1fr; padding-top: 8px; }
-    .pa-header-button { min-height: 40px; }
+    .pa-header-actions { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; min-width: 0; padding-top: 8px; }
+    .pa-header-button { width: 100%; min-width: 0; min-height: 40px; padding-right: 8px; padding-left: 8px; }
     .pa-category-inner { width: 100%; padding: 0 16px; }
     .pa-footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

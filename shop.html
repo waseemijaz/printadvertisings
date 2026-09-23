@@ -164,11 +164,45 @@
                 font-size: 1.75rem;
             }
         }
+        /* Compact, aligned category catalogue. */
+        body.shop-categories-page .breadcrumb-wrapper.section-padding { padding: 22px 0 !important; }
+        body.shop-categories-page .breadcrumb-wrapper h1 { margin: 0 0 8px !important; font-size: clamp(1.8rem, 4vw, 2.5rem) !important; line-height: 1.15; }
+        body.shop-categories-page .breadcrumb-items { padding: 8px 16px !important; font-size: 13px !important; }
+        body.shop-categories-page .shop-landing { padding: 32px 0 46px; }
+        body.shop-categories-page .shop-landing > .container { width: min(1200px, calc(100% - 32px)); max-width: 1200px; }
+        body.shop-categories-page .shop-lead { max-width: 720px; margin: 0 auto 20px; }
+        body.shop-categories-page .shop-lead h2 { margin: 0 0 6px; color: #171531; font-size: clamp(1.45rem, 2.6vw, 1.9rem); line-height: 1.2; }
+        body.shop-categories-page .shop-lead p { margin: 0; font-size: 14px; line-height: 1.6; }
+        body.shop-categories-page .shop-tab-menu { gap: 8px; margin-bottom: 24px; }
+        body.shop-categories-page .shop-tab-menu a { min-height: 38px; padding: 9px 14px; border-color: #e8e4ef; color: #332e48; font-size: 12px; box-shadow: 0 3px 12px rgba(18,24,52,.045); }
+        body.shop-categories-page .shop-tab-menu a:hover { transform: none; background: #6515d4; }
+        body.shop-categories-page .shop-block { margin: 0 auto 14px; max-width: 1200px; }
+        body.shop-categories-page .shop-block h3 { margin: 0 0 4px; color: #171531; font-size: 1.2rem; }
+        body.shop-categories-page .shop-block p { margin: 0 0 12px; font-size: 13px; }
+        body.shop-categories-page .shop-category-grid .shop-cat-card { display: flex; flex-direction: column; align-items: stretch; padding: 14px !important; border-color: #e8e6ef; border-radius: 13px; box-shadow: 0 6px 20px rgba(23,21,49,.055); }
+        body.shop-categories-page .shop-category-grid .shop-cat-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(23,21,49,.09); }
+        body.shop-categories-page .shop-cat-image { height: auto; aspect-ratio: 16 / 10; margin-bottom: 12px; border: 1px solid #efedf3; border-radius: 8px; }
+        body.shop-categories-page .shop-cat-image img { object-fit: cover; }
+        body.shop-categories-page .shop-cat-meta { align-self: center; margin-bottom: 5px; padding: 4px 8px; font-size: 10px; }
+        body.shop-categories-page .shop-cat-title { margin-bottom: 5px; color: #171531; font-size: 1rem; line-height: 1.3; }
+        body.shop-categories-page .shop-cat-copy { flex: 1; min-height: 0; margin-bottom: 12px; color: #686579; font-size: 12px; line-height: 1.5; }
+        body.shop-categories-page .shop-category-grid .theme-btn { width: 100%; min-height: 42px; margin-top: auto; padding: 10px 14px; border-radius: 6px; font-size: 12px; }
+        body.shop-categories-page #shop-categories .row { --bs-gutter-x: 16px; --bs-gutter-y: 16px; }
+        @media (min-width: 480px) and (max-width: 767px) { body.shop-categories-page #shop-categories .col-md-4 { flex: 0 0 50%; width: 50%; } }
+        @media (max-width: 479px) {
+            body.shop-categories-page .shop-landing { padding: 24px 0 34px; }
+            body.shop-categories-page .shop-tab-menu { justify-content: flex-start; gap: 7px; margin: 0 -16px 18px; padding: 0 16px; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: thin; }
+            body.shop-categories-page .shop-tab-menu li { flex: 0 0 auto; }
+            body.shop-categories-page #shop-categories .row { --bs-gutter-x: 12px; --bs-gutter-y: 12px; }
+            body.shop-categories-page #shop-categories .col-md-4 { flex: 0 0 100%; width: 100%; max-width: 100%; }
+            body.shop-categories-page .shop-category-grid .shop-cat-card { padding: 11px !important; }
+            body.shop-categories-page .shop-cat-image { aspect-ratio: 4 / 3; }
+        }
     </style>
-<link rel="stylesheet" href="assets/css/global-shell.css?v=1">
+<link rel="stylesheet" href="assets/css/global-shell.css?v=2">
 </head>
 
-<body>
+<body class="shop-categories-page">
     <!-- whatsapp Section -->
     <a href="https://wa.me/971582023571" class="float" target="_blank" aria-label="WhatsApp">
         <span class="my-float" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;">
@@ -497,7 +531,7 @@
             });
         })();
     </script>
-<script src="assets/js/global-shell.js?v=1" defer></script>
+<script src="assets/js/global-shell.js?v=2" defer></script>
 </body>
 
 </html>

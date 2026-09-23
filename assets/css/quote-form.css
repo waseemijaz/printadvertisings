@@ -1,43 +1,11 @@
-/* Compact quote form shared by the homepage and contact page. */
-.pa-quote-form,
-.pa-quote-form * { box-sizing: border-box; }
-.pa-quote-form { width: 100%; max-width: 780px; margin: 0 auto; color: #171531; text-align: left; }
-.pa-quote-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.pa-quote-field { display: grid; align-content: start; gap: 7px; min-width: 0; margin: 0; color: #302d42; font-size: 13px; font-weight: 700; line-height: 1.4; }
-.pa-quote-field > span { display: flex; align-items: baseline; gap: 6px; }
-.pa-quote-field b { color: #6515d4; }
-.pa-quote-field small { color: #777386; font-size: 11px; font-weight: 500; }
-.pa-quote-field input,
-.pa-quote-field select,
-.pa-quote-field textarea { display: block; width: 100%; min-width: 0; min-height: 52px; margin: 0; padding: 13px 14px; border: 1px solid #dcd9e5; border-radius: 7px; outline: 0; background: #fff; color: #211d38; font: 400 16px/1.4 Arial, Helvetica, sans-serif; box-shadow: none; }
-.pa-quote-field select { padding-right: 34px; }
-.pa-quote-field textarea { min-height: 108px; resize: vertical; }
-.pa-quote-field input::placeholder,
-.pa-quote-field textarea::placeholder { color: #858293; opacity: 1; }
-.pa-quote-field input:focus,
-.pa-quote-field select:focus,
-.pa-quote-field textarea:focus { border-color: #7b43cf; box-shadow: 0 0 0 3px rgba(101, 21, 212, .12); }
-.pa-quote-field--wide { grid-column: 1 / -1; }
-.pa-quote-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
-.pa-quote-privacy { margin: 12px 0 15px; color: #696678; font-size: 12px; line-height: 1.5; }
-.pa-quote-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-.pa-quote-actions > button,
-.pa-quote-actions > a { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 20px; border-radius: 6px; font-size: 13px; font-weight: 750; line-height: 1.3; text-align: center; text-decoration: none; }
-.pa-quote-actions > button { border: 1px solid #6515d4; background: #6515d4; color: #fff; cursor: pointer; }
-.pa-quote-actions > button:hover { border-color: #5010ae; background: #5010ae; }
-.pa-quote-actions > button:disabled { cursor: wait; opacity: .7; }
-.pa-quote-actions > .pa-quote-whatsapp { border: 1px solid #b8dfd2; background: #fff; color: #176c55; }
-.pa-quote-actions > .pa-quote-whatsapp:hover { background: #f2faf7; }
-.pa-quote-status { min-height: 0; margin: 10px 0 0; color: #a32929; font-size: 13px; line-height: 1.5; }
-.pa-quote-status:empty { display: none; }
-.pa-quote-success { display: grid; gap: 5px; padding: 18px; border: 1px solid #b8dfd2; border-radius: 8px; background: #f2faf7; color: #176c55; font-size: 14px; line-height: 1.5; }
-.pa-quote-success span { color: #465d56; font-size: 13px; }
-.pa-quote-form [hidden] { display: none !important; }
-@media (max-width: 560px) {
-    body.pa-quote-form-visible .float { visibility: hidden; pointer-events: none; }
-    .pa-quote-fields { grid-template-columns: minmax(0, 1fr); gap: 13px; }
-    .pa-quote-field--wide { grid-column: auto; }
-    .pa-quote-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
-    .pa-quote-actions > button,
-    .pa-quote-actions > a { width: 100%; min-height: 52px; }
-}
+.pa-quote-form,.pa-quote-form *{box-sizing:border-box}
+.pa-quote-backdrop{position:fixed;z-index:10000;inset:0;display:grid;place-items:center;overflow:auto;padding:20px;background:rgba(16,14,31,.58);overscroll-behavior:contain}
+.pa-quote-backdrop[hidden]{display:none!important}
+.pa-quote-dialog{position:relative;width:min(620px,100%);max-height:min(92vh,900px);overflow:auto;overscroll-behavior:contain;padding:26px 28px 24px;border:1px solid #e9e4ef;border-radius:14px;background:#fff;color:#171531;box-shadow:0 24px 80px rgba(12,9,27,.25);-webkit-overflow-scrolling:touch}
+.pa-quote-dialog-heading{padding-right:38px;margin-bottom:18px}.pa-quote-dialog-heading>span{color:#6515d4;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.pa-quote-dialog-heading h2{margin:4px 0 5px;color:#171531;font-size:clamp(22px,4vw,28px);font-weight:750;line-height:1.2}.pa-quote-dialog-heading p{margin:0;color:#686579;font-size:13px;line-height:1.5}
+.pa-quote-close{position:absolute;top:14px;right:14px;display:grid;place-items:center;width:42px;height:42px;border:1px solid #e8e4ef;border-radius:50%;background:#fff;color:#39354b;font-size:27px;line-height:1;cursor:pointer}.pa-quote-close:hover{background:#f6f2fc}
+.pa-quote-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.pa-quote-field{display:grid;align-content:start;gap:6px;min-width:0;margin:0;color:#302d42;font-size:12px;font-weight:700;line-height:1.4}.pa-quote-field>span{display:flex;align-items:baseline;gap:5px}.pa-quote-field b{color:#6515d4}.pa-quote-field small{color:#777386;font-size:10px;font-weight:500}
+.pa-quote-field input,.pa-quote-field select,.pa-quote-field textarea{display:block;width:100%;min-width:0;min-height:47px;margin:0;padding:11px 12px;border:1px solid #dcd9e5;border-radius:7px;outline:0;background:#fff;color:#211d38;font:400 16px/1.4 Arial,Helvetica,sans-serif;box-shadow:none}.pa-quote-field select{padding-right:28px}.pa-quote-field textarea{min-height:82px;resize:vertical}.pa-quote-field input::placeholder,.pa-quote-field textarea::placeholder{color:#858293;opacity:1}.pa-quote-field input:focus,.pa-quote-field select:focus,.pa-quote-field textarea:focus{border-color:#7b43cf;box-shadow:0 0 0 3px rgba(101,21,212,.12)}.pa-quote-field--wide{grid-column:1/-1}
+.pa-quote-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}.pa-quote-privacy{margin:10px 0 12px;color:#696678;font-size:11px;line-height:1.45}.pa-quote-actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px}.pa-quote-actions>button,.pa-quote-actions>a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:6px;font-size:12px;font-weight:750;line-height:1.3;text-align:center;text-decoration:none}.pa-quote-actions>button{border:1px solid #6515d4;background:#6515d4;color:#fff;cursor:pointer}.pa-quote-actions>button:hover{border-color:#5010ae;background:#5010ae}.pa-quote-actions>button:disabled{cursor:wait;opacity:.7}.pa-quote-actions>.pa-quote-whatsapp{border:1px solid #b8dfd2;background:#fff;color:#176c55}.pa-quote-actions>.pa-quote-whatsapp:hover{background:#f2faf7}.pa-quote-status{min-height:0;margin:8px 0 0;color:#a32929;font-size:12px;line-height:1.5}.pa-quote-status:empty{display:none}.pa-quote-success{display:grid;gap:5px;padding:16px;border:1px solid #b8dfd2;border-radius:8px;background:#f2faf7;color:#176c55;font-size:14px;line-height:1.5}.pa-quote-success span{color:#465d56;font-size:13px}.pa-quote-form [hidden]{display:none!important}.pa-quote-launch-panel{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px}.pa-quote-launch-panel p{flex:1 1 100%;margin:0;color:#686579}.pa-quote-launch-panel .pa-quote-whatsapp{display:inline-flex;align-items:center;min-height:46px;padding:0 16px;border:1px solid #b8dfd2;border-radius:6px;color:#176c55;text-decoration:none;font-size:13px;font-weight:700}
+body.pa-quote-open{overflow:hidden}body.pa-quote-open .float{visibility:hidden;pointer-events:none}
+@media(max-width:560px){.pa-quote-backdrop{align-items:end;padding:0;background:rgba(16,14,31,.56)}.pa-quote-dialog{width:100%;max-height:calc(100dvh - 10px);padding:22px 18px max(20px,env(safe-area-inset-bottom));border-radius:15px 15px 0 0}.pa-quote-dialog-heading{padding-right:40px;margin-bottom:14px}.pa-quote-fields{grid-template-columns:minmax(0,1fr);gap:11px}.pa-quote-field--wide{grid-column:auto}.pa-quote-actions{display:grid;grid-template-columns:minmax(0,1fr)}.pa-quote-actions>button,.pa-quote-actions>a{width:100%;min-height:50px}.pa-quote-launch-panel{align-items:stretch}.pa-quote-launch-panel>.theme-btn,.pa-quote-launch-panel .pa-quote-whatsapp{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px}.pa-quote-close{top:10px;right:12px}}
