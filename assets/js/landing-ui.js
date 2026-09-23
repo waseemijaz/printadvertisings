@@ -5,6 +5,7 @@
     if (hero) {
         var slides = Array.prototype.slice.call(hero.querySelectorAll('.landing-hero-slide'));
         var dots = document.querySelector('.landing-hero-dots');
+        var arrows = hero.parentNode.querySelectorAll('[data-hero-direction]');
         var active = Math.max(0, slides.findIndex(function (slide) { return slide.classList.contains('is-active'); }));
         var timer;
 
@@ -18,6 +19,13 @@
                 dots.appendChild(button);
             });
         }
+
+        Array.prototype.forEach.call(arrows, function (button) {
+            button.addEventListener('click', function () {
+                show(active + (button.getAttribute('data-hero-direction') === 'next' ? 1 : -1));
+                restart();
+            });
+        });
 
         function show(index) {
             active = (index + slides.length) % slides.length;
