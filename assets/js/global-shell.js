@@ -26,7 +26,7 @@
 
     dropdowns.forEach(function (item) {
         item.addEventListener('toggle', function () {
-            if (!item.open || !mobile.matches) return;
+            if (!item.open) return;
             dropdowns.forEach(function (other) { if (other !== item) other.open = false; });
         });
     });
