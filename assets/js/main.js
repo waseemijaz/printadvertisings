@@ -15,6 +15,54 @@
             meanExpand: ['<i class="far fa-plus"></i>'],
         });
 
+        // A few newer catalog pages use a compact header without the theme offcanvas.
+        // Give those pages the same working mobile navigation using their existing links.
+        if (!$('.offcanvas__info').length && $('.sidebar__toggle').length) {
+            const sourceNav = document.querySelector('.header-section nav, .header-section-1 nav');
+            const backdrop = document.createElement('button');
+            const panel = document.createElement('aside');
+            backdrop.type = 'button';
+            backdrop.className = 'pa-mobile-backdrop';
+            backdrop.setAttribute('aria-label', 'Close navigation menu');
+            panel.className = 'pa-mobile-panel';
+            panel.setAttribute('aria-label', 'Mobile navigation');
+            panel.innerHTML = '<div class="pa-mobile-panel-head"><a href="index.html"><img src="images/logo.webp" alt="Print Advertising Dubai"></a><button type="button" class="pa-mobile-close" aria-label="Close navigation menu">&times;</button></div>';
+            const siteLogo = document.querySelector('.header-section img.logoclass, .header-section-1 img.logoclass');
+            const siteHome = document.querySelector('.header-section .header-logo, .header-section-1 .header-logo, .header-section .logo a, .header-section-1 .logo a');
+            if (siteLogo) panel.querySelector('img').src = siteLogo.src;
+            if (siteHome) panel.querySelector('.pa-mobile-panel-head a').href = siteHome.href;
+            if (sourceNav) {
+                const nav = sourceNav.cloneNode(true);
+                nav.removeAttribute('id');
+                nav.classList.remove('d-none', 'd-xl-block', 'mean-nav');
+                nav.querySelectorAll('[id]').forEach(function (item) { item.removeAttribute('id'); });
+                nav.querySelectorAll('.d-none, .d-xl-block').forEach(function (item) { item.classList.remove('d-none', 'd-xl-block'); });
+                panel.appendChild(nav);
+            } else {
+                panel.insertAdjacentHTML('beforeend', '<nav><a href="index.html">Home</a><a href="all-categories.html">All Products</a><a href="contact.html">Contact</a></nav>');
+            }
+            document.body.append(backdrop, panel);
+            function closePanel() {
+                panel.classList.remove('is-open');
+                backdrop.classList.remove('is-open');
+                document.body.classList.remove('pa-menu-open');
+                $('.sidebar__toggle').attr('aria-expanded', 'false');
+            }
+            $('.sidebar__toggle').attr({ role: 'button', tabindex: '0', 'aria-label': 'Open navigation menu', 'aria-expanded': 'false' });
+            $('.sidebar__toggle').on('click', function () {
+                panel.classList.add('is-open');
+                backdrop.classList.add('is-open');
+                document.body.classList.add('pa-menu-open');
+                $(this).attr('aria-expanded', 'true');
+            }).on('keydown', function (event) {
+                if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); $(this).trigger('click'); }
+            });
+            backdrop.addEventListener('click', closePanel);
+            panel.querySelector('.pa-mobile-close').addEventListener('click', closePanel);
+            panel.addEventListener('click', function (event) { if (event.target.closest('a')) closePanel(); });
+            document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closePanel(); });
+        }
+
         //>> Sidebar Toggle Js Start <<//
         $(".offcanvas__close,.offcanvas__overlay").on("click", function () {
             $(".offcanvas__info").removeClass("info-open");
@@ -220,8 +268,8 @@
                     disableOnInteraction: false,
                 },
                 navigation: {
-                    prevEl: ".array-next",
-                    nextEl: ".array-prev",
+                    prevEl: ".array-prev",
+                    nextEl: ".array-next",
                 },
             });
         }
@@ -240,8 +288,8 @@
                     clickable: true,
                 },
                 navigation: {
-                    prevEl: ".array-next",
-                    nextEl: ".array-prev",
+                    prevEl: ".array-prev",
+                    nextEl: ".array-next",
                 },
                 breakpoints: {
                     1199: {
@@ -278,8 +326,8 @@
                     clickable: true,
                 },
                 navigation: {
-                    prevEl: ".array-next",
-                    nextEl: ".array-prev",
+                    prevEl: ".array-prev",
+                    nextEl: ".array-next",
                 },
                 breakpoints: {
                     1199: {
@@ -910,4 +958,3 @@
 
 
 })(jQuery); // End jQuery
-
