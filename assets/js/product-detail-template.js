@@ -121,6 +121,20 @@
     'Apparel Printing': '/apparel.html',
     'Calendars & Diaries': '/calendars.html'
   };
+  const siteCategories = {
+    businessCards: ['Business Stationery', '/stationery.html'],
+    flyers: ['Marketing Print', '/marketing.html'],
+    letterheads: ['Business Stationery', '/stationery.html'],
+    banners: ['Marketing Print', '/marketing.html'],
+    packaging: ['Corporate Gifts', '/gifts.html'],
+    displays: ['Marketing Print', '/marketing.html'],
+    posters: ['Express Print', '/express.html'],
+    calendars: ['Calendars & Diaries', '/calendars.html'],
+    diaries: ['Calendars & Diaries', '/calendars.html'],
+    drinkware: ['Drinkware', '/drinkware.html'],
+    apparel: ['Apparel & Textiles', '/apparel.html'],
+    office: ['Business Stationery', '/stationery.html']
+  };
 
   const pageMap = {
     'branded-mugs': ['drinkware', 'Corporate Gifts & Promotional Products'],
@@ -224,12 +238,16 @@
   const crumb = document.createElement('nav');
   crumb.className = 'product-detail-breadcrumb';
   crumb.setAttribute('aria-label', 'Breadcrumb');
-  const parent = page[1];
+  const [siteCategory, siteCategoryUrl] = path === 'branded-mugs'
+    ? ['Corporate Gifts', '/gifts.html']
+    : siteCategories[page[0]];
+  const hasSubcategoryPage = group.categoryUrl.startsWith('/products/');
   const subcategory = group.category;
-  const parentUrl = categoryLinks[parent];
-  crumb.innerHTML = `<div class="container"><a href="/">Home</a><span aria-hidden="true">/</span><a href="${parentUrl}">${esc(parent)}</a><span aria-hidden="true">/</span><a href="${group.categoryUrl}">${esc(subcategory)}</a><span aria-hidden="true">/</span><strong aria-current="page">${esc(title)}</strong></div>`;
+  crumb.innerHTML = `<div class="container"><a href="/index.html">Home</a><span aria-hidden="true">/</span><a href="${siteCategoryUrl}">${esc(siteCategory)}</a>${hasSubcategoryPage ? `<span aria-hidden="true">/</span><a href="${group.categoryUrl}">${esc(subcategory)}</a>` : ''}<span aria-hidden="true">/</span><strong aria-current="page">${esc(title)}</strong></div>`;
   const main = document.querySelector('.pa-site-shell')?.nextElementSibling;
-  if (main && main.tagName === 'MAIN') main.before(crumb);
+  const existingCrumb = document.querySelector('.product-detail-breadcrumb');
+  if (existingCrumb) existingCrumb.replaceWith(crumb);
+  else if (main && main.tagName === 'MAIN') main.before(crumb);
 
   const relatedSection = document.querySelector('.product-related');
   const originalGrid = relatedSection?.querySelector('.product-related-grid');
