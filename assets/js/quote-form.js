@@ -38,9 +38,12 @@
     var phoneInput = form.elements.phone;
     var panel = dialog.querySelector('.pa-quote-dialog');
     var closeButton = dialog.querySelector('.pa-quote-close');
+    var submit = form.querySelector('[type="submit"]');
     var returnFocus = null;
     var previousOverflow = '';
     var tokenPromise = null;
+    var csrfToken = '';
+    var submitting = false;
 
     function phoneValidationMessage(value) {
         value = value.trim();
@@ -64,7 +67,11 @@
         if (tokenPromise) return tokenPromise;
         tokenPromise = fetch('/api/leads.php?action=token', { credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' } })
             .then(function (response) { if (!response.ok) throw new Error('token'); return response.json(); })
-            .then(function (data) { if (!data || !data.token) throw new Error('token'); form.elements.csrf_token.value = data.token; })
+            .then(function (data) {
+                if (!data || !data.token) throw new Error('token');
+                csrfToken = data.token;
+                form.elements.csrf_token.value = csrfToken;
+            })
             .catch(function (error) { tokenPromise = null; throw error; });
         return tokenPromise;
     }
@@ -108,6 +115,12 @@
         if (!productName && categoryName) waText += ' for ' + categoryName;
         dialog.querySelector('.pa-quote-whatsapp').href = 'https://wa.me/971582023571?text=' + encodeURIComponent(waText + '.');
         form.reset();
+        form.elements.csrf_token.value = csrfToken;
+        phoneInput.setCustomValidity('');
+        if (!submitting) {
+            submit.disabled = false;
+            submit.textContent = 'Request a Quote';
+        }
         /* Restore context after reset, which also clears stale values on reopen. */
         select.value = known ? known.value : '';
         if (productName && !known) {
@@ -137,6 +150,9 @@
     window.paOpenQuoteDialog = openDialog;
 
     document.addEventListener('click', function (event) {
+        /* Controls inside the dialog must never reach the global quote launcher. */
+        if (!event.target || dialog.contains(event.target)) return;
+        if (typeof event.target.closest !== 'function') return;
         var trigger = event.target.closest('[data-pa-quote-open], .pa-header-button--quote, .product-outline-btn');
         if (!trigger && event.target.closest('a,button')) {
             var link = event.target.closest('a,button');
@@ -148,11 +164,25 @@
         event.preventDefault();
         openDialog(trigger);
     });
-    dialog.addEventListener('click', function (event) { if (event.target === dialog) closeDialog(); });
-    closeButton.addEventListener('click', closeDialog);
+    dialog.addEventListener('click', function (event) {
+        if (event.target !== dialog) return;
+        event.preventDefault();
+        event.stopPropagation();
+        closeDialog();
+    });
+    closeButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        closeDialog();
+    });
     document.addEventListener('keydown', function (event) {
         if (dialog.hidden) return;
-        if (event.key === 'Escape') { event.preventDefault(); closeDialog(); }
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            event.stopPropagation();
+            closeDialog();
+            return;
+        }
         if (event.key === 'Tab') {
             var focusable = panel.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled])');
             var first = focusable[0], last = focusable[focusable.length - 1];
@@ -163,12 +193,13 @@
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
+        if (submitting) return;
         var status = form.querySelector('.pa-quote-status');
-        var submit = form.querySelector('[type="submit"]');
         var success = form.querySelector('.pa-quote-success');
         status.textContent = '';
         phoneInput.setCustomValidity(phoneValidationMessage(phoneInput.value));
         if (!form.reportValidity()) return;
+        submitting = true;
         submit.disabled = true;
         submit.textContent = 'Sending…';
         requestToken().then(function () {
@@ -176,10 +207,12 @@
         }).then(function (response) {
             return response.json().then(function (data) { if (!response.ok || !data || data.success !== true) { var e = new Error('request'); e.code = data && data.code; throw e; } return data; });
         }).then(function () {
+            submitting = false;
             Array.prototype.forEach.call(form.children, function (child) { if (child !== success) child.hidden = true; });
             success.hidden = false;
             success.focus();
         }).catch(function (error) {
+            submitting = false;
             status.textContent = error.code === 'rate_limited' ? 'Please wait a few minutes before trying again, or chat with us on WhatsApp.' : error.code === 'invalid_input' ? 'Please check your name, WhatsApp number and email address, then try again.' : 'We could not send your enquiry just now. Please try again or chat with us on WhatsApp.';
             submit.disabled = false;
             submit.textContent = 'Request a Quote';

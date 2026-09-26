@@ -5,6 +5,7 @@ require_once __DIR__ . '/../app/Core/RateLimiter.php';
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../app/Models/Lead.php';
 require_once __DIR__ . '/../app/Controllers/LeadController.php';
+require_once __DIR__ . '/../app/Core/QuoteMailer.php';
 
 ini_set('display_errors', '0');
 header('X-Content-Type-Options: nosniff');
@@ -27,10 +28,16 @@ try {
     $validated = LeadController::validate($_POST);
     $controller = new LeadController(new Lead(database_connection()));
     $id = $controller->create($validated);
-    json_response(201, ['success' => true, 'lead_id' => $id]);
+    $notificationSent = false;
+    try {
+        $notificationSent = QuoteMailer::send($validated, $id);
+    } catch (Throwable $mailError) {
+        error_log('[quote-mail] lead=' . $id . ' notification=failed type=' . get_class($mailError));
+    }
+    json_response(201, ['success' => true, 'lead_id' => $id, 'notification_sent' => $notificationSent]);
 } catch (InvalidArgumentException $error) {
     json_response(422, ['success' => false, 'code' => 'invalid_input']);
 } catch (Throwable $error) {
-    /* Do not return database details or submitted personal data to the browser. */
+    /* Do not return database, mail, or submitted personal data to the browser. */
     json_response(503, ['success' => false, 'code' => 'temporarily_unavailable']);
 }
