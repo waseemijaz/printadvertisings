@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS leads (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  lead_type ENUM('quick_enquiry','quote_request') NOT NULL DEFAULT 'quick_enquiry',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   name VARCHAR(120) NOT NULL,
   phone VARCHAR(30) NOT NULL,
@@ -10,6 +11,7 @@ CREATE TABLE IF NOT EXISTS leads (
   message TEXT NULL,
   status ENUM('New','Contacted','Quoted','Won','Lost') NOT NULL DEFAULT 'New',
   PRIMARY KEY (id),
+  KEY idx_leads_type_created (lead_type, created_at),
   KEY idx_leads_created_at (created_at),
   KEY idx_leads_status_created (status, created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -21,7 +21,7 @@
         '<button type="button" class="pa-quote-close" aria-label="Close quote form">×</button>' +
         '<div class="pa-quote-dialog-heading"><span>Print Advertising Dubai</span><h2 id="pa-quote-title">Request a Quote</h2><p>Tell us what you need and our print team will be in touch.</p></div>' +
         '<form action="/api/leads.php" method="post" class="pa-quote-form" novalidate>' +
-        '<input type="hidden" name="csrf_token" value=""><input type="hidden" name="category" value="">' +
+        '<input type="hidden" name="csrf_token" value=""><input type="hidden" name="lead_type" value="quote_request"><input type="hidden" name="category" value="">' +
         '<div class="pa-quote-fields">' +
         '<label class="pa-quote-field" for="pa-quote-name"><span>Name <b>*</b></span><input id="pa-quote-name" name="name" type="text" autocomplete="name" maxlength="120" required></label>' +
         '<label class="pa-quote-field" for="pa-quote-phone"><span>WhatsApp / Phone <b>*</b></span><input id="pa-quote-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" required></label>' +
@@ -60,13 +60,12 @@
         phoneInput.setCustomValidity(phoneValidationMessage(phoneInput.value));
     });
 
-    function requestToken() {
-        if (tokenPromise) return tokenPromise;
-        tokenPromise = fetch('/api/leads.php?action=token', { credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' } })
+    function requestToken(targetForm) {
+        if (!tokenPromise) tokenPromise = fetch('/api/leads.php?action=token', { credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' } })
             .then(function (response) { if (!response.ok) throw new Error('token'); return response.json(); })
-            .then(function (data) { if (!data || !data.token) throw new Error('token'); form.elements.csrf_token.value = data.token; })
+            .then(function (data) { if (!data || !data.token) throw new Error('token'); return data.token; })
             .catch(function (error) { tokenPromise = null; throw error; });
-        return tokenPromise;
+        return tokenPromise.then(function (token) { targetForm.elements.csrf_token.value = token; });
     }
 
     function openDialog(trigger) {
@@ -122,7 +121,7 @@
         document.body.classList.add('pa-quote-open');
         previousOverflow = document.documentElement.style.overflow;
         document.documentElement.style.overflow = 'hidden';
-        requestToken().catch(function () { form.querySelector('.pa-quote-status').textContent = 'The form is temporarily unavailable. Please chat with us on WhatsApp.'; });
+        requestToken(form).catch(function () { form.querySelector('.pa-quote-status').textContent = 'The form is temporarily unavailable. Please chat with us on WhatsApp.'; });
         window.setTimeout(function () { form.elements.name.focus(); }, 20);
     }
 
@@ -138,7 +137,7 @@
 
     document.addEventListener('click', function (event) {
         var trigger = event.target.closest('[data-pa-quote-open], .pa-header-button--quote, .product-outline-btn');
-        if (!trigger && event.target.closest('a,button')) {
+        if (!trigger && !event.target.closest('[data-pa-quote-inline-form]') && event.target.closest('a,button')) {
             var link = event.target.closest('a,button');
             var label = ((link.textContent || '') + ' ' + (link.getAttribute('aria-label') || '')).replace(/\s+/g, ' ');
             if (/\b(get|request)\b.{0,28}\bquote\b/i.test(label)) trigger = link;
@@ -171,7 +170,7 @@
         if (!form.reportValidity()) return;
         submit.disabled = true;
         submit.textContent = 'Sending…';
-        requestToken().then(function () {
+        requestToken(form).then(function () {
             return fetch(form.action, { method: 'POST', credentials: 'same-origin', headers: { Accept: 'application/json' }, body: new FormData(form) });
         }).then(function (response) {
             return response.json().then(function (data) { if (!response.ok || !data || data.success !== true) { var e = new Error('request'); e.code = data && data.code; throw e; } return data; });
@@ -184,6 +183,85 @@
             submit.disabled = false;
             submit.textContent = 'Request a Quote';
             status.focus();
+        });
+    });
+
+    var inlineForm = document.querySelector('[data-pa-quote-inline-form]');
+    if (inlineForm) {
+        var inlinePhone = inlineForm.elements.phone;
+        var inlineStatus = inlineForm.querySelector('.pa-quote-status');
+        var inlineSuccess = inlineForm.querySelector('.pa-quote-inline-success');
+        var inlineSubmit = inlineForm.querySelector('[type="submit"]');
+        var inlineSubmitLabel = inlineForm.elements.lead_type.value === 'quick_enquiry' ? 'Send Enquiry' : 'Request a Quote';
+        inlinePhone.addEventListener('input', function () {
+            inlinePhone.setCustomValidity(phoneValidationMessage(inlinePhone.value));
+        });
+        inlineForm.addEventListener('input', function () {
+            if (inlineSuccess.hidden) return;
+            inlineSuccess.hidden = true;
+            inlineSubmit.disabled = false;
+            inlineSubmit.textContent = inlineSubmitLabel;
+        });
+        inlineForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            inlineStatus.textContent = '';
+            inlinePhone.setCustomValidity(phoneValidationMessage(inlinePhone.value));
+            if (!inlineForm.reportValidity()) return;
+            inlineSubmit.disabled = true;
+            inlineSubmit.textContent = 'Sending…';
+            requestToken(inlineForm).then(function () {
+                return fetch(inlineForm.action, { method: 'POST', credentials: 'same-origin', headers: { Accept: 'application/json' }, body: new FormData(inlineForm) });
+            }).then(function (response) {
+                return response.json().then(function (data) { if (!response.ok || !data || data.success !== true) { var error = new Error('request'); error.code = data && data.code; throw error; } return data; });
+            }).then(function () {
+                inlineSuccess.hidden = false;
+                inlineSubmit.textContent = 'Request Sent';
+            }).catch(function (error) {
+                inlineStatus.textContent = error.code === 'rate_limited' ? 'Please wait a few minutes before trying again, or chat with us on WhatsApp.' : error.code === 'invalid_input' ? 'Please check your name, WhatsApp number and email address, then try again.' : 'We could not send your enquiry just now. Please try again or chat with us on WhatsApp.';
+                inlineSubmit.disabled = false;
+                inlineSubmit.textContent = inlineSubmitLabel;
+            });
+        });
+        requestToken(inlineForm).catch(function () {
+            inlineStatus.textContent = 'The form is temporarily unavailable. Please chat with us on WhatsApp.';
+        });
+    }
+
+    document.querySelectorAll('[data-pa-lead-form]').forEach(function (leadForm) {
+        var status = leadForm.querySelector('.pa-lead-status');
+        requestToken(leadForm).catch(function () {
+            status.textContent = 'The form is temporarily unavailable. Please try again shortly.';
+            status.classList.add('error');
+        });
+        leadForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            status.textContent = '';
+            status.classList.remove('success', 'error');
+            if (!leadForm.reportValidity()) return;
+            var submit = leadForm.querySelector('[type="submit"]');
+            submit.disabled = true;
+            var originalLabel = submit.textContent;
+            submit.textContent = 'SENDING…';
+            requestToken(leadForm).then(function () {
+                return fetch(leadForm.action, { method: 'POST', credentials: 'same-origin', headers: { Accept: 'application/json' }, body: new FormData(leadForm) });
+            }).then(function (response) {
+                return response.json().then(function (data) { if (!response.ok || !data || data.success !== true) { var error = new Error('request'); error.code = data && data.code; throw error; } return data; });
+            }).then(function () {
+                Array.prototype.forEach.call(leadForm.elements, function (field) {
+                    if (field.name !== 'csrf_token' && field.name !== 'lead_type' && field.name !== 'website_url' && 'value' in field) field.value = '';
+                });
+                status.textContent = 'Thank you. Your message has been sent successfully.';
+                status.classList.add('success');
+                submit.disabled = false;
+                submit.textContent = originalLabel;
+                status.focus();
+            }).catch(function (error) {
+                status.textContent = error.code === 'rate_limited' ? 'Please wait a few minutes before trying again.' : error.code === 'invalid_input' ? 'Please check your name, email address and message, then try again.' : 'Oops! An error occurred and your message could not be sent. Please try again.';
+                status.classList.add('error');
+                submit.disabled = false;
+                submit.textContent = originalLabel;
+                status.focus();
+            });
         });
     });
 })();

@@ -7,10 +7,10 @@
 .shop-category-page .shop-category-banner-wrap .container,
 .shop-category-page .shop-category-section .container,
 .shop-category-page section.section-padding > .container {
-    width: min(1200px, calc(100% - 32px));
+    width: min(1200px, calc(100% - 40px));
     max-width: 1200px;
-    padding-right: 0;
-    padding-left: 0;
+    padding-right: 12px;
+    padding-left: 12px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -41,10 +41,10 @@
     background: #fff;
 }
 .category-page-breadcrumb .container {
-    width: min(1200px, calc(100% - 32px));
+    width: min(1200px, calc(100% - 40px));
     max-width: 1200px;
-    padding-right: 0;
-    padding-left: 0;
+    padding-right: 12px;
+    padding-left: 12px;
     margin-right: auto;
     margin-left: auto;
     display: flex;
@@ -81,7 +81,7 @@
 .shop-category-page .shop-category-intro h2 { margin-bottom: 6px; color: #171531; font-size: clamp(1.3rem, 2vw, 1.65rem); letter-spacing: -.02em; }
 .shop-category-page .shop-category-intro p { max-width: 680px; margin-bottom: 0; color: #686579; font-size: 14px; line-height: 1.55; }
 .shop-category-page .shop-block-heading { margin-bottom: 16px !important; color: #171531; font-size: 1.25rem; font-weight: 750; }
-.shop-category-page .shop-category-section .row.g-4 { --bs-gutter-x: 16px; --bs-gutter-y: 16px; }
+.shop-category-page .shop-category-section .row.g-4 { --bs-gutter-x: 18px; --bs-gutter-y: 18px; }
 .shop-category-page .shop-item-card {
     border-color: #e8e6ef;
     border-radius: 14px;
@@ -114,7 +114,7 @@
 
 /* Existing .catalog-* pages are the three reusable sub-category listings. */
 .shop-subcategory-page main { color: #171531; }
-.shop-subcategory-page main .container { width: min(1200px, calc(100% - 32px)); max-width: 1200px; padding-right: 0; padding-left: 0; }
+.shop-subcategory-page main .container { width: min(1200px, calc(100% - 40px)); max-width: 1200px; padding-right: 12px; padding-left: 12px; }
 .shop-subcategory-page .catalog-hero { position: relative; overflow: hidden; padding: 24px 0 26px; background: #f8f7fb; }
 .shop-subcategory-page .catalog-hero .container { position: relative; z-index: 1; max-width: 1200px; }
 .shop-subcategory-page .catalog-hero > .container > a { display: none; }
@@ -122,7 +122,7 @@
 .shop-subcategory-page .catalog-hero h1 { max-width: 760px; margin: 0 0 6px; color: #171531; font-size: clamp(1.75rem, 3vw, 2.4rem); letter-spacing: -.035em; line-height: 1.15; }
 .shop-subcategory-page .catalog-hero p { max-width: 680px; margin: 0; color: #686579; font-size: 14px; line-height: 1.55; }
 .shop-subcategory-page .catalog-grid-wrap { padding: 26px 0 36px; background: linear-gradient(180deg, #fff, #f8f7fb); }
-.shop-subcategory-page .catalog-grid { display: grid; width: 100%; min-width: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.shop-subcategory-page .catalog-grid { display: grid; width: 100%; min-width: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
 .shop-subcategory-page .catalog-card { display: flex; min-width: 0; flex-direction: column; overflow: hidden; border: 1px solid #e8e6ef; border-radius: 13px; background: #fff; box-shadow: 0 7px 22px rgba(23, 21, 49, .055); }
 .shop-subcategory-page .catalog-card::before { content: ""; display: block; aspect-ratio: 16 / 10; border-bottom: 1px solid #eeebf3; background: #f6f3fa url("../img/shop/category-placeholder.svg") center / cover no-repeat; }
 .shop-subcategory-page .catalog-card > .shop-category-pill { align-self: flex-start; margin: 14px 15px 0; padding: 5px 9px; font-size: 9px; }
@@ -142,9 +142,16 @@
 
 @media (max-width: 991px) {
     .shop-category-page .shop-category-banner { aspect-ratio: 3.2 / 1; }
-    .shop-subcategory-page .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .shop-category-page .shop-category-section .row.g-4 { --bs-gutter-x: 14px; --bs-gutter-y: 14px; }
+    .shop-subcategory-page .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 }
 @media (max-width: 600px) {
+    .shop-category-page .breadcrumb-wrapper .container,
+    .shop-category-page .shop-category-banner-wrap .container,
+    .shop-category-page .shop-category-section .container,
+    .shop-category-page section.section-padding > .container,
+    .category-page-breadcrumb .container,
+    .shop-subcategory-page main .container { width: calc(100% - 32px); }
     .shop-category-page .breadcrumb-wrapper { padding: 18px 0; }
     .shop-category-page .breadcrumb-wrapper .page-heading h1 { display: block; width: 100%; max-width: 100%; font-size: clamp(1.1rem, 5vw, 1.3rem); line-height: 1.2; white-space: normal !important; overflow-wrap: anywhere; }
     .shop-category-page .breadcrumb-wrapper .page-heading p { width: calc(100% - 10px); max-width: calc(100% - 10px); font-size: 12px; white-space: normal !important; overflow-wrap: anywhere; }
@@ -154,6 +161,7 @@
     .shop-category-page .shop-category-banner-content h2 { font-size: 1.1rem; white-space: normal !important; overflow-wrap: anywhere; }
     .shop-category-page .shop-category-banner-content p { max-width: calc(100% - 8px); font-size: 11px; white-space: normal !important; overflow-wrap: anywhere; }
     .shop-category-page .shop-category-section { padding: 25px 0 30px; }
+    .shop-category-page .shop-category-section .row.g-4 { --bs-gutter-x: 13px; --bs-gutter-y: 13px; }
     .shop-category-page .shop-category-intro { margin-bottom: 18px; }
     .shop-category-page .shop-category-intro h2 { width: 100%; max-width: 100%; font-size: clamp(1.1rem, 4.8vw, 1.3rem); white-space: normal !important; overflow-wrap: anywhere; }
     .shop-category-page .shop-category-intro p { width: calc(100% - 10px); max-width: calc(100% - 10px); white-space: normal !important; overflow-wrap: anywhere; }
@@ -164,7 +172,7 @@
     .shop-category-page .shop-category-cta { margin-bottom: 20px; padding: 18px 15px; }
     .shop-subcategory-page .catalog-hero { padding: 18px 0 20px; }
     .shop-subcategory-page .catalog-grid-wrap { padding: 18px 0 25px; }
-    .shop-subcategory-page .catalog-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .shop-subcategory-page .catalog-grid { grid-template-columns: minmax(0, 1fr); gap: 13px; }
     .shop-subcategory-page .catalog-card { display: grid; grid-template-columns: 92px minmax(0, 1fr); grid-template-rows: auto auto 1fr auto; align-items: start; }
     .shop-subcategory-page .catalog-card::before { grid-column: 1; grid-row: 1 / 5; width: 92px; height: 100%; min-height: 132px; aspect-ratio: auto; border: 0; border-right: 1px solid #eeebf3; background-size: contain; }
     .shop-subcategory-page .catalog-card > .shop-category-pill { grid-column: 2; grid-row: 1; margin: 11px 12px 0; }

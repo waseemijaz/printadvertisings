@@ -10,10 +10,10 @@
         var assetBase = new URL('../', shellScript.src);
         var quoteCss = document.createElement('link');
         quoteCss.rel = 'stylesheet';
-        quoteCss.href = new URL('css/quote-form.css?v=2', assetBase).href;
+        quoteCss.href = new URL('css/quote-form.css?v=4', assetBase).href;
         document.head.appendChild(quoteCss);
         var quoteScript = document.createElement('script');
-        quoteScript.src = new URL('js/quote-form.js?v=4', assetBase).href;
+        quoteScript.src = new URL('js/quote-form.js?v=6', assetBase).href;
         quoteScript.defer = true;
         quoteScript.dataset.paQuoteLoader = 'true';
         document.head.appendChild(quoteScript);
