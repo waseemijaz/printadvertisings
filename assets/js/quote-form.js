@@ -31,7 +31,7 @@
         '<label class="pa-quote-field pa-quote-field--wide" for="pa-quote-message"><span>Additional requirements <small>Optional</small></span><textarea id="pa-quote-message" name="message" rows="3" maxlength="2000" placeholder="Anything else we should know?"></textarea></label>' +
         '</div><div class="pa-quote-honeypot" aria-hidden="true"><label for="pa-quote-website">Leave this field empty</label><input id="pa-quote-website" name="website_url" type="text" tabindex="-1" autocomplete="off"></div>' +
         '<p class="pa-quote-privacy">We\'ll use your details only to respond to your enquiry.</p><div class="pa-quote-actions"><button type="submit">Request a Quote</button><a class="pa-quote-whatsapp" target="_blank" rel="noopener">Chat on WhatsApp</a></div>' +
-        '<p class="pa-quote-status" aria-live="polite" role="status" tabindex="-1"></p><div class="pa-quote-success" hidden tabindex="-1" aria-live="polite"><strong>Thank you — your enquiry has been received.</strong><span>Our print team will get back to you shortly.</span></div></form></section>';
+        '<p class="pa-quote-status" aria-live="polite" role="status" tabindex="-1"></p><div class="pa-quote-success" hidden tabindex="-1" aria-live="polite"><strong>Thank you! Your enquiry has been received. We’ll contact you shortly.</strong></div></form></section>';
     document.body.appendChild(dialog);
 
     var form = dialog.querySelector('form');

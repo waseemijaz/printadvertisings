@@ -43,6 +43,222 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
+    <style id="campaign-corrections">
+        body { overflow-x: hidden; }
+        .hero { padding: 64px 0 52px; }
+        .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); gap: 44px; }
+        .hero-img-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%; height: 380px; }
+        .hero-img-grid .img-cell { min-width: 0; border-radius: 14px; }
+        .hero-img-grid .img-cell:first-child { border-radius: 18px; }
+        .modal-close,
+        body:not(.modal-open) .modal-close,
+        .modal-close[hidden] { display: none !important; }
+        body.modal-open .modal-close { display: grid !important; position: absolute; top: 14px; right: 14px; z-index: 5; }
+        #quoteForm [type="submit"].is-loading { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        #quoteForm [type="submit"].is-loading::before { content: ""; width: 16px; height: 16px; flex: 0 0 16px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: quote-form-spin .7s linear infinite; }
+        @keyframes quote-form-spin { to { transform: rotate(360deg); } }
+        body.modal-open .enquiry { position: fixed; inset: 50% auto auto 50%; transform: translate(-50%, -50%); width: min(92%, 920px); height: auto; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow: hidden; padding: 66px 24px 24px; box-sizing: border-box; }
+        body.modal-open .enquiry > .container { width: 100%; min-width: 0; max-height: calc(100vh - 122px); max-height: calc(100dvh - 122px); overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 0 8px 0 0; }
+        body.modal-open .enquiry-info { padding-right: 42px; }
+        .hero.campaign-hero { padding: 38px 0 42px; }
+        .campaign-hero .container { position: relative; z-index: 1; }
+        .product-carousel { position: relative; min-height: 430px; overflow: hidden; border: 1px solid rgba(26, 26, 46, .08); border-radius: 26px; background: #fff; box-shadow: 0 18px 48px rgba(26, 26, 46, .08); }
+        .product-slide { position: absolute; inset: 0; display: grid; grid-template-columns: minmax(300px, .9fr) minmax(0, 1.1fr); align-items: stretch; opacity: 0; visibility: hidden; transform: translateX(18px); transition: opacity .55s ease, transform .55s ease, visibility .55s; pointer-events: none; }
+        .product-slide.is-active { opacity: 1; visibility: visible; transform: translateX(0); pointer-events: auto; }
+        .product-slide-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 38px clamp(26px, 3.5vw, 50px); }
+        .product-slide-kicker { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 18px; color: var(--accent); font-size: .74rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+        .product-slide-kicker::before { content: ""; width: 26px; height: 2px; background: var(--accent); }
+        .product-slide-copy h1,
+        .product-slide-copy h2 { max-width: 430px; margin: 0 0 12px; font-family: "Plus Jakarta Sans", sans-serif; font-size: clamp(1.9rem, 3.5vw, 2.9rem); line-height: 1.08; letter-spacing: -.045em; color: var(--text); }
+        .product-slide-copy p { max-width: 370px; margin-bottom: 22px; color: var(--text-light); font-size: .95rem; line-height: 1.6; }
+        .product-slide-copy .btn { min-height: 44px; padding: 12px 20px; font-size: .86rem; }
+        .product-slide-image { position: relative; min-width: 0; overflow: hidden; display: grid; place-items: center; padding: 28px; background: radial-gradient(ellipse at 70% 40%, rgba(230, 57, 70, .10), transparent 60%), linear-gradient(135deg, #fbf7f1, #f1eee8); }
+        .product-slide-image img { width: 100%; height: 100%; max-height: 390px; object-fit: contain; filter: drop-shadow(0 18px 24px rgba(20, 20, 35, .12)); }
+        .product-slide-image img.product-banner { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: cover; object-position: 70% center; filter: none; }
+        .product-slide-image img.product-photo { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: cover; filter: none; }
+        .product-slide-image::after { content: ""; position: absolute; inset: auto 0 0; height: 30%; background: linear-gradient(transparent, rgba(20, 20, 35, .22)); pointer-events: none; }
+        .product-image-note { position: absolute; right: 22px; bottom: 20px; z-index: 1; padding: 9px 13px; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; color: #fff; background: rgba(26,26,46,.34); backdrop-filter: blur(10px); font-size: .72rem; font-weight: 700; letter-spacing: .04em; }
+        .product-carousel-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 4px 0; }
+        .product-carousel-count { color: var(--text-light); font-size: .82rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+        .product-carousel-actions { display: flex; align-items: center; gap: 16px; }
+        .product-carousel-dots { display: flex; align-items: center; gap: 8px; }
+        .product-carousel-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; background: #d7d6d4; cursor: pointer; transition: width .25s ease, background .25s ease; }
+        .product-carousel-dot[aria-current="true"] { width: 26px; background: var(--accent); }
+        .product-carousel-arrow { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid #e6e3df; border-radius: 50%; color: var(--text); background: #fff; font-size: 1.2rem; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+        .product-carousel-arrow:hover, .product-carousel-arrow:focus-visible { border-color: var(--text); color: #fff; background: var(--text); }
+        .campaign-hero-trust { display: flex; align-items: center; gap: 26px; margin-top: 24px; color: var(--text-light); font-size: .84rem; font-weight: 600; }
+        .campaign-hero-trust span { display: inline-flex; align-items: center; gap: 8px; }
+        .campaign-hero-trust strong { color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; font-size: 1rem; }
+        .campaign-hero-trust i { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+        @media (max-width: 900px) {
+            .product-carousel { min-height: 410px; }
+            .product-slide { grid-template-columns: minmax(255px, .9fr) minmax(0, 1.1fr); }
+            .product-slide-copy { padding: 30px 24px; }
+            .product-slide-image { padding: 20px; }
+        }
+        @media (max-width: 1024px) {
+            .hero.campaign-hero { padding-top: 32px; }
+        }
+        @media (max-width: 680px) {
+            .hero.campaign-hero { padding: 22px 0 34px; }
+            .product-carousel { min-height: 0; height: 490px; border-radius: 20px; }
+            .product-slide { grid-template-columns: 1fr; grid-template-rows: 225px minmax(0, 1fr); }
+            .product-slide-copy { padding: 18px 20px 12px; justify-content: flex-start; }
+            .product-slide-kicker { margin-bottom: 8px; font-size: .62rem; letter-spacing: .09em; }
+            .product-slide-kicker::before { width: 18px; }
+            .product-slide-copy h1,
+            .product-slide-copy h2 { margin-bottom: 5px; font-size: clamp(1.42rem, 7vw, 1.95rem); line-height: 1.08; }
+            .product-slide-copy p { margin-bottom: 10px; font-size: .82rem; line-height: 1.35; }
+            .product-slide-copy .btn { min-height: 38px; padding: 10px 16px; font-size: .78rem; }
+            .product-slide-image { padding: 8px 14px 16px; }
+            .product-slide-image img { max-height: 100%; }
+            .product-slide-image img.product-banner { object-position: 70% center; }
+            .product-image-note { right: 12px; bottom: 10px; padding: 7px 10px; font-size: .62rem; }
+            .product-carousel-controls { gap: 8px; padding-top: 12px; }
+            .product-carousel-actions { gap: 9px; }
+            .product-carousel-arrow { width: 36px; height: 36px; }
+            .product-carousel-dots { gap: 6px; }
+            .product-carousel-dot { width: 7px; height: 7px; }
+            .product-carousel-dot[aria-current="true"] { width: 21px; }
+            .campaign-hero-trust { flex-wrap: wrap; gap: 8px 14px; margin-top: 14px; font-size: .72rem; }
+            .campaign-hero-trust strong { font-size: .88rem; }
+            body.modal-open .enquiry { width: calc(100% - 20px); max-height: calc(100vh - 20px); max-height: calc(100dvh - 20px); padding: 62px 14px 16px 16px; border-radius: 18px; }
+            body.modal-open .enquiry > .container { max-height: calc(100vh - 98px); max-height: calc(100dvh - 98px); padding-right: 4px; }
+            body.modal-open .modal-close { top: 10px; right: 10px; width: 40px; height: 40px; }
+        }
+        @media (max-width: 340px) {
+            .product-carousel { height: 510px; }
+            .product-slide { grid-template-rows: 235px minmax(0, 1fr); }
+        }
+        .product-carousel.showcase-carousel { min-height: 424px; border: 0; background: #141923; box-shadow: 0 24px 58px rgba(16, 23, 35, .2); }
+        .showcase-carousel .product-slide { grid-template-columns: minmax(290px, .78fr) minmax(0, 1.22fr); }
+        .showcase-carousel .product-slide-copy { position: relative; z-index: 2; grid-column: 1; padding: 32px clamp(26px, 4vw, 54px); color: #fff; }
+        .showcase-carousel .product-slide-kicker { margin-bottom: 14px; color: #f4c66a; }
+        .showcase-carousel .product-slide-kicker::before { background: linear-gradient(90deg, #e63946 0 34%, #168a49 34% 68%, #f4f1e9 68%); }
+        .showcase-carousel .product-slide-copy h1,
+        .showcase-carousel .product-slide-copy h2 { max-width: 430px; color: #fff; font-size: clamp(2rem, 3.2vw, 2.75rem); }
+        .showcase-carousel .product-slide-copy p { max-width: 380px; margin-bottom: 20px; color: rgba(255,255,255,.78); }
+        .showcase-carousel .product-slide-copy .btn { box-shadow: 0 10px 24px rgba(0,0,0,.2); }
+        .showcase-carousel .product-slide-image { position: absolute; z-index: 0; inset: 0; display: block; padding: 0; background: #202630; }
+        .showcase-carousel .product-slide-image img { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: cover; object-position: center 48%; opacity: .82; filter: saturate(.92); transition: transform .8s cubic-bezier(.2,.7,.2,1), opacity .55s ease; }
+        .showcase-carousel .product-slide.is-active .product-slide-image img { transform: scale(1.025); opacity: .9; }
+        .showcase-carousel .product-slide:nth-child(1) .product-slide-image { background: linear-gradient(145deg, #f5f2e9, #e7e2d6); }
+        .showcase-carousel .product-slide:nth-child(2) .product-slide-image { background: linear-gradient(145deg, #101b2a, #2d3b4b); }
+        .showcase-carousel .product-slide:nth-child(3) .product-slide-image { background: linear-gradient(145deg, #eef0e9, #dce1d4); }
+        .showcase-carousel .product-slide:nth-child(4) .product-slide-image { background: linear-gradient(145deg, #111d2c, #29394a); }
+        .showcase-carousel .product-slide:nth-child(5) .product-slide-image { background: linear-gradient(145deg, #f2f0ec, #e5e1da); }
+        .showcase-carousel .product-slide:nth-child(6) .product-slide-image { background: linear-gradient(145deg, #f5f2ec, #e6dfd3); }
+        .showcase-carousel .product-slide-image::after { position: absolute; inset: 0; height: auto; background: linear-gradient(90deg, #141923 0%, rgba(20,25,35,.98) 22%, rgba(20,25,35,.88) 41%, rgba(20,25,35,.3) 69%, rgba(20,25,35,.08) 100%), linear-gradient(0deg, rgba(16,20,28,.42), transparent 50%); }
+        .showcase-carousel .product-image-note { right: 22px; bottom: 20px; border-color: rgba(255,255,255,.25); background: rgba(14,18,26,.44); letter-spacing: .06em; text-transform: uppercase; }
+        .category-showcase { padding: 44px 0 52px; background: linear-gradient(180deg, #f7f6f2, #fff 76%); }
+        .category-showcase .section-header { margin-bottom: 24px; }
+        .category-showcase .section-label { margin-bottom: 6px; }
+        .category-showcase .section-title { margin-bottom: 8px; }
+        .category-showcase .section-subtitle { font-size: .92rem; }
+        .category-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+        .category-card { min-width: 0; display: flex; flex-direction: column; padding: 13px; border: 1px solid rgba(26,26,46,.09); border-radius: 15px; background: rgba(255,255,255,.95); box-shadow: 0 8px 24px rgba(26,26,46,.045); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+        .category-card:hover { transform: translateY(-3px); border-color: rgba(230,57,70,.25); box-shadow: 0 15px 32px rgba(26,26,46,.09); }
+        .category-card-main { display: grid; grid-template-columns: 92px minmax(0,1fr); align-items: start; gap: 13px; }
+        .category-card-main img { display: block; width: 92px; height: 92px; border-radius: 10px; object-fit: cover; background: #f0eee9; }
+        .category-card h3 { margin: 1px 0 5px; color: var(--text); font: 800 .98rem/1.25 "Plus Jakarta Sans", sans-serif; letter-spacing: -.02em; }
+        .category-card p { margin: 0; color: var(--text-light); font-size: .76rem; line-height: 1.42; }
+        .category-examples { display: -webkit-box; overflow: hidden; margin: 10px 0 12px !important; color: #596071 !important; font-size: .68rem !important; line-height: 1.4 !important; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+        .category-examples strong { color: #292d3c; }
+        .category-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+        .category-actions .btn { min-height: 34px; display: inline-flex; align-items: center; justify-content: center; padding: 8px 9px; border-radius: 9px; font-size: .7rem; line-height: 1.1; white-space: nowrap; }
+        .category-actions .category-whatsapp { border: 1px solid rgba(22,138,73,.25); color: #137742; background: #f1faf4; }
+        .category-actions .category-whatsapp:hover { color: #fff; background: #168a49; }
+        .showcase.compact-showcase { padding: 42px 0; background: #faf9f6; }
+        .compact-showcase .section-header { margin-bottom: 22px; }
+        .compact-showcase .section-label { margin-bottom: 7px; }
+        .compact-showcase .section-title { margin-bottom: 7px; }
+        .compact-showcase .section-subtitle { font-size: .92rem; }
+        .compact-showcase .showcase-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+        .compact-showcase .shot { min-width: 0; min-height: 0; aspect-ratio: 1.48; border: 1px solid rgba(26,26,46,.08); border-radius: 12px; background: #fff; box-shadow: 0 8px 22px rgba(26,26,46,.06); }
+        .compact-showcase .shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .compact-showcase .shot .label { left: 9px; right: 9px; bottom: 9px; width: fit-content; max-width: calc(100% - 18px); padding: 6px 10px; font-size: .68rem; }
+        @media (max-width: 900px) {
+            .compact-showcase .showcase-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+            .showcase-carousel .product-slide { grid-template-columns: minmax(260px, .82fr) minmax(0, 1.18fr); }
+        }
+        @media (max-width: 680px) {
+            .product-carousel.showcase-carousel { height: 520px; min-height: 0; }
+            .showcase-carousel .product-slide { grid-template-columns: minmax(0,1fr); grid-template-rows: 236px minmax(0,1fr); }
+            .showcase-carousel .product-slide-image { position: relative; inset: auto; grid-column: 1; grid-row: 1; min-height: 0; }
+            .showcase-carousel .product-slide-image img { object-position: center 45%; }
+            .showcase-carousel .product-slide-image::after { background: linear-gradient(0deg, #141923 0%, rgba(20,25,35,.52) 22%, transparent 82%); }
+            .showcase-carousel .product-slide-copy { grid-column: 1; grid-row: 2; padding: 10px 20px 18px; justify-content: flex-start; background: #141923; }
+            .showcase-carousel .product-slide-kicker { margin-bottom: 6px; font-size: .61rem; }
+            .showcase-carousel .product-slide-copy h1,
+            .showcase-carousel .product-slide-copy h2 { font-size: clamp(1.45rem, 6.3vw, 1.85rem); line-height: 1.08; }
+            .showcase-carousel .product-slide-copy p { max-width: 100%; margin-bottom: 10px; font-size: .79rem; line-height: 1.35; }
+            .showcase-carousel .product-slide-copy .btn { min-height: 36px; padding: 9px 15px; }
+            .showcase-carousel .product-image-note { right: 12px; bottom: 10px; padding: 7px 10px; font-size: .59rem; }
+            .category-showcase { padding: 36px 0 42px; }
+            .category-showcase .section-header { margin-bottom: 18px; }
+            .category-grid { gap: 9px; }
+            .category-grid { grid-template-columns: minmax(0,1fr); }
+            .category-card { padding: 10px; border-radius: 12px; }
+            .category-card-main { grid-template-columns: 80px minmax(0,1fr); gap: 10px; }
+            .category-card-main img { width: 80px; height: 80px; border-radius: 8px; }
+            .category-card h3 { font-size: .88rem; }
+            .category-card p { font-size: .72rem; }
+            .category-examples { margin: 8px 0 10px !important; font-size: .64rem !important; }
+            .category-actions { gap: 6px; }
+            .category-actions .btn { min-height: 33px; padding: 7px 6px; font-size: .66rem; }
+            .compact-showcase { padding: 34px 0 !important; }
+            .compact-showcase .section-header { margin-bottom: 16px; }
+            .compact-showcase .showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+            .compact-showcase .shot { border-radius: 9px; }
+            .compact-showcase .shot .label { left: 6px; right: 6px; bottom: 6px; padding: 5px 7px; font-size: .61rem; }
+        }
+        @media (max-width: 380px) {
+            .category-grid { grid-template-columns: minmax(0,1fr); }
+            .category-card-main { grid-template-columns: 82px minmax(0,1fr); }
+            .category-card-main img { width: 82px; height: 82px; }
+            .product-carousel.showcase-carousel { height: 540px; }
+            .showcase-carousel .product-slide { grid-template-rows: 228px minmax(0,1fr); }
+        }
+        /* Editorial category directory: compact horizontal entries, not floating tiles. */
+        .category-showcase { padding: 48px 0 54px; background: linear-gradient(180deg,#f7f6f2 0%,#fff 100%); }
+        .category-showcase .section-header { max-width: 740px; margin: 0 auto 26px; }
+        .category-showcase .section-label { color: #e63946; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+        .category-showcase .section-title { letter-spacing: -.045em; }
+        .category-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 34px; border-top: 1px solid rgba(26,26,46,.16); }
+        .category-card { position: relative; min-height: 0; display: grid; grid-template-columns: 1fr auto; align-content: center; column-gap: 14px; padding: 15px 2px 16px; border: 0; border-bottom: 1px solid rgba(26,26,46,.14); border-radius: 0; background: transparent; box-shadow: none; transition: background .2s ease, padding .2s ease; }
+        .category-card:hover { transform: none; padding-right: 8px; padding-left: 8px; border-color: rgba(230,57,70,.3); background: rgba(255,255,255,.72); box-shadow: none; }
+        .category-card-main { min-width: 0; grid-column: 1 / -1; grid-row: 1; grid-template-columns: 128px minmax(0,1fr); align-items: center; gap: 16px; }
+        .category-card-main img { width: 128px; height: 128px; border-radius: 13px; background: #f0eee9; object-fit: cover; transition: transform .3s ease, border-radius .3s ease; }
+        .category-card:hover .category-card-main img { transform: scale(1.035); border-radius: 15px; }
+        .category-card h3 { margin: 0 0 4px; font-size: 1rem; line-height: 1.25; }
+        .category-card p { font-size: .78rem; line-height: 1.42; }
+        .category-examples { grid-column: 2; grid-row: 2; align-self: start; margin: 8px 0 0 !important; font-size: .68rem !important; line-height: 1.4 !important; }
+        .category-actions { grid-column: 2; grid-row: 3; display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0 0; }
+        .category-actions .btn { min-height: 32px; padding: 7px 12px; border-radius: 999px; font-size: .68rem; }
+        .category-actions .category-whatsapp { border-color: rgba(22,138,73,.25); }
+        .category-card:nth-child(4n+2) .category-card-main img,
+        .category-card:nth-child(4n+4) .category-card-main img { border-radius: 50%; }
+        .category-card:nth-child(4n+2):hover .category-card-main img,
+        .category-card:nth-child(4n+4):hover .category-card-main img { border-radius: 14px; }
+        @media (max-width: 680px) {
+            .category-showcase { padding: 34px 0 38px; }
+            .category-showcase .section-header { margin-bottom: 18px; }
+            .category-grid { grid-template-columns: minmax(0,1fr); gap: 0; }
+            .category-card { grid-template-columns: minmax(0,1fr); padding: 13px 0 14px; }
+            .category-card:hover { padding-right: 5px; padding-left: 5px; }
+            .category-card-main { grid-column: 1; grid-row: 1; grid-template-columns: 96px minmax(0,1fr); gap: 13px; }
+            .category-card-main img { width: 96px; height: 96px; border-radius: 11px; }
+            .category-card h3 { font-size: .9rem; }
+            .category-card p { font-size: .74rem; }
+            .category-examples { grid-column: 1; grid-row: 2; margin: 8px 0 0 109px !important; font-size: .66rem !important; }
+            .category-actions { grid-column: 1; grid-row: 3; margin: 9px 0 0 109px; gap: 7px; }
+            .category-actions .btn { min-height: 32px; padding: 7px 11px; font-size: .67rem; }
+        }
+        @media (max-width: 360px) {
+            .category-examples, .category-actions { margin-left: 0 !important; }
+        }
+    </style>
 </head>
 
 <body>
@@ -79,69 +295,174 @@
     <main id="top">
 
         <!-- HERO -->
-        <section class="hero" aria-label="Hero">
+        <section class="hero campaign-hero" aria-label="Featured printing products">
             <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-copy" data-reveal>
-                        <div class="hero-badge">
-                            <div class="uae-flag"></div>
-                            Dubai Printing Shop — Walk-In & Same-Day
+                <div class="product-carousel showcase-carousel" id="productCarousel" aria-roledescription="carousel" aria-label="Print Advertising Showcase">
+                    <article class="product-slide is-active" aria-roledescription="slide" aria-label="1 of 6" aria-hidden="false">
+                        <div class="product-slide-copy">
+                            <div class="product-slide-kicker"><span class="uae-flag" aria-hidden="true"></span> UAE National Day · Limited collection</div>
+                            <h1>Celebrate in Print</h1>
+                            <p>Distinctive Union Day keepsakes, gifts and team pieces, finished with pride in the UAE.</p>
+                            <a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Create your National Day set <span aria-hidden="true">↗</span></a>
                         </div>
-                        <h1>Same Day <span class="highlight">Premium Printing</span> Services in Dubai</h1>
-                        <p class="hero-desc">From business cards to large-format banners — we deliver sharp, vibrant
-                            prints with same-day turnaround. Trusted by 500+ businesses across Dubai.</p>
-                        <p class="hero-uae-note">Visit our Deira shop or WhatsApp us for fast quotes and same-day
-                            printing
-                            across Dubai.</p>
-                        <div class="hero-ctas">
-                            <a class="btn btn-whatsapp"
-                                href="https://wa.me/971582023571?text=Hi%20P%20R%20I%20N%20T%20Advertising%2C%20I%20need%20same%20day%20printing%20service%20in%20Dubai."
-                                target="_blank" rel="noopener" data-track="whatsapp" data-source="hero-primary">
-                                <svg class="btn-wa-icon" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path
-                                        d="M12.04 2C6.55 2 2.1 6.46 2.1 11.95c0 1.93.54 3.79 1.57 5.42L2 22l4.79-1.58a9.9 9.9 0 0 0 5.25 1.5h.01c5.48 0 9.94-4.46 9.94-9.95A9.95 9.95 0 0 0 12.04 2z" />
-                                </svg>
-                                Get Instant Quote
-                            </a>
-                            <a class="btn btn-outline" href="#enquiry">Visit Our Deira Shop</a>
+                        <div class="product-slide-image">
+                            <img src="img/gallery/National_Day/2.webp" alt="UAE National Day collection of branded apparel, drinkware and keepsakes" width="3120" height="4160" loading="eager" fetchpriority="high" decoding="async">
+                            <span class="product-image-note">Proudly made for the UAE</span>
                         </div>
-                        <div class="hero-stats">
-                            <div class="stat">
-                                <div class="stat-value">Same Day</div>
-                                <div class="stat-label">Urgent Delivery</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">500+</div>
-                                <div class="stat-label">Happy Clients</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">10AM–11PM</div>
-                                <div class="stat-label">Mon – Sat</div>
-                            </div>
+                    </article>
+                    <article class="product-slide" aria-roledescription="slide" aria-label="2 of 6" aria-hidden="true">
+                        <div class="product-slide-copy">
+                            <div class="product-slide-kicker">The details make the difference</div>
+                            <h2>Premium Business Cards</h2>
+                            <p>Make every introduction memorable with precise colour and refined paper finishes.</p>
+                            <a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Business Cards">Elevate your business cards <span aria-hidden="true">↗</span></a>
                         </div>
+                        <div class="product-slide-image">
+                            <img src="img/gallery/Business Stationery/2.png" alt="Premium business stationery with branded cards, letterhead and envelopes" width="1024" height="1024" loading="lazy" decoding="async">
+                            <span class="product-image-note">Cards · Letterhead · Envelopes</span>
+                        </div>
+                    </article>
+                    <article class="product-slide" aria-roledescription="slide" aria-label="3 of 6" aria-hidden="true">
+                        <div class="product-slide-copy">
+                            <div class="product-slide-kicker">Carry your brand forward</div>
+                            <h2>Branded Shopping Bags</h2>
+                            <p>Turn every handover into a brand moment with premium custom printed packaging.</p>
+                            <a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Design your bags <span aria-hidden="true">↗</span></a>
+                        </div>
+                        <div class="product-slide-image">
+                            <img src="img/gallery/premium-packaging.webp" alt="Premium green custom branded shopping bags" width="1200" height="1600" loading="lazy" decoding="async">
+                            <span class="product-image-note">Custom bags · Premium finish</span>
+                        </div>
+                    </article>
+                    <article class="product-slide" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true">
+                        <div class="product-slide-copy">
+                            <div class="product-slide-kicker">Make your space work harder</div>
+                            <h2>Large-Format Signage</h2>
+                            <p>Bold banners and display graphics that help your message stand out at every event.</p>
+                            <a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Banners &amp; Signage">Plan your display <span aria-hidden="true">↗</span></a>
+                        </div>
+                        <div class="product-slide-image">
+                            <img src="img/gallery/Business Stationery/3.png" alt="Custom business signage, brochure display and roll-up banners" width="1024" height="1024" loading="lazy" decoding="async">
+                            <span class="product-image-note">Retail · Events · Exhibitions</span>
+                        </div>
+                    </article>
+                    <article class="product-slide" aria-roledescription="slide" aria-label="5 of 6" aria-hidden="true">
+                        <div class="product-slide-copy">
+                            <div class="product-slide-kicker">Thoughtful, made personal</div>
+                            <h2>Corporate Gift Sets</h2>
+                            <p>Put your brand in good company with useful gifts and presentation-ready finishing.</p>
+                            <a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Corporate Gifts">Build a gift set <span aria-hidden="true">↗</span></a>
+                        </div>
+                        <div class="product-slide-image">
+                            <img src="img/gallery/corporate-gift-box.webp" alt="Premium branded corporate gift box with bottle, pen and accessories" width="1200" height="1600" loading="lazy" decoding="async">
+                            <span class="product-image-note">Curated for teams and clients</span>
+                        </div>
+                    </article>
+                    <article class="product-slide" aria-roledescription="slide" aria-label="6 of 6" aria-hidden="true">
+                        <div class="product-slide-copy">
+                            <div class="product-slide-kicker">Small format, big brand energy</div>
+                            <h2>Custom Promotional Printing</h2>
+                            <p>Personalised drinkware and giveaways keep your message close, useful and visible.</p>
+                            <a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Make it memorable <span aria-hidden="true">↗</span></a>
+                        </div>
+                        <div class="product-slide-image">
+                            <img src="img/gallery/Custom_CUP/WhatsApp Image 2026-09-15 at 20.15.00.webp" alt="Custom printed ceramic promotional cups with UAE emblem" width="3120" height="4160" loading="lazy" decoding="async">
+                            <span class="product-image-note">Useful branded giveaways</span>
+                        </div>
+                    </article>
+                </div>
+                <div class="product-carousel-controls" aria-label="Carousel controls">
+                    <span class="product-carousel-count" id="productCarouselCount" aria-live="polite">01 / 06</span>
+                    <div class="product-carousel-actions">
+                        <div class="product-carousel-dots" role="group" aria-label="Choose a product slide">
+                            <button class="product-carousel-dot" type="button" aria-label="Show slide 1" aria-current="true"></button>
+                            <button class="product-carousel-dot" type="button" aria-label="Show slide 2" aria-current="false"></button>
+                            <button class="product-carousel-dot" type="button" aria-label="Show slide 3" aria-current="false"></button>
+                            <button class="product-carousel-dot" type="button" aria-label="Show slide 4" aria-current="false"></button>
+                            <button class="product-carousel-dot" type="button" aria-label="Show slide 5" aria-current="false"></button>
+                            <button class="product-carousel-dot" type="button" aria-label="Show slide 6" aria-current="false"></button>
+                        </div>
+                        <button class="product-carousel-arrow" type="button" data-carousel-prev aria-label="Previous product">←</button>
+                        <button class="product-carousel-arrow" type="button" data-carousel-next aria-label="Next product">→</button>
                     </div>
-                    <div class="hero-visual" data-reveal>
-                        <div class="hero-img-grid">
-                            <div class="img-cell">
-                                <img src="img/gallery/premium-paper-bags.webp"
-                                    alt="Professional printing press in action" width="800" height="1200"
-                                    loading="eager" decoding="async" fetchpriority="high">
-                                <div class="img-overlay">Professional Printing</div>
-                            </div>
-                            <div class="img-cell">
-                                <img src="img/gallery/luxury-shopping-bags.webp"
-                                    alt="Premium business cards with foil print" width="600" height="600"
-                                    loading="eager" decoding="async">
-                                <div class="img-overlay">Business Cards</div>
-                            </div>
-                            <div class="img-cell">
-                                <img src="img/gallery/corporate-gift-box.webp" alt="Custom branded packaging" width="600"
-                                    height="600" loading="eager" decoding="async">
-                                <div class="img-overlay">Custom Branding</div>
-                            </div>
-                        </div>
-                        <div class="floating-badge">🔥 Same Day Printing Available</div>
-                    </div>
+                </div>
+                <div class="campaign-hero-trust" aria-label="Service highlights">
+                    <span><i aria-hidden="true"></i><strong>Same day</strong> urgent orders</span>
+                    <span><i aria-hidden="true"></i><strong>500+</strong> happy clients</span>
+                    <span><i aria-hidden="true"></i><strong>10 AM–11 PM</strong> Mon–Sat</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRINTING CATEGORIES -->
+        <section class="category-showcase" id="printing-categories" aria-label="Explore our printing categories">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-label">Print, made for your business</div>
+                    <h2 class="section-title">Explore Our Printing Categories</h2>
+                    <p class="section-subtitle">From everyday essentials to standout campaigns, find the right print for your next idea.</p>
+                </div>
+                <div class="category-grid">
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/stationary.webp" alt="Custom branded notebook and pen set" width="375" height="375" loading="lazy" decoding="async"><div><h3>Business Printing</h3><p>Polished essentials for daily client and office communications.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Business cards · Letterheads · Envelopes · Notepads</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Business%20Printing.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Business Cards">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/custom_badges/WhatsApp Image 2026-09-29 at 19.43.22.webp" alt="Custom printed promotional badges" width="1200" height="1500" loading="lazy" decoding="async"><div><h3>Marketing &amp; Promotional Printing</h3><p>Campaign pieces designed to get noticed and remembered.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Flyers · Brochures · Posters · Promo materials</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Marketing%20%26%20Promotional%20Printing.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Flyers &amp; Brochures">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/Business Stationery/3.png" alt="Roll-up banners and branded display signage" width="1024" height="1024" loading="lazy" decoding="async"><div><h3>Signage &amp; Large Format</h3><p>Make your space and message impossible to miss.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Roll-up banners · Boards · Window graphics · Displays</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Signage%20%26%20Large%20Format.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Banners &amp; Signage">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/packaging_sticker.webp" alt="Custom printed packaging and product label pieces" width="375" height="375" loading="lazy" decoding="async"><div><h3>Stickers &amp; Labels</h3><p>Give products a distinctive finish with custom-cut print.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Product labels · Vinyl stickers · Die-cut · Barcode</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Stickers%20%26%20Labels.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Stickers &amp; Labels">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/custom-box-printing.webp" alt="Premium custom printed packaging box" width="1600" height="900" loading="lazy" decoding="async"><div><h3>Packaging</h3><p>Turn every delivery and shelf moment into brand expression.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Custom boxes · Paper bags · Sleeves · Wraps</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Packaging.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/Custom_CUP/WhatsApp Image 2026-09-15 at 20.15.07.webp" alt="Custom printed cups for cafes and restaurants" width="1800" height="1200" loading="lazy" decoding="async"><div><h3>Restaurant &amp; Cafe Printing</h3><p>Build a considered dining experience from menu to takeaway.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Menus · Table cards · Takeaway packs · Coasters</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Restaurant%20%26%20Cafe%20Printing.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/teachersday/Tchersday.jpeg" alt="Printed keepsake pin presented as an appreciation gift" width="768" height="1365" loading="lazy" decoding="async"><div><h3>Event &amp; Wedding Printing</h3><p>Thoughtful details to make a special day feel entirely yours.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Invitations · Welcome signs · Table cards · Programs</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Event%20%26%20Wedding%20Printing.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/custom-bottle-print.webp" alt="Presentation-ready branded bottle and corporate gifts" width="1200" height="1600" loading="lazy" decoding="async"><div><h3>Corporate Gifts</h3><p>Useful branded pieces made to delight clients and teams.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Gift sets · Bottles · Mugs · Notebooks</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Corporate%20Gifts.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Corporate Gifts">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/luxury-shopping-bags.webp" alt="Custom branded polo shirts and workwear" width="1200" height="1600" loading="lazy" decoding="async"><div><h3>Apparel Printing</h3><p>Equip your people with quality custom branded clothing.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> T-shirts · Polo shirts · Uniforms · Caps</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Apparel%20Printing.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/custom_badges/WhatsApp Image 2026-09-29 at 19.43.21.webp" alt="Personalised portrait images printed on keepsake badges" width="1200" height="1500" loading="lazy" decoding="async"><div><h3>Photo Printing &amp; Gifts</h3><p>Turn favourite photographs into personal keepsakes and gifts.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Photo books · Canvas · Prints · Frames</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Photo%20Printing%20%26%20Gifts.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/book.webp" alt="Custom branded journal with digital charging feature" width="1600" height="1600" loading="lazy" decoding="async"><div><h3>Document &amp; Digital Printing</h3><p>Fast, precise print for work that needs to be ready to share.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Reports · Booklets · Binding · Scanning</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Document%20%26%20Digital%20Printing.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Get Quote</a></div>
+                    </article>
+                    <article class="category-card" data-reveal>
+                        <div class="category-card-main"><img src="img/gallery/costum_bags.png" alt="Custom branded backpack made for a client project" width="375" height="375" loading="lazy" decoding="async"><div><h3>Custom &amp; Bulk Printing</h3><p>Made-to-order print runs tailored to your brief and quantity.</p></div></div>
+                        <p class="category-examples"><strong>Popular:</strong> Bulk flyers · Brochures · Branded kits · Custom runs</p>
+                        <div class="category-actions"><a class="btn category-whatsapp" target="_blank" rel="noopener" href="https://wa.me/971582023571?text=Hi%20Print%20Advertising%2C%20I%27m%20interested%20in%20Custom%20%26%20Bulk%20Printing.%20Please%20share%20details%20and%20pricing.">WhatsApp</a><a class="btn btn-primary" href="#enquiry" data-enquiry-open data-service-choice="Custom Printing">Get Quote</a></div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -168,40 +489,34 @@
             </div>
         </div>
 
-        <!-- SERVICES -->
-        <section class="section services" id="services" aria-label="Services">
+        <!-- OUR SERVICES -->
+        <section class="section services" id="services" aria-label="Our Services">
             <div class="container">
                 <div class="section-header" data-reveal>
                     <div class="section-label">Our Services</div>
                     <h2 class="section-title">Everything You Need, Printed to Perfection</h2>
-                    <p class="section-subtitle">High-quality printing services with premium finishes, fast execution,
-                        and competitive pricing across Dubai.</p>
+                    <p class="section-subtitle">High-quality printing services with premium finishes, fast execution, and competitive pricing across Dubai.</p>
                 </div>
-
                 <div class="services-grid">
                     <article class="service-card" data-reveal>
                         <div class="service-icon cards" aria-hidden="true">🃏</div>
                         <h3>Business Cards</h3>
-                        <p>Luxury matte, soft-touch, foil stamp, spot UV, and standard cards that make a lasting first
-                            impression.</p>
+                        <p>Luxury matte, soft-touch, foil stamp, spot UV, and standard cards that make a lasting first impression.</p>
                     </article>
                     <article class="service-card" data-reveal>
                         <div class="service-icon flyers" aria-hidden="true">📄</div>
                         <h3>Flyers &amp; Brochures</h3>
-                        <p>High-definition colour printing for promotions, menus, catalogues, and marketing handouts.
-                        </p>
+                        <p>High-definition colour printing for promotions, menus, catalogues, and marketing handouts.</p>
                     </article>
                     <article class="service-card" data-reveal>
                         <div class="service-icon banners" aria-hidden="true">🏗️</div>
                         <h3>Banners &amp; Signage</h3>
-                        <p>Indoor and outdoor large-format prints for events, retail, and brand activation across Dubai.
-                        </p>
+                        <p>Indoor and outdoor large-format prints for events, retail, and brand activation across Dubai.</p>
                     </article>
                     <article class="service-card" data-reveal>
                         <div class="service-icon custom" aria-hidden="true">🎁</div>
                         <h3>Custom Printing</h3>
-                        <p>Tailored corporate gifts, boxes, labels, and branded kits to match your exact business goals.
-                        </p>
+                        <p>Tailored corporate gifts, boxes, labels, and branded kits to match your exact business goals.</p>
                     </article>
                 </div>
             </div>
@@ -237,65 +552,45 @@
         </section>
 
         <!-- SHOWCASE -->
-        <section class="section showcase" id="showcase" aria-label="Visual Showcase">
+        <section class="section showcase compact-showcase" id="showcase" aria-label="Recent print projects">
             <div class="container">
                 <div class="section-header" data-reveal>
                     <div class="section-label">Our Work</div>
                     <h2 class="section-title">Recent Projects We're Proud Of</h2>
-                    <p class="section-subtitle">A selection of premium print work delivered for businesses across Dubai.
-                    </p>
+                    <p class="section-subtitle">Selected print and brand projects delivered for businesses across Dubai.</p>
                 </div>
                 <div class="showcase-grid">
-                    <figure class="shot span-7" data-reveal>
-                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1600&q=80"
-                            alt="Business card printing premium finish Dubai" width="1600" height="1000" loading="lazy">
-                        <figcaption class="label">Premium Business Cards</figcaption>
+                    <figure class="shot" data-reveal>
+                        <img src="img/gallery/Business Stationery/2.png" alt="Custom business stationery set with branded letterhead, cards and envelopes" width="1024" height="1024" loading="lazy" decoding="async">
+                        <figcaption class="label">Business Stationery</figcaption>
                     </figure>
-                    <figure class="shot span-5" data-reveal>
-                        <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=1200&q=80"
-                            alt="Custom branded packaging and boxes Dubai" width="1200" height="1000" loading="lazy">
+                    <figure class="shot" data-reveal>
+                        <img src="img/gallery/custom-box-printing.webp" alt="Custom printed packaging box with premium finish" width="1600" height="900" loading="lazy" decoding="async">
                         <figcaption class="label">Custom Packaging</figcaption>
                     </figure>
-                    <figure class="shot span-4" data-reveal>
-                        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=800&q=80"
-                            alt="Corporate gift sets with branded printing" width="800" height="800" loading="lazy">
-                        <figcaption class="label">Corporate Gift Sets</figcaption>
+                    <figure class="shot" data-reveal>
+                        <img src="img/gallery/Business Stationery/4.png" alt="Corporate gifts including notebooks, pens and presentation pieces" width="1024" height="1024" loading="lazy" decoding="async">
+                        <figcaption class="label">Corporate Gifts</figcaption>
                     </figure>
-                    <figure class="shot span-8" data-reveal>
-                        <img src="https://images.unsplash.com/photo-1504691342899-4d92b50853e1?auto=format&fit=crop&w=1600&q=80"
-                            alt="Large format banner and signage printing in Dubai" width="1600" height="900"
-                            loading="lazy">
-                        <figcaption class="label">Large Format Signage</figcaption>
+                    <figure class="shot" data-reveal>
+                        <img src="img/gallery/Business Stationery/3.png" alt="Business signage and roll-up banner display project" width="1024" height="1024" loading="lazy" decoding="async">
+                        <figcaption class="label">Signs &amp; Displays</figcaption>
                     </figure>
-                    <figure class="shot span-5" data-reveal>
-                        <img src="img/gallery/custom-bottle-print.webp" alt="Marketing flyers and brochures printed"
-                            width="1200" height="900" loading="lazy" decoding="async">
-                        <figcaption class="label">Marketing Collateral</figcaption>
+                    <figure class="shot" data-reveal>
+                        <img src="img/gallery/custom_badges/WhatsApp Image 2026-09-29 at 19.43.21.webp" alt="Custom printed UAE portrait badges arranged for a client project" width="1200" height="1500" loading="lazy" decoding="async">
+                        <figcaption class="label">Custom Badges</figcaption>
                     </figure>
-                    <figure class="shot span-7" data-reveal>
-                        <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1400&q=80"
-                            alt="Custom branded merchandise printing Dubai" width="1400" height="1000" loading="lazy">
-                        <figcaption class="label">Branded Merchandise</figcaption>
+                    <figure class="shot" data-reveal>
+                        <img src="img/gallery/Custom_CUP/WhatsApp Image 2026-09-25 at 13.26.16.webp" alt="Custom printed ceramic cups arranged in a presentation box" width="1200" height="1500" loading="lazy" decoding="async">
+                        <figcaption class="label">Custom Drinkware</figcaption>
                     </figure>
-                    <figure class="shot span-4" data-reveal>
-                        <img src="img/gallery/packaging-sample-1.webp" alt="Printed packaging project sample" width="800"
-                            height="800" loading="lazy" decoding="async">
-                        <figcaption class="label">Packaging Sample</figcaption>
+                    <figure class="shot" data-reveal>
+                        <img src="img/gallery/premium-paper-bags.webp" alt="Premium custom printed paper carrier bags" width="1200" height="1500" loading="lazy" decoding="async">
+                        <figcaption class="label">Premium Paper Bags</figcaption>
                     </figure>
-                    <figure class="shot span-8" data-reveal>
-                        <img src="img/gallery/custom-box-printing.webp" alt="Custom box and branding print sample"
-                            width="1600" height="900" loading="lazy" decoding="async">
-                        <figcaption class="label">Custom Box Printing</figcaption>
-                    </figure>
-                    <figure class="shot span-5" data-reveal>
-                        <img src="img/gallery/premium-packaging.webp" alt="Premium printed package in Dubai" width="1200"
-                            height="900" loading="lazy" decoding="async">
-                        <figcaption class="label">Premium Packaging</figcaption>
-                    </figure>
-                    <figure class="shot span-7" data-reveal>
-                        <img src="img/gallery/brand-print-finish.webp" alt="Branded product packaging and print finish"
-                            width="1400" height="1000" loading="lazy" decoding="async">
-                        <figcaption class="label">Brand Print Finish</figcaption>
+                    <figure class="shot" data-reveal>
+                        <img src="img/gallery/teachersday/WhatsApp Image 2026-10-01 at 16.30.46.webp" alt="Personalised teacher mugs prepared as a printed appreciation gift" width="1200" height="1500" loading="lazy" decoding="async">
+                        <figcaption class="label">Personalised Gifts</figcaption>
                     </figure>
                 </div>
             </div>
@@ -377,7 +672,7 @@
         <!-- ENQUIRY -->
         <div class="modal-overlay" aria-hidden="true"></div>
         <section class="section enquiry" id="enquiry" aria-label="Enquiry Form">
-            <button class="modal-close" type="button" aria-label="Close enquiry form">×</button>
+            <button class="modal-close" type="button" aria-label="Close enquiry form" hidden>×</button>
             <div class="container">
                 <div class="enquiry-wrap">
                     <div class="enquiry-info" data-reveal>
@@ -415,7 +710,8 @@
                                 </div>
                                 <div>
                                     <label for="phone">Phone</label>
-                                    <input id="phone" name="phone" type="tel" placeholder="+971 ..." required>
+                                    <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
+                                        maxlength="30" placeholder="Enter your phone number" required>
                                 </div>
                                 <div>
                                     <label for="email">Email</label>
@@ -443,7 +739,7 @@
                             <button class="btn btn-primary" type="submit"
                                 style="width: 100%; padding: 14px; border-radius: 12px; font-size: 1rem;">Get My Free
                                 Quote</button>
-                            <p class="form-note" id="formNote">Your details are used only to prepare your quote. We
+                            <p class="form-note" id="formNote" role="status" aria-live="polite">Your details are used only to prepare your quote. We
                                 reply within 30 minutes.</p>
                         </form>
                     </div>
@@ -513,6 +809,271 @@
     }
     </script>
     <script src="assets/js/main.js"></script>
+    <script id="campaign-corrections">
+        (function () {
+            'use strict';
+            var form = document.getElementById('quoteForm');
+            var note = document.getElementById('formNote');
+            var submitButton = form ? form.querySelector('[type="submit"]') : null;
+            var submitting = false;
+            var submitLabel = submitButton ? submitButton.textContent.replace(/\s+/g, ' ').trim() : '';
+            var defaultNote = 'Your details are used only to prepare your quote. We reply within 30 minutes.';
+            function setSubmittingState(active) {
+                if (form) form.setAttribute('aria-busy', active ? 'true' : 'false');
+                if (!submitButton) return;
+                submitButton.disabled = active;
+                submitButton.classList.toggle('is-loading', active);
+                submitButton.setAttribute('aria-busy', active ? 'true' : 'false');
+                submitButton.textContent = active ? 'Sending…' : submitLabel;
+            }
+            function setNote(message, color, state) {
+                if (!note) return;
+                note.textContent = message;
+                note.style.color = color || '';
+                note.dataset.state = state || '';
+            }
+            function phoneMessage(value) {
+                value = String(value || '').trim();
+                if (!value) return 'Please enter your phone number.';
+                if (!/^[0-9+().\-\s]+$/.test(value)) return 'Use numbers and standard phone punctuation only.';
+                var digits = value.replace(/\D/g, '');
+                if (digits.length < 7 || digits.length > 20) return 'Enter a phone number with 7 to 20 digits.';
+                return '';
+            }
+            function validateForm() {
+                if (!form) return false;
+                var phone = form.elements.phone;
+                var email = form.elements.email;
+                phone.setCustomValidity(phoneMessage(phone.value));
+                if (form.checkValidity()) return true;
+                var message = 'Please complete all required fields before requesting a quote.';
+                if (phone.value.trim()) message = phoneMessage(phone.value) || message;
+                else if (!email.value.trim()) message = 'Please complete all required fields before requesting a quote.';
+                else if (!email.checkValidity()) message = 'Please enter a valid email address.';
+                setNote(message, '#e63946', 'error');
+                var invalidField = form.querySelector(':invalid');
+                form.reportValidity();
+                if (invalidField && typeof invalidField.focus === 'function') invalidField.focus();
+                return false;
+            }
+            if (form) {
+                form.querySelectorAll('input, select, textarea').forEach(function (field) {
+                    field.addEventListener('input', function () {
+                        field.setCustomValidity('');
+                        if (note && note.dataset.state === 'error') setNote(defaultNote, '', '');
+                    });
+                });
+                document.addEventListener('submit', function (event) {
+                    if (event.target !== form) return;
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    if (submitting || !validateForm()) return;
+                    submitting = true;
+                    setSubmittingState(true);
+                    var data = new FormData(form);
+                    var payload = {
+                        name: String(data.get('name') || '').trim(),
+                        phone: String(data.get('phone') || '').trim(),
+                        email: String(data.get('email') || '').trim(),
+                        service: String(data.get('service') || '').trim(),
+                        message: String(data.get('message') || '').trim()
+                    };
+                    if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: 'quote_form_submit', selected_service: payload.service, lead_source: 'campaign-page' });
+                    if (submitButton) submitButton.textContent = 'Sending…';
+                    var requestData = new FormData(form);
+                    requestData.set('product', payload.service);
+                    requestData.set('category', 'Campaign page');
+                    fetch('/api/leads.php?action=token', {
+                        credentials: 'same-origin',
+                        cache: 'no-store',
+                        headers: { Accept: 'application/json' }
+                    }).then(function (response) {
+                        if (!response.ok) throw new Error('token');
+                        return response.json();
+                    }).then(function (tokenData) {
+                        if (!tokenData || !tokenData.token) throw new Error('token');
+                        requestData.set('csrf_token', tokenData.token);
+                        return fetch('/api/leads.php', {
+                            method: 'POST',
+                            credentials: 'same-origin',
+                            headers: { Accept: 'application/json' },
+                            body: requestData
+                        });
+                    }).then(function (response) {
+                        return response.json().then(function (result) {
+                            if (!response.ok || !result || result.success !== true) {
+                                var error = new Error('submission');
+                                error.code = result && result.code;
+                                throw error;
+                            }
+                            return result;
+                        });
+                    }).then(function (result) {
+                        submitting = false;
+                        setSubmittingState(false);
+                        if (result.notification_sent === true) {
+                            form.reset();
+                            form.elements.phone.setCustomValidity('');
+                            setNote('Thank you! Your enquiry has been received. We’ll contact you shortly.', '#168a49', 'success');
+                        } else {
+                            setNote('Your enquiry was saved, but our email service could not send its notification. Please contact us by phone or WhatsApp.', '#e63946', 'error');
+                        }
+                    }).catch(function (error) {
+                        submitting = false;
+                        setSubmittingState(false);
+                        var message = error.code === 'invalid_input'
+                            ? 'Please check the required fields and try again.'
+                            : error.code === 'rate_limited'
+                                ? 'Please wait a few minutes before submitting another enquiry.'
+                                : 'We could not send your enquiry. Your details are still here; please try again.';
+                        setNote(message, '#e63946', 'error');
+                    });
+                }, true);
+            }
+            var enquiry = document.getElementById('enquiry');
+            var overlay = document.querySelector('.modal-overlay');
+            var lastTrigger = null;
+            var pageScrollY = 0;
+            var modalWasOpen = false;
+            function syncModalState() {
+                if (!enquiry || !overlay) return;
+                var open = document.body.classList.contains('modal-open');
+                overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+                enquiry.setAttribute('aria-modal', open ? 'true' : 'false');
+                enquiry.setAttribute('role', 'dialog');
+                var closeButton = enquiry.querySelector('.modal-close');
+                if (closeButton) closeButton.hidden = !open;
+                if (open && !modalWasOpen) {
+                    pageScrollY = window.scrollY || window.pageYOffset || 0;
+                    document.body.style.position = 'fixed';
+                    document.body.style.top = '-' + pageScrollY + 'px';
+                    document.body.style.left = '0';
+                    document.body.style.right = '0';
+                    modalWasOpen = true;
+                } else if (!open && modalWasOpen) {
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.left = '';
+                    document.body.style.right = '';
+                    modalWasOpen = false;
+                    window.scrollTo(0, pageScrollY);
+                    if (lastTrigger) {
+                        lastTrigger.focus();
+                        lastTrigger = null;
+                    }
+                }
+            }
+            function closeModal() {
+                document.body.classList.remove('modal-open');
+                syncModalState();
+            }
+            document.body.classList.remove('modal-open');
+            syncModalState();
+            document.querySelectorAll('[data-enquiry-open], a[href="#enquiry"]').forEach(function (trigger) {
+                trigger.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    lastTrigger = trigger;
+                    document.body.classList.add('modal-open');
+                    syncModalState();
+                    window.setTimeout(function () { if (form && form.elements.name) form.elements.name.focus(); }, 20);
+                });
+            });
+            if (document.querySelectorAll('#enquiry').length > 1) {
+                Array.prototype.slice.call(document.querySelectorAll('#enquiry')).slice(1).forEach(function (duplicate) { duplicate.remove(); });
+            }
+            if (overlay) overlay.addEventListener('click', closeModal);
+            var closeButton = enquiry && enquiry.querySelector('.modal-close');
+            if (closeButton) closeButton.addEventListener('click', closeModal);
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && document.body.classList.contains('modal-open')) closeModal();
+            });
+            if (window.MutationObserver) {
+                new MutationObserver(syncModalState).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+            }
+            document.body.classList.add('modal-open');
+            syncModalState();
+            window.setTimeout(function () {
+                if (document.body.classList.contains('modal-open') && form && form.elements.name) form.elements.name.focus();
+            }, 40);
+        })();
+    </script>
+    <script id="product-carousel-script">
+        (function () {
+            'use strict';
+            var carousel = document.getElementById('productCarousel');
+            if (!carousel) return;
+            var slides = Array.prototype.slice.call(carousel.querySelectorAll('.product-slide'));
+            var dots = Array.prototype.slice.call(document.querySelectorAll('.product-carousel-dot'));
+            var count = document.getElementById('productCarouselCount');
+            var activeIndex = 0;
+            var delay = 5800;
+            var timer;
+            function showSlide(index) {
+                activeIndex = (index + slides.length) % slides.length;
+                slides.forEach(function (slide, slideIndex) {
+                    var active = slideIndex === activeIndex;
+                    slide.classList.toggle('is-active', active);
+                    slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+                });
+                dots.forEach(function (dot, dotIndex) {
+                    dot.setAttribute('aria-current', dotIndex === activeIndex ? 'true' : 'false');
+                });
+                if (count) count.textContent = String(activeIndex + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+            }
+            function canAutoplay() {
+                return !document.hidden
+                    && !document.body.classList.contains('modal-open')
+                    && !carousel.matches(':hover')
+                    && !carousel.contains(document.activeElement)
+                    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            }
+            function startAutoplay() {
+                if (timer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                timer = window.setInterval(function () {
+                    if (canAutoplay()) showSlide(activeIndex + 1);
+                }, delay);
+            }
+            function stopAutoplay() {
+                if (!timer) return;
+                window.clearInterval(timer);
+                timer = null;
+            }
+            var previous = document.querySelector('[data-carousel-prev]');
+            var next = document.querySelector('[data-carousel-next]');
+            if (previous) previous.addEventListener('click', function () { showSlide(activeIndex - 1); });
+            if (next) next.addEventListener('click', function () { showSlide(activeIndex + 1); });
+            dots.forEach(function (dot, index) {
+                dot.addEventListener('click', function () { showSlide(index); });
+            });
+            carousel.addEventListener('keydown', function (event) {
+                if (event.key === 'ArrowLeft') { event.preventDefault(); showSlide(activeIndex - 1); }
+                if (event.key === 'ArrowRight') { event.preventDefault(); showSlide(activeIndex + 1); }
+            });
+            carousel.addEventListener('mouseenter', stopAutoplay);
+            carousel.addEventListener('mouseleave', startAutoplay);
+            carousel.addEventListener('focusin', stopAutoplay);
+            carousel.addEventListener('focusout', function () {
+                window.setTimeout(function () {
+                    if (!carousel.contains(document.activeElement)) startAutoplay();
+                }, 0);
+            });
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) stopAutoplay();
+                else startAutoplay();
+            });
+            document.querySelectorAll('[data-service-choice]').forEach(function (trigger) {
+                trigger.addEventListener('click', function () {
+                    var service = document.querySelector('#quoteForm [name="service"]');
+                    if (service) {
+                        service.value = trigger.getAttribute('data-service-choice') || '';
+                        service.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                });
+            });
+            showSlide(0);
+            startAutoplay();
+        })();
+    </script>
 </body>
 
 </html>
