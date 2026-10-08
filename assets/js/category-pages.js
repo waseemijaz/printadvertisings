@@ -70,62 +70,85 @@
     }
 
     var categoryCatalog = {
-        'stationery.html': { title: 'Stationery & Office Printing', image: 'assets/img/shop/Stationery.webp', items: [
-            ['Business Cards', 'Professional cards for everyday introductions.', '/products/business-cards.html'],
-            ['Letterheads', 'Branded stationery for clear business communication.', '/products/letterheads.html'],
-            ['Rubber Stamps', 'Practical branded stamps for office workflows.', '/products/catalog/rubber-stamps.html'],
-            ['Brochures', 'Printed brochures for products, services and presentations.', '/products/catalog/brochures.html'],
-            ['Booklets', 'Bound print for guides, catalogues and company information.', '/products/catalog/booklets.html'],
-            ['ID Cards', 'Identification cards for teams, visitors and events.', '/products/catalog/id-cards.html'],
-            ['Button Badges', 'Compact branded badges for teams and activations.', '/products/catalog/button-badges.html'],
-            ['Notebooks', 'Branded notebooks for meetings and everyday notes.', '/products/custom-notebooks.html'],
-            ['Notepads', 'Custom notepads for offices, events and client handovers.', '/products/catalog/notepads.html']
+        'stationery.html': { title: 'Stationery & Office Printing', image: 'assets/img/stationary_items/business card.webp', items: [
+            ['Business Cards', 'Professional cards for everyday introductions.', '/products/business-cards.html', 'assets/img/stationary_items/business card.webp'],
+            ['Letterheads', 'Branded stationery for clear business communication.', '/products/letterheads.html', 'assets/img/stationary_items/letterheads.webp'],
+            ['Rubber Stamps', 'Practical branded stamps for office workflows.', '/products/catalog/rubber-stamps.html', 'assets/img/stationary_items/Stamps.webp'],
+            ['Brochures', 'Printed brochures for products, services and presentations.', '/products/catalog/brochures.html', 'assets/img/trending-product/06.png'],
+            ['Booklets', 'Bound print for guides, catalogues and company information.', '/products/catalog/booklets.html', 'assets/img/stationary_items/Booklets.webp'],
+            ['ID Cards', 'Identification cards for teams, visitors and events.', '/products/catalog/id-cards.html', 'assets/img/stationary_items/id cards.webp'],
+            ['Button Badges', 'Compact branded badges for teams and activations.', '/products/catalog/button-badges.html', 'assets/img/stationary_items/Button Badges.webp'],
+            ['Notebooks', 'Branded notebooks for meetings and everyday notes.', '/products/custom-notebooks.html', 'assets/img/stationary_items/notebooks.webp'],
+            ['Notepads', 'Custom notepads for offices, events and client handovers.', '/products/catalog/notepads.html', 'assets/img/stationary_items/notepads.webp']
         ]},
         'marketing.html': { title: 'Marketing, Promo & Branding Print', image: 'assets/img/shop/Marketing.webp', items: [
-            ['Banners', 'Large-format graphics for promotions and spaces.', '/products/outdoor-banners.html'],
-            ['Standees', 'Promotional display formats for retail and events.', '/products/promotional-displays.html'],
-            ['Event Standees', 'Display graphics for event entrances and activations.', '/products/catalog/event-standees.html'],
-            ['Sun Board Signs', 'Rigid display signs for business and retail settings.', '/products/catalog/sun-board-signs.html'],
-            ['Name Plates', 'Printed identification for offices and workspaces.', '/products/catalog/name-plates.html'],
-            ['Event Backdrops', 'Branded backdrops for stages, launches and photo areas.', '/products/catalog/event-backdrops.html'],
-            ['Decals', 'Branded adhesive graphics for campaigns and spaces.', '/products/catalog/decals.html'],
-            ['Danglers', 'Suspended promotional print for retail visibility.', '/products/catalog/danglers.html']
+            ['Banners', 'Large-format graphics for promotions and spaces.', '/products/outdoor-banners.html', 'assets/img/Marketing_Promo/Banners.webp'],
+            ['Standees', 'Promotional display formats for retail and events.', '/products/promotional-displays.html', 'assets/img/Marketing_Promo/Standee.webp'],
+            ['Event Standees', 'Display graphics for event entrances and activations.', '/products/catalog/event-standees.html', 'assets/img/Marketing_Promo/event_Standee.webp'],
+            ['Sun Board Signs', 'Rigid display signs for business and retail settings.', '/products/catalog/sun-board-signs.html', 'assets/img/Marketing_Promo/Sun Board Signs.webp'],
+            ['Name Plates', 'Printed identification for offices and workspaces.', '/products/catalog/name-plates.html', 'assets/img/Marketing_Promo/Name_plate.webp'],
+            ['Event Backdrops', 'Branded backdrops for stages, launches and photo areas.', '/products/catalog/event-backdrops.html', 'assets/img/Marketing_Promo/Event Backdrops.webp'],
+            ['Decals', 'Branded adhesive graphics for campaigns and spaces.', '/products/catalog/decals.html', 'assets/img/Marketing_Promo/Dacals.webp'],
+            ['Danglers', 'Suspended promotional print for retail visibility.', '/products/catalog/danglers.html', 'assets/img/Marketing_Promo/Danglers.webp']
         ]},
         'apparel.html': { title: 'Apparel & Textile Printing', image: 'assets/img/shop/Apparel%20.webp', items: [
-            ['Custom Backpacks', 'Branded carry bags for teams and promotional use.', '/products/catalog/apparel-backpacks.html'],
-            ['Sweatshirts & Hoodies', 'Custom printed apparel for teams and events.', '/products/catalog/sweatshirts-hoodies.html'],
-            ['Sports Jerseys', 'Custom jerseys for clubs, teams and company events.', '/products/catalog/sports-jerseys.html']
+            ['Custom T-Shirt Printing', 'Custom printed T-shirts for brands, teams, events, promotions, and everyday wear.', '/products/custom-t-shirt-printing.html', 'assets/img/Apparel/Custom_T-Shirt.webp'],
+            ['Polo Shirts', 'Branded polo shirts for corporate teams, uniforms, events, and promotional campaigns.', '/products/corporate-uniforms.html', 'assets/img/Apparel/pol_tshirt.webp'],
+            ['Workwear & Uniforms', 'Professional workwear and uniforms for offices, hotels, restaurants, clinics, and teams.', '/products/corporate-uniforms.html', 'assets/img/Apparel/Workwear.webp'],
+            ['Hoodies & Sweatshirts', 'Custom hoodies and sweatshirts for brands, teams, events, and promotional campaigns.', '/products/catalog/sweatshirts-hoodies.html', 'assets/img/Apparel/Hoodies.webp'],
+            ['Sportswear & Jerseys', 'Custom sports jerseys, teamwear, training shirts, and athletic apparel.', '/products/catalog/sports-jerseys.html', 'assets/img/Apparel/Custom_jerseys.webp'],
+            ['Caps & Headwear', 'Branded caps, hats, beanies, and custom headwear for teams, businesses, and promotions.', '/products/caps-headwear.html', 'assets/img/Apparel/Caps.webp'],
+            ['Jackets & Outerwear', 'Custom branded jackets and outerwear for corporate teams, workwear, events, and outdoor use.', '/products/corporate-uniforms.html', 'assets/img/Apparel/Jackets_outerware.webp'],
+            ['Corporate & Promotional Apparel', 'Branded clothing for companies, promotional campaigns, events, giveaways, and corporate teams.', '/products/corporate-uniforms.html', 'assets/img/Apparel/jackets.webp']
         ]},
         'gifts.html': { title: 'Corporate & Personalized Gifts', image: 'assets/img/shop/Corporate.webp', items: [
-            ['Backpacks', 'Branded bags for employee and client gifting.', '/products/catalog/gift-backpacks.html'],
-            ['Drinkware', 'Custom drinkware for teams and client campaigns.', '/drinkware.html'],
-            ['Apparel', 'Wearable branded gifts for teams and events.', '/apparel.html'],
-            ['Gift Sets', 'Curated gift selections with branded presentation.', '/products/gift-boxes.html'],
+            ['Backpacks', 'Branded bags for employee and client gifting.', '/products/catalog/gift-backpacks.html', 'assets/img/corporate_gifts/Back_Backs.webp'],
+            ['Drinkware', 'Custom drinkware for teams and client campaigns.', '/drinkware.html', 'assets/img/corporate_gifts/Drinkware.webp'],
+            ['Apparel', 'Wearable branded gifts for teams and events.', '/apparel.html', 'assets/img/corporate_gifts/3.webp'],
+            ['Gift Sets', 'Curated gift selections with branded presentation.', '/products/gift-boxes.html', 'assets/img/corporate_gifts/4.webp'],
             ['Desk Accessories', 'Useful branded pieces for the everyday workspace.', '/products/catalog/desk-accessories.html'],
-            ['Pens', 'Everyday writing essentials for business gifting.', '/products/catalog/pens.html'],
-            ['Notebooks', 'Branded notebooks for meetings and welcome kits.', '/products/custom-notebooks.html'],
+            ['Pens', 'Everyday writing essentials for business gifting.', '/products/catalog/pens.html', 'assets/img/corporate_gifts/6.webp'],
+            ['Notebooks', 'Branded notebooks for meetings and welcome kits.', '/products/custom-notebooks.html', 'assets/img/corporate_gifts/5.webp'],
             ['Calendars & Diaries', 'Year-round branded stationery for teams and clients.', '/calendars.html'],
-            ['Laptop Sleeves', 'Branded protective sleeves for work and travel.', '/products/catalog/laptop-sleeves.html'],
+            ['Laptop Sleeves', 'Branded protective sleeves for work and travel.', '/products/catalog/laptop-sleeves.html', 'assets/img/corporate_gifts/7.webp'],
             ['Mousepads', 'Practical branded additions to desk gift sets.', '/products/catalog/mousepads.html'],
-            ['Keychains', 'Compact branded keepsakes for events and gifting.', '/products/catalog/keychains.html'],
-            ['Tote Bags', 'Reusable branded bags for events and client packs.', '/products/catalog/tote-bags.html'],
-            ['Lunch Bags', 'Useful branded bags for teams and everyday use.', '/products/catalog/lunch-bags.html']
+            ['Keychains', 'Compact branded keepsakes for events and gifting.', '/products/catalog/keychains.html', 'assets/img/corporate_gifts/8.webp'],
+            ['Tote Bags', 'Reusable branded bags for events and client packs.', '/products/catalog/tote-bags.html', 'assets/img/corporate_gifts/9.webp'],
+            ['Lunch Bags', 'Useful branded bags for teams and everyday use.', '/products/catalog/lunch-bags.html', 'assets/img/corporate_gifts/10.webp']
         ]},
         'calendars.html': { title: 'Calendars & Diaries', image: 'assets/img/shop/Calendars.webp', items: [
-            ['Custom Diaries', 'Branded diaries for planning and business gifting.', '/products/custom-diaries.html'],
-            ['Desk Calendars', 'Compact calendars for everyday workspaces.', '/products/desk-calendars.html'],
-            ['Wall Calendars', 'Year-round brand visibility for offices and teams.', '/products/wall-calendars.html']
+            ['Custom Diaries', 'Branded diaries for planning and business gifting.', '/products/custom-diaries.html', 'assets/img/diaries_calanders/Diaries.webp'],
+            ['Desk Calendars', 'Compact calendars for everyday workspaces.', '/products/desk-calendars.html', 'assets/img/diaries_calanders/Desk Calendars.webp'],
+            ['Wall Calendars', 'Year-round brand visibility for offices and teams.', '/products/wall-calendars.html', 'assets/img/diaries_calanders/3.webp']
         ]},
         'drinkware.html': { title: 'Custom Drinkware', image: 'assets/img/shop/Drinkware.webp', items: [
-            ['Branded Mugs', 'Custom mugs for offices, events and client gifts.', '/products/branded-mugs.html'],
-            ['Custom Mugs', 'Personalized mug options for business campaigns.', '/products/custom-mugs.html'],
-            ['Insulated Tumblers', 'Branded tumblers for teams and daily use.', '/products/insulated-tumblers.html'],
-            ['Water Bottles', 'Custom bottles for events, teams and promotions.', '/products/water-bottles.html']
+            ['Branded Mugs', 'Custom mugs for offices, events and client gifts.', '/products/branded-mugs.html', 'assets/img/Drinkware/2.webp'],
+            ['Custom Mugs', 'Personalized mug options for business campaigns.', '/products/custom-mugs.html', 'assets/img/Drinkware/1.webp'],
+            ['Insulated Tumblers', 'Branded tumblers for teams and daily use.', '/products/insulated-tumblers.html', 'assets/img/Drinkware/3.webp'],
+            ['Water Bottles', 'Custom bottles for events, teams and promotions.', '/products/water-bottles.html', 'assets/img/Drinkware/4.webp']
         ]},
         'express.html': { title: 'Express Print', image: 'assets/img/shop/Sameday.webp', items: [
             ['Express Business Cards', 'Business cards for time-sensitive requirements.', '/products/express-business-cards.html'],
             ['Fast Flyers', 'Promotional flyers for urgent campaigns.', '/products/fast-flyers.html'],
             ['On-Demand Posters', 'Poster printing for short-notice needs.', '/products/on-demand-posters.html']
+        ]},
+        'stickers.html': { title: 'Stickers & Labels', image: 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', items: [
+            ['Custom Stickers', 'Custom printed stickers for brands, events, promotions, packaging, and everyday use.', '/products/catalog/custom-stickers.html'],
+            ['Die-Cut Stickers', 'Custom-shaped stickers cut precisely to your logo, artwork, character, or brand design.', '/products/catalog/die-cut-stickers.html'],
+            ['Product Labels', 'Professional product labels designed for packaging, branding, product information, and retail presentation.', '/products/catalog/product-labels.html'],
+            ['Bottle Labels', 'Custom bottle labels for beverages, cosmetics, sauces, oils, and other packaged products.', '/products/catalog/bottle-labels.html'],
+            ['Waterproof Stickers', 'Durable waterproof stickers designed to withstand moisture, handling, and everyday outdoor use.', '/products/catalog/waterproof-stickers.html'],
+            ['Vinyl Stickers', 'Strong and versatile vinyl stickers for vehicles, windows, promotional displays, products, and branding.', '/products/catalog/vinyl-stickers.html'],
+            ['Transparent Stickers', 'Clear custom stickers that create a clean, premium look on bottles, packaging, glass, and other surfaces.', '/products/catalog/transparent-stickers.html'],
+            ['Roll Labels', 'Convenient roll labels for fast application across products, packaging, bottles, jars, and retail items.', '/products/catalog/roll-labels.html']
+        ]},
+        'rewards-recognition.html': { title: 'Rewards & Recognition', image: 'assets/img/hero/Vibrant Print Branding Showcase.webp', items: [
+            ['Wooden Awards', 'Elegant wooden awards and plaques crafted for corporate recognition, employee achievements, schools, and special occasions.', '/products/catalog/wooden-awards.html'],
+            ['Trophies', 'Classic and custom trophies for sports, competitions, corporate achievements, schools, events, and recognition ceremonies.', '/products/catalog/trophies.html'],
+            ['Crystal Awards', 'Premium crystal awards designed to recognise exceptional achievements with a refined and elegant finish.', '/products/catalog/crystal-awards.html'],
+            ['Acrylic Awards', 'Modern custom acrylic awards for corporate recognition, events, employee achievements, and branded celebrations.', '/products/catalog/acrylic-awards.html'],
+            ['Medals', 'Custom medals for sports, competitions, schools, events, employee recognition, and achievement ceremonies.', '/products/catalog/medals.html'],
+            ['Certificates', 'Professionally printed certificates for achievements, training, participation, recognition, awards, and special events.', '/products/catalog/certificates.html']
         ]},
         'packaging.html': { title: 'Custom Packaging & Accessories', image: 'assets/img/hero/packages.webp', items: [
             ['Gift Boxes', 'Custom packaging for corporate gifts and presentations.', '/products/gift-boxes.html']
@@ -138,7 +161,7 @@
         var media = document.createElement('div');
         media.className = 'category-discovery-media';
         var img = document.createElement('img');
-        img.src = image;
+        img.src = item[3] || image;
         img.alt = item[0];
         img.loading = 'lazy';
         media.appendChild(img);
@@ -266,6 +289,20 @@
                     ['Is Dubai delivery available for express jobs?', 'Delivery options and timing depend on the job and destination. Confirm your location when you contact the team.'],
                     ['How do I confirm an express order?', 'Contact the team with your specifications and deadline. Production timing is confirmed after the job details and artwork are reviewed.']
                 ],
+                'stickers.html': [
+                    ['What information should I share for a sticker or label quote?', 'Share the product type, size, quantity, material or finish, surface and artwork so the team can prepare suitable options.'],
+                    ['Can stickers be cut to a custom shape?', 'Yes. Die-cut and custom-shape options can be discussed. Include your artwork or logo with the enquiry.'],
+                    ['Are waterproof or outdoor options available?', 'Waterproof and vinyl options can be discussed for moisture or outdoor use. Mention where the sticker will be applied.'],
+                    ['Can labels be supplied on rolls?', 'Yes. Roll labels can be requested for bottles, jars and packaging. Share your quantity and application method.'],
+                    ['How soon can stickers and labels be ready in Dubai?', 'Timing depends on the product, quantity, finish and artwork approval. Share your deadline so the team can check the schedule.']
+                ],
+                'rewards-recognition.html': [
+                    ['What information should I share for an awards quote?', 'Share the award type, quantity, size, material, engraving or print text, logo files and your required date.'],
+                    ['Can awards be customised with a logo or engraving?', 'Yes. Logos, names and recognition wording can be discussed for each award type. Send your artwork with the enquiry.'],
+                    ['Are certificates and medals available as well as trophies?', 'Yes. Certificates, medals, trophies and wooden, crystal and acrylic awards can all be requested.'],
+                    ['Can I order awards for a school or sports event?', 'Yes. Share the event, quantity and deadline so the team can recommend suitable options.'],
+                    ['How soon can awards be ready in Dubai?', 'Timing depends on the product, quantity, customisation and artwork approval. Share your deadline so the team can check the schedule.']
+                ],
                 'packaging.html': [
                     ['What custom packaging can I enquire about?', 'Gift boxes and branded packaging options are available to discuss. Share the intended use, quantity and presentation requirements.'],
                     ['Can packaging be customized with our branding?', 'Include your logo or artwork and preferred branding placement so the team can advise on the available approach.'],
@@ -350,6 +387,20 @@
                 'mousepads': ['/gifts.html', 'assets/img/shop-banner/gifts-banner.webp', 'Mousepads'],
                 'keychains': ['/gifts.html', 'assets/img/shop-banner/gifts-banner.webp', 'Keychains'],
                 'tote-bags': ['/gifts.html', 'assets/img/shop-banner/gifts-banner.webp', 'Tote Bags'],
+                'wooden-awards': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Wooden Awards'],
+                'trophies': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Trophies'],
+                'crystal-awards': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Crystal Awards'],
+                'acrylic-awards': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Acrylic Awards'],
+                'medals': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Medals'],
+                'certificates': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Certificates'],
+                'custom-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Custom Stickers'],
+                'die-cut-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Die-Cut Stickers'],
+                'product-labels': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Product Labels'],
+                'bottle-labels': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Bottle Labels'],
+                'waterproof-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Waterproof Stickers'],
+                'vinyl-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Vinyl Stickers'],
+                'transparent-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Transparent Stickers'],
+                'roll-labels': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Roll Labels'],
                 'lunch-bags': ['/gifts.html', 'assets/img/shop-banner/gifts-banner.webp', 'Lunch Bags']
             };
             var meta = catalogMeta[catalogKey];
@@ -369,7 +420,7 @@
                 optionsHeading.innerHTML = '<span class="category-section-eyebrow">PRODUCT OPTIONS</span><h2>Explore ' + catalogName + '</h2><p>Choose the format that fits your project. Share your quantity, artwork and delivery requirements for a tailored quote.</p>';
                 gridWrap.querySelector('.container').prepend(optionsHeading);
                 if (grid && !grid.children.length) {
-                    grid.innerHTML = '<article class="catalog-card catalog-enquiry-card"><span class="shop-category-pill">Made for your project</span><h2>Custom ' + catalogName + '</h2><p>Tell us what you need and our Dubai print team will help confirm suitable options for your order.</p><a class="theme-btn" href="/contact.html">Request a quote</a></article>';
+                    grid.innerHTML = '<article class="catalog-card catalog-enquiry-card"><h2>Custom ' + catalogName + '</h2><p>Tell us what you need and our Dubai print team will help confirm suitable options for your order.</p><a class="theme-btn" href="/contact.html">Request a quote</a></article>';
                 }
             }
             addRelatedLinks(relatedSection.querySelector('.container'), pageLinks);

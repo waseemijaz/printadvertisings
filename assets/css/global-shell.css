@@ -190,3 +190,7 @@ body:not(.shop-category-page):not(.shop-categories-page):not(.product-detail-pag
 @media (prefers-reduced-motion: reduce) {
     .pa-site-shell *, .pa-site-shell *::before, .pa-site-shell *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Category rail: breathing room and text aligned with the logo edge. */
+.pa-category-inner { padding-top: 5px; padding-bottom: 5px; }
+@media (min-width: 801px) { .pa-category-inner a:first-child { margin-left: -12px; } }
