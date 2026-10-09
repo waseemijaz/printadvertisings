@@ -66,12 +66,104 @@
     }
     body.home-landing .landing-client-group img {
         object-fit: contain;
+        max-height: 37px;
         filter: grayscale(100%);
         transition: filter .25s ease, opacity .2s ease;
     }
     body.home-landing .landing-client-marquee:hover .landing-client-group img,
     body.home-landing .landing-client-marquee:focus-within .landing-client-group img {
         filter: grayscale(0%) !important;
+    }
+    @media (max-width: 767px) {
+        body.home-landing .landing-client-group img { max-height: 31px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        body.home-landing .landing-client-group img { max-height: 29px; }
+    }
+    .catagories-section .catagories-card-items .thumb {
+        width: 150px;
+        aspect-ratio: 1;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    .catagories-section .catagories-card-items .thumb img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    body.home-landing .national-day-collection {
+        border-top: 1px solid var(--pa-border);
+        border-bottom: 1px solid var(--pa-border);
+        background: linear-gradient(115deg, rgba(0, 122, 74, .035), #fff 42%, rgba(239, 35, 60, .035));
+    }
+    body.home-landing .national-day-collection .landing-carousel-heading { align-items: center; }
+    body.home-landing .national-day-collection .landing-carousel-heading > div { max-width: 690px; }
+    body.home-landing .national-day-collection .landing-carousel-heading p {
+        max-width: 600px;
+        margin: 10px 0 0;
+        color: var(--pa-muted);
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    body.home-landing .national-day-collection .landing-carousel-heading > .theme-btn {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 12px 18px;
+        border-radius: 9px;
+        background: var(--pa-purple);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+    }
+    body.home-landing .national-day-collection .national-day-grid {
+        grid-auto-columns: auto;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        overflow: visible;
+        padding-bottom: 4px;
+        scroll-snap-type: none;
+    }
+    body.home-landing .national-day-collection .landing-product-card { cursor: default; }
+    body.home-landing .national-day-collection .landing-product-card:hover { color: var(--pa-ink); }
+    body.home-landing .national-day-collection .landing-product-media { height: 210px; }
+    body.home-landing .national-day-collection .landing-product-media { padding: 0; }
+    body.home-landing .national-day-collection .landing-product-media img {
+        object-fit: cover;
+        object-position: center;
+    }
+    @media (max-width: 767px) {
+        body.home-landing .national-day-collection { padding: 42px 0 34px; }
+        body.home-landing .national-day-collection .landing-carousel-heading {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        body.home-landing .national-day-collection .landing-carousel-heading p { font-size: 13px; }
+        body.home-landing .national-day-collection .national-day-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+        body.home-landing .national-day-collection .landing-product-media {
+            height: clamp(135px, 40vw, 190px);
+            padding: 0;
+        }
+        body.home-landing .national-day-collection .landing-product-card h3 {
+            margin: 12px 12px 4px;
+            font-size: 14px;
+        }
+        body.home-landing .national-day-collection .landing-product-card p {
+            margin: 0 12px 14px;
+            font-size: 12px;
+            line-height: 1.45;
+        }
     }
 </style>
 </head>
@@ -211,7 +303,7 @@
         <details class="pa-nav-dropdown">
           <summary>Products</summary>
           <div class="pa-mega-menu">
-            <div class="pa-mega-column"><h3>Shop by category</h3><a href="/all-categories.html">All Products</a><a href="/stationery.html">Business Stationery</a><a href="/marketing.html">Marketing Print</a><a href="/stickers.html">Stickers &amp; Labels</a><a href="/apparel.html">Apparel &amp; Textiles</a><a href="/gifts.html">Corporate Gifts</a><a href="/calendars.html">Calendars &amp; Diaries</a><a href="/drinkware.html">Drinkware</a><a href="/rewards-recognition.html">Rewards &amp; Recognition</a><a href="/express.html">Express Print</a></div>
+            <div class="pa-mega-column"><h3>Shop by category</h3><a href="/all-categories.html">All Products</a><a href="/stationery.html">Business Stationery</a><a href="/marketing.html">Marketing Print</a><a href="/stickers.html">Stickers &amp; Labels</a><a href="/apparel.html">Apparel &amp; Textiles</a><a href="/gifts.html">Corporate Gifts</a><a href="/calendars.html">Calendars &amp; Diaries</a><a href="/drinkware.html">Drinkware</a><a href="/rewards-recognition.html">Rewards &amp; Recognition</a><a href="/express.html">Express Print</a><a href="/uae-national-day-printing/">UAE National Day Collection</a></div>
             <div class="pa-mega-column"><h3>Popular products</h3><a href="/products/business-cards.html">Business Cards</a><a href="/products/letterheads.html">Letterheads</a><a href="/products/flyers-leaflets.html">Flyers &amp; Leaflets</a><a href="/products/custom-t-shirt-printing.html">Custom T-Shirts</a><a href="/products/custom-mugs.html">Custom Mugs</a><a href="/products/express-business-cards.html">Express Business Cards</a><a href="/products/gift-boxes.html">Gift Boxes</a></div>
           </div>
         </details>
@@ -227,7 +319,7 @@
       <div class="pa-header-actions"><a class="pa-header-button pa-header-button--whatsapp" href="https://wa.me/971582023571" target="_blank" rel="noopener">WhatsApp</a><a class="pa-header-button pa-header-button--quote" href="/contact.html">Get a Quote</a></div>
     </div>
   </header>
-  <nav class="pa-category-rail" aria-label="Product categories"><div class="pa-category-inner"><a href="/all-categories.html">All Products</a><a href="/stationery.html">Stationery</a><a href="/marketing.html">Marketing Print</a><a href="/stickers.html">Stickers &amp; Labels</a><a href="/apparel.html">Apparel</a><a href="/gifts.html">Corporate Gifts</a><a href="/calendars.html">Calendars</a><a href="/drinkware.html">Drinkware</a><a href="/rewards-recognition.html">Rewards &amp; Recognition</a><a href="/express.html">Express Print</a></div></nav>
+  <nav class="pa-category-rail" aria-label="Product categories"><div class="pa-category-inner"><a href="/all-categories.html">All Products</a><a href="/stationery.html">Stationery</a><a href="/marketing.html">Marketing Print</a><a href="/stickers.html">Stickers &amp; Labels</a><a href="/apparel.html">Apparel</a><a href="/gifts.html">Corporate Gifts</a><a href="/calendars.html">Calendars</a><a href="/drinkware.html">Drinkware</a><a href="/rewards-recognition.html">Rewards &amp; Recognition</a><a href="/express.html">Express Print</a><a href="/uae-national-day-printing/">National Day Collection</a></div></nav>
 </div>
     
     <!-- Landing hero -->
@@ -450,6 +542,45 @@
         </div>
     </section>
 
+    <section class="landing-bestsellers national-day-collection" aria-labelledby="national-day-collection-title">
+        <div class="container">
+            <div class="landing-carousel-heading">
+                <div>
+                    <span class="landing-kicker">UAE National Day Collection</span>
+                    <h2 id="national-day-collection-title">Celebrate with thoughtful, branded details</h2>
+                    <p>Explore custom gifting, apparel and event ideas for teams, clients and celebrations.</p>
+                </div>
+                <a class="theme-btn" href="/uae-national-day-printing/">Explore National Day Collection</a>
+            </div>
+            <div class="landing-product-carousel national-day-grid">
+                <article class="landing-product-card">
+                    <div class="landing-product-media"><img src="assets/img/national_day/Gift_Box.webp" alt="Corporate gift box set" loading="lazy"></div>
+                    <h3>Gift Box Sets</h3><p>Branded gift presentation for teams and clients</p>
+                </article>
+                <article class="landing-product-card">
+                    <div class="landing-product-media"><img src="assets/img/national_day/apparels.webp" alt="Custom branded T-shirt" loading="lazy"></div>
+                    <h3>Branded Apparel</h3><p>Custom apparel for teams and events</p>
+                </article>
+                <article class="landing-product-card">
+                    <div class="landing-product-media"><img src="assets/img/national_day/scarves.webp" alt="UAE National Day souvenir collection artwork" loading="lazy"></div>
+                    <h3>UAE Scarves</h3><p>Ask about UAE-inspired scarf designs</p>
+                </article>
+                <article class="landing-product-card">
+                    <div class="landing-product-media"><img src="assets/img/national_day/flags.webp" alt="UAE flag-themed event print" loading="lazy"></div>
+                    <h3>UAE Flags</h3><p>Enquire about event and display requirements</p>
+                </article>
+                <article class="landing-product-card">
+                    <div class="landing-product-media"><img src="assets/img/national_day/badges_stickers.webp" alt="Custom printed button badges" loading="lazy"></div>
+                    <h3>Stickers &amp; Badges</h3><p>Custom stickers and branded event badges</p>
+                </article>
+                <article class="landing-product-card">
+                    <div class="landing-product-media"><img src="assets/img/national_day/bag_charms.webp" alt="Custom branded bag charms" loading="lazy"></div>
+                    <h3>Bag Charms</h3><p>Custom branded bag charms for teams and events</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- Featured Projects Section Start -->
     <section class="featured-projects-section section-padding">
         <div class="container">
@@ -616,7 +747,7 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="thumb-image-1">
-                                        <img src="assets/img/about/about-1.png" alt="img">
+                                        <img src="assets/img/about/about-1.webp" alt="img">
                                     </div>
                                     <div class="thumb-image-1 style-2">
                                         <img src="assets/img/about/about-2.jpg" alt="img">
@@ -716,7 +847,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                     <div class="catagories-card-items">
                         <div class="thumb">
-                            <img src="assets/img/catagories/01.png" alt="img">
+                            <img src="assets/img/allcatagory__/businesscards.webp" alt="Business card printing">
                         </div>
                         <div class="content">
                             <span>50+ Style</span>
@@ -735,7 +866,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
                     <div class="catagories-card-items">
                         <div class="thumb">
-                            <img src="assets/img/catagories/02.png" alt="img">
+                            <img src="assets/img/allcatagory__/sing_billboard.webp" alt="Signs and banners printing">
                         </div>
                         <div class="content">
                             <span>50+ Style</span>
@@ -754,7 +885,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
                     <div class="catagories-card-items">
                         <div class="thumb">
-                            <img src="assets/img/catagories/03.png" alt="img">
+                            <img src="assets/img/allcatagory__/merchandise_gift.webp" alt="Custom merchandise and gifts">
                         </div>
                         <div class="content">
                             <span>50+ Style</span>
@@ -772,7 +903,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
                     <div class="catagories-card-items">
                         <div class="thumb">
-                            <img src="assets/img/catagories/04.png" alt="img">
+                            <img src="assets/img/allcatagory__/labels_stickers.webp" alt="Labels, stickers, and packaging">
                         </div>
                         <div class="content">
                             <span>50+ Style</span>

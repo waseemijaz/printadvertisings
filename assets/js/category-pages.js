@@ -134,7 +134,7 @@
         ]},
         'stickers.html': { title: 'Stickers & Labels', image: 'assets/img/Marketing_Promo/custom_sticker/Custom.webp', items: [
             ['Custom Stickers', 'Custom printed stickers for brands, events, promotions, packaging, and everyday use.', '/products/catalog/custom-stickers.html', 'assets/img/Marketing_Promo/custom_sticker/Custom.webp'],
-            ['Die-Cut Stickers', 'Custom-shaped stickers cut precisely to your logo, artwork, character, or brand design.', '/products/catalog/die-cut-stickers.html', 'assets/img/Marketing_Promo/Die_Cut/custom_shape.png'],
+            ['Die-Cut Stickers', 'Custom-shaped stickers cut precisely to your logo, artwork, character, or brand design.', '/products/catalog/die-cut-stickers.html', 'assets/img/Marketing_Promo/Die_Cut/custom_shape.webp'],
             ['Product Labels', 'Professional product labels designed for packaging, branding, product information, and retail presentation.', '/products/catalog/product-labels.html', 'assets/img/Marketing_Promo/product_label/Product_label.webp'],
             ['Bottle Labels', 'Custom bottle labels for beverages, cosmetics, sauces, oils, and other packaged products.', '/products/catalog/bottle-labels.html', 'assets/img/Marketing_Promo/bottle_label/Water_Bottle_Labels.webp'],
             ['Waterproof Stickers', 'Durable waterproof stickers designed to withstand moisture, handling, and everyday outdoor use.', '/products/catalog/waterproof-stickers.html', 'assets/img/Marketing_Promo/waterproof_sticker/Outdoor_Stickers.webp'],
@@ -152,6 +152,14 @@
         ]},
         'packaging.html': { title: 'Custom Packaging & Accessories', image: 'assets/img/hero/packages.webp', items: [
             ['Gift Boxes', 'Custom packaging for corporate gifts and presentations.', '/products/gift-boxes.html']
+        ]},
+        'uae-national-day-printing.html': { title: 'UAE National Day Collection', image: '/assets/img/hero/UAE National Day Souvenir Collection.webp', items: [
+            ['Gift Box Sets', 'Explore the existing gift-box range for UAE National Day client, team and event gifting.', '/products/gift-boxes.html', '/assets/img/national_day/Gift_Box.webp'],
+            ['Branded Apparel', 'Custom T-shirts and apparel options for teams, events and UAE National Day celebrations.', '/products/custom-t-shirt-printing.html', '/assets/img/national_day/apparels.webp'],
+            ['UAE Scarves', 'Ask the team whether UAE-inspired scarf designs can be included in your event or team collection.', '/contact.html', '/assets/img/national_day/scarves.webp'],
+            ['UAE Flags', 'Enquire about UAE-themed flag and display requirements for your event or celebration.', '/contact.html', '/assets/img/national_day/flags.webp'],
+            ['Stickers & Badges', 'Custom sticker options and existing button badges for events, teams and branded giveaways.', '/products/catalog/button-badges.html', '/assets/img/national_day/badges_stickers.webp'],
+            ['Bag Charms', 'Custom branded bag charms for teams, events and UAE National Day gifting.', '/contact.html', '/assets/img/national_day/bag_charms.webp']
         ]}
     };
 
@@ -162,7 +170,7 @@
         media.className = 'category-discovery-media';
         var img = document.createElement('img');
         img.src = item[3] || image;
-        img.alt = item[0];
+        img.alt = item[4] || item[0];
         img.loading = 'lazy';
         media.appendChild(img);
         var copy = document.createElement('div');
@@ -185,7 +193,8 @@
         var quote = document.querySelector('.shop-category-page .shop-category-cta');
         var categoryBulkCta = document.querySelector('.shop-category-page .category-bulk-cta');
         if (productSection && (quote || categoryBulkCta)) {
-            var pageKey = window.location.pathname.split('/').pop().toLowerCase();
+            var pageKey = window.location.pathname.replace(/\/+$/, '').split('/').pop().toLowerCase();
+            if (pageKey === 'uae-national-day-printing') pageKey += '.html';
             var catalog = categoryCatalog[pageKey];
             if (catalog) {
                 var discovery = document.createElement('section');
@@ -229,6 +238,9 @@
             var sameDay = document.createElement('section');
             sameDay.className = 'category-sameday-section';
             sameDay.innerHTML = '<div class="container category-sameday-inner"><div class="category-sameday-copy"><span class="category-section-eyebrow">LOCAL PRINT SUPPORT</span><h2>Same Day Delivery for Dubai Businesses</h2><p>Selected print jobs can be turned around quickly, with timing confirmed for your product, quantity and artwork.</p></div><ul class="category-sameday-benefits"><li>Fast Turnaround</li><li>Dubai Delivery</li><li>Business Support</li></ul><a class="theme-btn" href="https://wa.me/971582023571" target="_blank" rel="noopener">Talk to a Print Specialist</a></div>';
+            if (pageKey === 'uae-national-day-printing.html') {
+                sameDay.innerHTML = '<div class="container category-sameday-inner"><div class="category-sameday-copy"><span class="category-section-eyebrow">CORPORATE GIFTING</span><h2>National Day Collections for Teams &amp; Clients</h2><p>Share your group quantities, preferred items and event details. The team can confirm suitable existing products and discuss custom enquiries.</p></div><ul class="category-sameday-benefits"><li>Gift Box Sets</li><li>Branded Apparel</li><li>Event Enquiries</li></ul><a class="theme-btn" href="https://wa.me/971582023571" target="_blank" rel="noopener">Discuss a Bulk Order</a></div>';
+            }
 
             var related = document.createElement('section');
             related.className = 'category-related-section';
@@ -312,10 +324,18 @@
                     ['Can packaging be ordered with corporate gifts?', 'Yes. Mention the gift items and packaging requirements together so the team can prepare a coordinated proposal.'],
                     ['Can I request a bulk packaging quote?', 'Share the quantity, delivery location and required date for a tailored corporate order quote.'],
                     ['How long does custom packaging take?', 'Timing depends on the packaging format, quantity, finishing and artwork approval. Contact the team with your delivery date.']
+                ],
+                'uae-national-day-printing.html': [
+                    ['What products are included in the UAE National Day Collection?', 'The collection highlights existing gift boxes, branded apparel, stickers and badges, alongside enquiries for UAE scarves, flags and custom candle designs.'],
+                    ['Can I request a corporate or bulk order?', 'Yes. Share the product mix, quantities, event details and delivery location so the team can confirm suitable options and prepare a quote.'],
+                    ['Can products be customized with our branding?', 'Send your logo or artwork, preferred colours and placement. The team can review the details for the existing products you are considering.'],
+                    ['Are UAE scarves and custom candle designs available as standard products?', 'These are enquiry-only ideas on this page, not separate listed product pages. Contact the team to ask whether they can be accommodated.'],
+                    ['How far in advance should I enquire?', 'Timing depends on the products, quantities, branding and artwork approval. Share your required date so the team can check the schedule.']
                 ]
             };
 
-            var slug = window.location.pathname.split('/').pop().toLowerCase();
+            var slug = window.location.pathname.replace(/\/+$/, '').split('/').pop().toLowerCase();
+            if (slug === 'uae-national-day-printing') slug += '.html';
             var questions = faqContent[slug] || [];
             var faq = document.createElement('section');
             faq.className = 'category-faq-section';
@@ -399,7 +419,7 @@
                 'medals': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Medals'],
                 'certificates': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Certificates'],
                 'custom-stickers': ['/stickers.html', 'assets/img/Marketing_Promo/custom_sticker/Custom.webp', 'Custom Stickers'],
-                'die-cut-stickers': ['/stickers.html', 'assets/img/Marketing_Promo/Die_Cut/Die_Cut.png', 'Die-Cut Stickers'],
+                'die-cut-stickers': ['/stickers.html', 'assets/img/Marketing_Promo/Die_Cut/Die_Cut.webp', 'Die-Cut Stickers'],
                 'product-labels': ['/stickers.html', 'assets/img/Marketing_Promo/product_label/Product_label.webp', 'Product Labels'],
                 'bottle-labels': ['/stickers.html', 'assets/img/Marketing_Promo/bottle_label/Water_Bottle_Labels.webp', 'Bottle Labels'],
                 'waterproof-stickers': ['/stickers.html', 'assets/img/Marketing_Promo/waterproof_sticker/Outdoor_Stickers.webp', 'Waterproof Stickers'],

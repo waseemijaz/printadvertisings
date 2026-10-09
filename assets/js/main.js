@@ -224,12 +224,13 @@
 
         //>> Service Slider Start <<//
         if ($('.service-slider').length > 0) {
+            const isFeaturedProductsSlider = $('.service-featured-products').length > 0;
             const serviceSlider = new Swiper(".service-slider", {
                 spaceBetween: 30,
-                speed: 2000,
+                speed: isFeaturedProductsSlider ? 700 : 2000,
                 loop: true,
                 autoplay: {
-                    delay: 1000,
+                    delay: isFeaturedProductsSlider ? 2500 : 1000,
                     disableOnInteraction: false,
                 },
                 pagination: {

@@ -23,6 +23,22 @@
     var nav = shell.querySelector('.pa-primary-nav');
     var dropdowns = Array.prototype.slice.call(shell.querySelectorAll('.pa-nav-dropdown'));
     var mobile = window.matchMedia('(max-width: 1000px)');
+    var collectionPath = '/uae-national-day-printing/';
+    var categoryMenu = shell.querySelector('.pa-mega-column');
+    var categoryRail = shell.querySelector('.pa-category-inner');
+
+    if (categoryMenu && !categoryMenu.querySelector('a[href="' + collectionPath + '"]')) {
+        var collectionMenuLink = document.createElement('a');
+        collectionMenuLink.href = collectionPath;
+        collectionMenuLink.textContent = 'UAE National Day Collection';
+        categoryMenu.appendChild(collectionMenuLink);
+    }
+    if (categoryRail && !categoryRail.querySelector('a[href="' + collectionPath + '"]')) {
+        var collectionRailLink = document.createElement('a');
+        collectionRailLink.href = collectionPath;
+        collectionRailLink.textContent = 'National Day Collection';
+        categoryRail.appendChild(collectionRailLink);
+    }
 
     function closeMenu(returnFocus) {
         shell.classList.remove('pa-menu-open');
