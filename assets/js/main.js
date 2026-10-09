@@ -769,33 +769,43 @@
         });
 
         //>> Scroll Js Start <<//
-        const scrollPath = document.querySelector(".scroll-up path");
-        const pathLength = scrollPath.getTotalLength();
-        scrollPath.style.transition = scrollPath.style.WebkitTransition = "none";
-        scrollPath.style.strokeDasharray = pathLength + " " + pathLength;
-        scrollPath.style.strokeDashoffset = pathLength;
-        scrollPath.getBoundingClientRect();
-        scrollPath.style.transition = scrollPath.style.WebkitTransition = "stroke-dashoffset 10ms linear";
 
-        const updatescroll = function () {
-            let scrolltotal = $(window).scrollTop();
-            let height = $(document).height() - $(window).height();
-            let scrolltotalheight = pathLength - (scrolltotal * pathLength) / height;
+const scrollPath = document.querySelector(".scroll-up path");
+
+if (scrollPath) {
+    const pathLength = scrollPath.getTotalLength();
+
+    scrollPath.style.transition = "none";
+    scrollPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+    scrollPath.style.strokeDashoffset = pathLength;
+    scrollPath.getBoundingClientRect();
+    scrollPath.style.transition = "stroke-dashoffset 10ms linear";
+
+    const updatescroll = function () {
+        const scrolltotal = $(window).scrollTop();
+        const height = $(document).height() - $(window).height();
+
+        if (height > 0) {
+            const scrolltotalheight =
+                pathLength - (scrolltotal * pathLength) / height;
             scrollPath.style.strokeDashoffset = scrolltotalheight;
-        };
-        updatescroll();
+        }
+    };
 
-        $(window).scroll(updatescroll);
-        const offset = 50;
-        const duration = 950;
+    updatescroll();
+    $(window).on("scroll", updatescroll);
+}
 
-        $(window).on("scroll", function () {
-            if (jQuery(this).scrollTop() > offset) {
-                jQuery(".scroll-up").addClass("active-scroll");
-            } else {
-                jQuery(".scroll-up").removeClass("active-scroll");
-            }
-        });
+const offset = 50;
+const duration = 950;
+
+$(window).on("scroll", function () {
+    if ($(this).scrollTop() > offset) {
+        $(".scroll-up").addClass("active-scroll");
+    } else {
+        $(".scroll-up").removeClass("active-scroll");
+    }
+});
 
         $(".scroll-up").on("click", function (event) {
             event.preventDefault();
