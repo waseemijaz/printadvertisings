@@ -183,7 +183,8 @@
     if (isCategory) {
         var productSection = document.querySelector('.shop-category-page .shop-category-section');
         var quote = document.querySelector('.shop-category-page .shop-category-cta');
-        if (productSection && quote) {
+        var categoryBulkCta = document.querySelector('.shop-category-page .category-bulk-cta');
+        if (productSection && (quote || categoryBulkCta)) {
             var pageKey = window.location.pathname.split('/').pop().toLowerCase();
             var catalog = categoryCatalog[pageKey];
             if (catalog) {
@@ -220,8 +221,10 @@
                     if (bannerDescription) bannerDescription.textContent = 'Thoughtful packaging for corporate gifts, client presentations and branded moments.';
                 }
             }
-            var quoteSection = quote.closest('section');
-            if (quoteSection) quoteSection.classList.add('category-cta-section');
+            var quoteSection = quote
+                ? quote.closest('section')
+                : categoryBulkCta;
+            if (quoteSection && quote) quoteSection.classList.add('category-cta-section');
 
             var sameDay = document.createElement('section');
             sameDay.className = 'category-sameday-section';
@@ -344,18 +347,20 @@
             faq.appendChild(faqInner);
             if (quoteSection) quoteSection.after(faq);
 
-            quote.querySelector('h2').textContent = 'Need a custom printing solution?';
-            quote.querySelector('p').textContent = 'Share your requirements and we’ll prepare a tailored proposal with samples and pricing.';
-            quote.classList.add('category-visual-cta');
-            var ctaEyebrow = document.createElement('span');
-            ctaEyebrow.className = 'category-cta-eyebrow';
-            ctaEyebrow.textContent = 'PRINTED & DELIVERED BY PRINT ADVERTISING';
-            quote.prepend(ctaEyebrow);
-            quote.querySelector('h2').textContent = 'Need Printing for Your Next Project?';
-            quote.querySelector('p').textContent = 'From everyday business essentials to large corporate orders, we make printing simple.';
-            var quoteLink = quote.querySelector('a[href]');
-            if (quoteLink) {
-                quoteLink.textContent = 'GET A QUOTE';
+            if (quote && !catalog) {
+                quote.querySelector('h2').textContent = 'Need a custom printing solution?';
+                quote.querySelector('p').textContent = 'Share your requirements and we’ll prepare a tailored proposal with samples and pricing.';
+                quote.classList.add('category-visual-cta');
+                var ctaEyebrow = document.createElement('span');
+                ctaEyebrow.className = 'category-cta-eyebrow';
+                ctaEyebrow.textContent = 'PRINTED & DELIVERED BY PRINT ADVERTISING';
+                quote.prepend(ctaEyebrow);
+                quote.querySelector('h2').textContent = 'Need Printing for Your Next Project?';
+                quote.querySelector('p').textContent = 'From everyday business essentials to large corporate orders, we make printing simple.';
+                var quoteLink = quote.querySelector('a[href]');
+                if (quoteLink) {
+                    quoteLink.textContent = 'GET A QUOTE';
+                }
             }
         }
     } else {
@@ -428,8 +433,8 @@
             sameDaySection.className = 'catalog-sameday';
             sameDaySection.innerHTML = '<div class="container"><div><span class="category-section-eyebrow">LOCAL PRINT SUPPORT</span><h2>Same Day Delivery for Dubai Businesses</h2><p>Timing depends on the product, order details and artwork approval. Our team can help check your schedule.</p></div><ul><li>Fast Turnaround</li><li>Dubai Delivery</li><li>Business Support</li></ul><a class="theme-btn" href="https://wa.me/971582023571" target="_blank" rel="noopener">Talk to a Print Specialist</a></div>';
             var cta = document.createElement('section');
-            cta.className = 'catalog-cta catalog-visual-cta';
-            cta.innerHTML = '<div class="container"><div class="catalog-visual-cta-content"><span>PRINTED &amp; DELIVERED BY PRINT ADVERTISING</span><h2>Need Printing for Your Next Project?</h2><p>From everyday business essentials to large corporate orders, we make printing simple.</p><a class="theme-btn" href="/contact.html">GET A QUOTE</a></div></div>';
+            cta.className = 'catalog-cta catalog-compact-cta';
+            cta.innerHTML = '<div class="container"><div class="catalog-compact-cta-content"><h2>Need a custom print quote?</h2><p>Share your quantity, artwork and delivery requirements for a tailored proposal.</p><a class="theme-btn" href="/contact.html">GET A QUOTE</a></div></div>';
             var faq = document.createElement('section');
             faq.className = 'catalog-faq-section';
             var faqInner = document.createElement('div');
