@@ -55,7 +55,7 @@
       fields: [['Drinkware Type', 'select', ['Mugs', 'Coffee Mugs', 'Travel Mugs', 'Water Bottles', 'Sippers', 'Tumblers']], ['Material', 'text'], ['Printing', 'text'], ['Quantity', 'text']], ratio: 'square'
     },
     apparel: {
-      category: 'Apparel Printing', categoryUrl: '/apparel.html', products: ['custom-t-shirt-printing', 'corporate-uniforms', 'caps-headwear'],
+      category: 'Apparel Printing', categoryUrl: '/apparel.html', products: ['custom-t-shirt-printing', 'corporate-uniforms', 'caps-headwear', 'polo-shirts', 'jackets-outerwear', 'corporate-promotional-apparel'],
       fields: [['Apparel Type', 'select', ['T-Shirts', 'Polo T-Shirts', 'Event T-Shirts', 'Team T-Shirts', 'Caps', 'Uniforms']], ['Size', 'text'], ['Printing', 'text'], ['Quantity', 'text']], ratio: 'portrait'
     },
     office: {
@@ -81,6 +81,7 @@
   "business-cards-velvet": "Velvet Business Cards",
   "caps-headwear": "Branded Caps & Headwear",
   "corporate-uniforms": "Corporate Uniforms - Bulk Order",
+  "corporate-promotional-apparel": "Corporate & Promotional Apparel - Bulk Order",
   "custom-diaries": "Custom Branded Diaries",
   "custom-mugs": "Custom Printed Mugs - Bulk Order",
   "custom-notebooks": "Custom Branded Notebooks",
@@ -101,12 +102,14 @@
   "flyers-leaflets-single-sided": "Single-Sided Flyers and Leaflets",
   "gift-boxes": "Custom Corporate Gift Boxes",
   "insulated-tumblers": "Premium Insulated Tumblers",
+  "jackets-outerwear": "Custom Jackets & Outerwear",
   "letterheads-corporate": "Corporate Letterheads",
   "letterheads-ncr": "NCR Letterheads",
   "letterheads-premium": "Premium Letterheads",
   "letterheads-standard": "Standard Letterheads",
   "on-demand-posters": "On-Demand Poster Printing",
   "outdoor-banners": "Outdoor Banners & Signage",
+  "polo-shirts": "Custom Polo Shirts",
   "promotional-displays": "Promotional Display Materials",
   "wall-calendars": "Custom Wall Calendars - Bulk Order",
   "water-bottles": "Branded Water Bottles"
@@ -153,6 +156,8 @@
     'business-cards-velvet': ['businessCards', 'Business Printing & Stationery'],
     'caps-headwear': ['apparel', 'Apparel Printing'],
     'corporate-uniforms': ['apparel', 'Apparel Printing'],
+    'corporate-promotional-apparel': ['apparel', 'Apparel Printing'],
+    'jackets-outerwear': ['apparel', 'Apparel Printing'],
     'custom-diaries': ['diaries', 'Calendars & Diaries'],
     'custom-mugs': ['drinkware', 'Corporate Gifts & Promotional Products'],
     'custom-notebooks': ['office', 'Business Printing & Stationery'],
@@ -179,6 +184,7 @@
     'letterheads-standard': ['letterheads', 'Business Printing & Stationery'],
     'on-demand-posters': ['posters', 'Marketing & Promotional Printing'],
     'outdoor-banners': ['banners', 'Signage & Large Format Printing'],
+    'polo-shirts': ['apparel', 'Apparel Printing'],
     'promotional-displays': ['displays', 'Signage & Large Format Printing'],
     'wall-calendars': ['calendars', 'Calendars & Diaries'],
     'water-bottles': ['drinkware', 'Corporate Gifts & Promotional Products']

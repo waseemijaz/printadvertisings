@@ -93,13 +93,13 @@
         ]},
         'apparel.html': { title: 'Apparel & Textile Printing', image: 'assets/img/shop/Apparel%20.webp', items: [
             ['Custom T-Shirt Printing', 'Custom printed T-shirts for brands, teams, events, promotions, and everyday wear.', '/products/custom-t-shirt-printing.html', 'assets/img/Apparel/Custom_T-Shirt.webp'],
-            ['Polo Shirts', 'Branded polo shirts for corporate teams, uniforms, events, and promotional campaigns.', '/products/corporate-uniforms.html', 'assets/img/Apparel/pol_tshirt.webp'],
+            ['Polo Shirts', 'Branded polo shirts for corporate teams, uniforms, events, and promotional campaigns.', '/products/polo-shirts.html', 'assets/img/Apparel/pol_tshirt.webp'],
             ['Workwear & Uniforms', 'Professional workwear and uniforms for offices, hotels, restaurants, clinics, and teams.', '/products/corporate-uniforms.html', 'assets/img/Apparel/Workwear.webp'],
             ['Hoodies & Sweatshirts', 'Custom hoodies and sweatshirts for brands, teams, events, and promotional campaigns.', '/products/catalog/sweatshirts-hoodies.html', 'assets/img/Apparel/Hoodies.webp'],
             ['Sportswear & Jerseys', 'Custom sports jerseys, teamwear, training shirts, and athletic apparel.', '/products/catalog/sports-jerseys.html', 'assets/img/Apparel/Custom_jerseys.webp'],
             ['Caps & Headwear', 'Branded caps, hats, beanies, and custom headwear for teams, businesses, and promotions.', '/products/caps-headwear.html', 'assets/img/Apparel/Caps.webp'],
-            ['Jackets & Outerwear', 'Custom branded jackets and outerwear for corporate teams, workwear, events, and outdoor use.', '/products/corporate-uniforms.html', 'assets/img/Apparel/Jackets_outerware.webp'],
-            ['Corporate & Promotional Apparel', 'Branded clothing for companies, promotional campaigns, events, giveaways, and corporate teams.', '/products/corporate-uniforms.html', 'assets/img/Apparel/jackets.webp']
+            ['Jackets & Outerwear', 'Custom branded jackets and outerwear for corporate teams, workwear, events, and outdoor use.', '/products/jackets-outerwear.html', 'assets/img/Apparel/Jackets_outerware.webp'],
+            ['Corporate & Promotional Apparel', 'Branded clothing for companies, promotional campaigns, events, giveaways, and corporate teams.', '/products/corporate-promotional-apparel.html', 'assets/img/Apparel/jackets.webp']
         ]},
         'gifts.html': { title: 'Corporate & Personalized Gifts', image: 'assets/img/shop/Corporate.webp', items: [
             ['Backpacks', 'Branded bags for employee and client gifting.', '/products/catalog/gift-backpacks.html', 'assets/img/corporate_gifts/Back_Backs.webp'],
@@ -132,23 +132,23 @@
             ['Fast Flyers', 'Promotional flyers for urgent campaigns.', '/products/fast-flyers.html'],
             ['On-Demand Posters', 'Poster printing for short-notice needs.', '/products/on-demand-posters.html']
         ]},
-        'stickers.html': { title: 'Stickers & Labels', image: 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', items: [
-            ['Custom Stickers', 'Custom printed stickers for brands, events, promotions, packaging, and everyday use.', '/products/catalog/custom-stickers.html'],
-            ['Die-Cut Stickers', 'Custom-shaped stickers cut precisely to your logo, artwork, character, or brand design.', '/products/catalog/die-cut-stickers.html'],
-            ['Product Labels', 'Professional product labels designed for packaging, branding, product information, and retail presentation.', '/products/catalog/product-labels.html'],
-            ['Bottle Labels', 'Custom bottle labels for beverages, cosmetics, sauces, oils, and other packaged products.', '/products/catalog/bottle-labels.html'],
-            ['Waterproof Stickers', 'Durable waterproof stickers designed to withstand moisture, handling, and everyday outdoor use.', '/products/catalog/waterproof-stickers.html'],
-            ['Vinyl Stickers', 'Strong and versatile vinyl stickers for vehicles, windows, promotional displays, products, and branding.', '/products/catalog/vinyl-stickers.html'],
-            ['Transparent Stickers', 'Clear custom stickers that create a clean, premium look on bottles, packaging, glass, and other surfaces.', '/products/catalog/transparent-stickers.html'],
-            ['Roll Labels', 'Convenient roll labels for fast application across products, packaging, bottles, jars, and retail items.', '/products/catalog/roll-labels.html']
+        'stickers.html': { title: 'Stickers & Labels', image: 'assets/img/Marketing_Promo/custom_sticker/Custom.webp', items: [
+            ['Custom Stickers', 'Custom printed stickers for brands, events, promotions, packaging, and everyday use.', '/products/catalog/custom-stickers.html', 'assets/img/Marketing_Promo/custom_sticker/Custom.webp'],
+            ['Die-Cut Stickers', 'Custom-shaped stickers cut precisely to your logo, artwork, character, or brand design.', '/products/catalog/die-cut-stickers.html', 'assets/img/Marketing_Promo/Die_Cut/custom_shape.png'],
+            ['Product Labels', 'Professional product labels designed for packaging, branding, product information, and retail presentation.', '/products/catalog/product-labels.html', 'assets/img/Marketing_Promo/product_label/Product_label.webp'],
+            ['Bottle Labels', 'Custom bottle labels for beverages, cosmetics, sauces, oils, and other packaged products.', '/products/catalog/bottle-labels.html', 'assets/img/Marketing_Promo/bottle_label/Water_Bottle_Labels.webp'],
+            ['Waterproof Stickers', 'Durable waterproof stickers designed to withstand moisture, handling, and everyday outdoor use.', '/products/catalog/waterproof-stickers.html', 'assets/img/Marketing_Promo/waterproof_sticker/Outdoor_Stickers.webp'],
+            ['Vinyl Stickers', 'Strong and versatile vinyl stickers for vehicles, windows, promotional displays, products, and branding.', '/products/catalog/vinyl-stickers.html', 'assets/img/Marketing_Promo/vinyl_stickers/vehicle_sticker.webp'],
+            ['Transparent Stickers', 'Clear custom stickers that create a clean, premium look on bottles, packaging, glass, and other surfaces.', '/products/catalog/transparent-stickers.html', 'assets/img/Marketing_Promo/Transparent_stickers/Clear_logo_stickers.webp'],
+            ['Roll Labels', 'Convenient roll labels for fast application across products, packaging, bottles, jars, and retail items.', '/products/catalog/roll-labels.html', 'assets/img/Marketing_Promo/roll_label/Product_Roll_Labels.webp']
         ]},
-        'rewards-recognition.html': { title: 'Rewards & Recognition', image: 'assets/img/hero/Vibrant Print Branding Showcase.webp', items: [
-            ['Wooden Awards', 'Elegant wooden awards and plaques crafted for corporate recognition, employee achievements, schools, and special occasions.', '/products/catalog/wooden-awards.html'],
-            ['Trophies', 'Classic and custom trophies for sports, competitions, corporate achievements, schools, events, and recognition ceremonies.', '/products/catalog/trophies.html'],
-            ['Crystal Awards', 'Premium crystal awards designed to recognise exceptional achievements with a refined and elegant finish.', '/products/catalog/crystal-awards.html'],
-            ['Acrylic Awards', 'Modern custom acrylic awards for corporate recognition, events, employee achievements, and branded celebrations.', '/products/catalog/acrylic-awards.html'],
-            ['Medals', 'Custom medals for sports, competitions, schools, events, employee recognition, and achievement ceremonies.', '/products/catalog/medals.html'],
-            ['Certificates', 'Professionally printed certificates for achievements, training, participation, recognition, awards, and special events.', '/products/catalog/certificates.html']
+        'rewards-recognition.html': { title: 'Rewards & Recognition', image: 'assets/img/shop/subCatagory_hero/09-awards.webp', items: [
+            ['Wooden Awards', 'Elegant wooden awards and plaques crafted for corporate recognition, employee achievements, schools, and special occasions.', '/products/catalog/wooden-awards.html', 'assets/img/awards/wooden_Awards.webp'],
+            ['Trophies', 'Classic and custom trophies for sports, competitions, corporate achievements, schools, events, and recognition ceremonies.', '/products/catalog/trophies.html', 'assets/img/awards/trophies.webp'],
+            ['Crystal Awards', 'Premium crystal awards designed to recognise exceptional achievements with a refined and elegant finish.', '/products/catalog/crystal-awards.html', 'assets/img/awards/cystal_awards.webp'],
+            ['Acrylic Awards', 'Modern custom acrylic awards for corporate recognition, events, employee achievements, and branded celebrations.', '/products/catalog/acrylic-awards.html', 'assets/img/awards/Acrylic_Awards.webp'],
+            ['Medals', 'Custom medals for sports, competitions, schools, events, employee recognition, and achievement ceremonies.', '/products/catalog/medals.html', 'assets/img/awards/medals.webp'],
+            ['Certificates', 'Professionally printed certificates for achievements, training, participation, recognition, awards, and special events.', '/products/catalog/certificates.html', 'assets/img/awards/certificate.webp']
         ]},
         'packaging.html': { title: 'Custom Packaging & Accessories', image: 'assets/img/hero/packages.webp', items: [
             ['Gift Boxes', 'Custom packaging for corporate gifts and presentations.', '/products/gift-boxes.html']
@@ -378,8 +378,8 @@
                 'decals': ['/marketing.html', 'assets/img/shop-banner/marketing-banner.webp', 'Decals'],
                 'danglers': ['/marketing.html', 'assets/img/shop-banner/marketing-banner.webp', 'Danglers'],
                 'apparel-backpacks': ['/apparel.html', 'assets/img/shop-banner/apparel-banner.webp', 'Custom Backpacks'],
-                'sweatshirts-hoodies': ['/apparel.html', 'assets/img/shop-banner/apparel-banner.webp', 'Custom Printed Sweatshirts & Hoodies'],
-                'sports-jerseys': ['/apparel.html', 'assets/img/shop-banner/apparel-banner.webp', 'Custom Sports Jerseys'],
+                'sweatshirts-hoodies': ['/apparel.html', 'assets/img/Apparel/Custom_Printed_Sweatshirt.webp', 'Custom Printed Sweatshirts & Hoodies'],
+                'sports-jerseys': ['/apparel.html', 'assets/img/Apparel/Custom_Sports_Jerseys.webp', 'Custom Sports Jerseys'],
                 'gift-backpacks': ['/gifts.html', 'assets/img/shop-banner/gifts-banner.webp', 'Backpacks'],
                 'desk-accessories': ['/gifts.html', 'assets/img/shop-banner/gifts-banner.webp', 'Desk Accessories'],
                 'pens': ['/gifts.html', 'assets/img/shop-banner/gifts-banner.webp', 'Pens'],
@@ -393,14 +393,14 @@
                 'acrylic-awards': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Acrylic Awards'],
                 'medals': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Medals'],
                 'certificates': ['/rewards-recognition.html', 'assets/img/hero/Vibrant Print Branding Showcase.webp', 'Certificates'],
-                'custom-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Custom Stickers'],
-                'die-cut-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Die-Cut Stickers'],
-                'product-labels': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Product Labels'],
-                'bottle-labels': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Bottle Labels'],
-                'waterproof-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Waterproof Stickers'],
-                'vinyl-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Vinyl Stickers'],
-                'transparent-stickers': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Transparent Stickers'],
-                'roll-labels': ['/stickers.html', 'assets/img/hero/Glossy UAE Portrait and Heart Stickers.webp', 'Roll Labels'],
+                'custom-stickers': ['/stickers.html', 'assets/img/Marketing_Promo/custom_sticker/Custom.webp', 'Custom Stickers'],
+                'die-cut-stickers': ['/stickers.html', 'assets/img/Marketing_Promo/Die_Cut/Die_Cut.png', 'Die-Cut Stickers'],
+                'product-labels': ['/stickers.html', 'assets/img/Marketing_Promo/product_label/Product_label.webp', 'Product Labels'],
+                'bottle-labels': ['/stickers.html', 'assets/img/Marketing_Promo/bottle_label/Water_Bottle_Labels.webp', 'Bottle Labels'],
+                'waterproof-stickers': ['/stickers.html', 'assets/img/Marketing_Promo/waterproof_sticker/Outdoor_Stickers.webp', 'Waterproof Stickers'],
+                'vinyl-stickers': ['/stickers.html', 'assets/img/Marketing_Promo/vinyl_stickers/vinyl_logo_sticker.webp', 'Vinyl Stickers'],
+                'transparent-stickers': ['/stickers.html', 'assets/img/Marketing_Promo/Transparent_stickers/Clear_logo_stickers.webp', 'Transparent Stickers'],
+                'roll-labels': ['/stickers.html', 'assets/img/Marketing_Promo/roll_label/Product_Roll_Labels.webp', 'Roll Labels'],
                 'lunch-bags': ['/gifts.html', 'assets/img/shop-banner/gifts-banner.webp', 'Lunch Bags']
             };
             var meta = catalogMeta[catalogKey];
@@ -420,7 +420,7 @@
                 optionsHeading.innerHTML = '<span class="category-section-eyebrow">PRODUCT OPTIONS</span><h2>Explore ' + catalogName + '</h2><p>Choose the format that fits your project. Share your quantity, artwork and delivery requirements for a tailored quote.</p>';
                 gridWrap.querySelector('.container').prepend(optionsHeading);
                 if (grid && !grid.children.length) {
-                    grid.innerHTML = '<article class="catalog-card catalog-enquiry-card"><h2>Custom ' + catalogName + '</h2><p>Tell us what you need and our Dubai print team will help confirm suitable options for your order.</p><a class="theme-btn" href="/contact.html">Request a quote</a></article>';
+                    grid.innerHTML = '<article class="catalog-card catalog-enquiry-card"><h2>' + catalogName + '</h2><p>Tell us what you need and our Dubai print team will help confirm suitable options for your order.</p><a class="theme-btn" href="/contact.html">Request a quote</a></article>';
                 }
             }
             addRelatedLinks(relatedSection.querySelector('.container'), pageLinks);

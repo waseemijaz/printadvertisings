@@ -50,6 +50,30 @@
     <link rel="stylesheet" href="style.css?v=8">
 
 <link rel="stylesheet" href="assets/css/global-shell.css?v=4">
+<style>
+    body.home-landing .landing-product-media { display: block; padding: 14px; }
+    body.home-landing .landing-product-media img {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+    body.home-landing .landing-product-media img.landing-product-image-contained {
+        object-fit: contain;
+        object-position: center;
+    }
+    body.home-landing .landing-client-group img {
+        object-fit: contain;
+        filter: grayscale(100%);
+        transition: filter .25s ease, opacity .2s ease;
+    }
+    body.home-landing .landing-client-marquee:hover .landing-client-group img,
+    body.home-landing .landing-client-marquee:focus-within .landing-client-group img {
+        filter: grayscale(0%) !important;
+    }
+</style>
 </head>
 
 <body class="home-landing">
@@ -286,18 +310,22 @@
         <div class="landing-client-marquee">
             <div class="landing-client-track">
                 <ul class="landing-client-group">
-                    <li><img src="assets/img/brand/brand-logo-1.png" alt="PayPal"></li>
-                    <li><img src="assets/img/brand/brand-logo-2.png" alt="Paysafe"></li>
-                    <li><img src="assets/img/brand/brand-logo-3.png" alt="Qlik"></li>
-                    <li><img src="assets/img/brand/brand-logo-4.png" alt="Walmart"></li>
-                    <li><img src="assets/img/brand/brand-logo-5.png" alt="Tesco"></li>
+                    <li><img src="assets/img/Patners_logo/amico.webp" alt="Amico"></li>
+                    <li><img src="assets/img/Patners_logo/coral_star.webp" alt="Coral Star"></li>
+                    <li><img src="assets/img/Patners_logo/dibouti.webp" alt="Dibouti"></li>
+                    <li><img src="assets/img/Patners_logo/microsoft.webp" alt="Microsoft"></li>
+                    <li><img src="assets/img/Patners_logo/nissan.webp" alt="Nissan"></li>
+                    <li><img src="assets/img/Patners_logo/saham-logo.webp" alt="Saham"></li>
+                    <li><img src="assets/img/Patners_logo/theismaili.webp" alt="The Ismaili"></li>
                 </ul>
                 <ul class="landing-client-group landing-client-group--duplicate" aria-hidden="true">
-                    <li><img src="assets/img/brand/brand-logo-1.png" alt=""></li>
-                    <li><img src="assets/img/brand/brand-logo-2.png" alt=""></li>
-                    <li><img src="assets/img/brand/brand-logo-3.png" alt=""></li>
-                    <li><img src="assets/img/brand/brand-logo-4.png" alt=""></li>
-                    <li><img src="assets/img/brand/brand-logo-5.png" alt=""></li>
+                    <li><img src="assets/img/Patners_logo/amico.webp" alt=""></li>
+                    <li><img src="assets/img/Patners_logo/coral_star.webp" alt=""></li>
+                    <li><img src="assets/img/Patners_logo/dibouti.webp" alt=""></li>
+                    <li><img src="assets/img/Patners_logo/microsoft.webp" alt=""></li>
+                    <li><img src="assets/img/Patners_logo/nissan.webp" alt=""></li>
+                    <li><img src="assets/img/Patners_logo/saham-logo.webp" alt=""></li>
+                    <li><img src="assets/img/Patners_logo/theismaili.webp" alt=""></li>
                 </ul>
             </div>
         </div>
@@ -316,6 +344,14 @@
             </div>
             <div class="landing-product-carousel" data-product-carousel tabindex="0">
                 <a class="landing-product-card" href="gifts.html">
+                    <div class="landing-product-media"><span>Made for celebrations</span><img class="landing-product-image-contained" src="assets/img/product/national_day.webp" alt="National Day printed display flags"></div>
+                    <h3>National Day Articles</h3><p>Branded details for UAE celebrations</p>
+                </a>
+                <a class="landing-product-card" href="marketing.html">
+                    <div class="landing-product-media"><span>Brand-ready</span><img src="assets/img/product/custom_sticker.webp" alt="Custom printed stickers and labels"></div>
+                    <h3>Custom Stickers &amp; Labels</h3><p>Branded finishing touches for products</p>
+                </a>
+                <a class="landing-product-card" href="gifts.html">
                     <div class="landing-product-media"><span>Popular choice</span><img src="assets/img/product/product-1.png" alt="Custom printed packaging"></div>
                     <h3>Custom Packaging</h3><p>Make every handover memorable</p>
                 </a>
@@ -332,35 +368,27 @@
                     <h3>Custom Apparel</h3><p>Standout pieces for your team</p>
                 </a>
                 <a class="landing-product-card" href="apparel.html">
-                    <div class="landing-product-media"><span>Team favourite</span><img src="assets/img/Apparel/Custom_T-Shirt.webp" alt="Branded apparel"></div>
+                    <div class="landing-product-media"><span>Team favourite</span><img src="assets/img/product/branded_apparel.webp" alt="Branded apparel"></div>
                     <h3>Branded Apparel</h3><p>Uniforms that carry your brand</p>
                 </a>
                 <a class="landing-product-card" href="express.html">
-                    <div class="landing-product-media"><span>Fast turnaround</span><img src="assets/img/hero/Vibrant Print Branding Showcase.webp" alt="Express flyer printing"></div>
+                    <div class="landing-product-media"><span>Fast turnaround</span><img src="assets/img/product/flyers.webp" alt="Express flyer printing"></div>
                     <h3>Express Flyers</h3><p>Campaign-ready when time matters</p>
                 </a>
-                <a class="landing-product-card" href="gifts.html">
-                    <div class="landing-product-media"><span>Made for celebrations</span><img src="assets/img/hero/UAE National Day Souvenir Collection.webp" alt="National Day printed display flags"></div>
-                    <h3>National Day Articles</h3><p>Branded details for UAE celebrations</p>
-                </a>
                 <a class="landing-product-card" href="products/custom-mugs.html">
-                    <div class="landing-product-media"><span>Popular gift</span><img src="assets/img/Drinkware/1.webp" alt="Custom printed cups"></div>
+                    <div class="landing-product-media"><span>Popular gift</span><img src="assets/img/product/cups.webp" alt="Custom printed cups"></div>
                     <h3>Custom Cups</h3><p>Personalised drinkware for your brand</p>
                 </a>
                 <a class="landing-product-card" href="products/business-cards.html">
-                    <div class="landing-product-media"><span>Business essential</span><img src="assets/img/stationary_items/business card.webp" alt="Printed business collateral"></div>
+                    <div class="landing-product-media"><span>Business essential</span><img src="assets/img/product/business_cards.webp" alt="Printed business collateral"></div>
                     <h3>Business Cards</h3><p>Make every introduction count</p>
                 </a>
-                <a class="landing-product-card" href="marketing.html">
-                    <div class="landing-product-media"><span>Brand-ready</span><img src="assets/img/feature-product/microst1.webp" alt="Custom printed stickers and labels"></div>
-                    <h3>Custom Stickers &amp; Labels</h3><p>Branded finishing touches for products</p>
-                </a>
                 <a class="landing-product-card" href="products/outdoor-banners.html">
-                    <div class="landing-product-media"><span>Campaign favourite</span><img src="assets/img/Marketing_Promo/Banners.webp" alt="Custom printed banner"></div>
+                    <div class="landing-product-media"><span>Campaign favourite</span><img class="landing-product-image-contained" src="assets/img/product/banners.webp" alt="Custom printed banner"></div>
                     <h3>Banners</h3><p>Get your message noticed at every event</p>
                 </a>
                 <a class="landing-product-card" href="marketing.html">
-                    <div class="landing-product-media"><span>Built to be seen</span><img src="assets/img/Marketing_Promo/Sun Board Signs.webp" alt="Printed signage and event displays"></div>
+                    <div class="landing-product-media"><span>Built to be seen</span><img class="landing-product-image-contained" src="assets/img/product/signage.webp" alt="Printed signage and event displays"></div>
                     <h3>Signage</h3><p>Clear, branded displays for your space</p>
                 </a>
             </div>
