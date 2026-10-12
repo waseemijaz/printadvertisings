@@ -22,6 +22,7 @@ final class LeadController
         $name = $clean($input['name'] ?? null, 120);
         $companyName = $clean($input['company_name'] ?? '', 160);
         $phone = $clean($input['phone'] ?? null, 30);
+        if (is_string($phone)) $phone = preg_replace('/\s+/', ' ', $phone);
         $email = $clean($input['email'] ?? '', 254);
         $product = $clean($input['product'] ?? '', 120);
         $category = $clean($input['category'] ?? '', 120);
@@ -42,7 +43,7 @@ final class LeadController
         $emailValid = is_string($email) && ($email !== '' || $leadType !== 'quick_enquiry')
             && ($email === '' || filter_var($email, FILTER_VALIDATE_EMAIL) !== false);
         $valid = is_string($name) && $name !== ''
-            && is_string($companyName) && ($leadType !== 'quick_enquiry' || $companyName !== '')
+            && is_string($companyName)
             && $phoneValid
             && $emailValid
             && is_string($product) && is_string($category) && is_string($message)

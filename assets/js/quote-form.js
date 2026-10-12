@@ -263,7 +263,7 @@
                 submit.textContent = originalLabel;
                 status.focus();
             }).catch(function (error) {
-                status.textContent = error.code === 'rate_limited' ? 'Please wait a few minutes before trying again.' : error.code === 'invalid_input' ? 'Please complete the required name, company, business email, phone, service and message fields.' : 'We could not save your enquiry just now. Please try again or contact us on WhatsApp.';
+                status.textContent = error.code === 'rate_limited' ? 'Please wait a few minutes before trying again.' : error.code === 'invalid_input' ? 'Please complete the required name, business email, phone and message fields.' : 'We could not save your enquiry just now. Please try again or contact us on WhatsApp.';
                 status.classList.add('error');
                 submit.disabled = false;
                 submit.textContent = originalLabel;
