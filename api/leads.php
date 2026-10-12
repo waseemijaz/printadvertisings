@@ -18,9 +18,15 @@ $origin = (string) ($_SERVER['HTTP_ORIGIN'] ?? '');
 if ($origin !== '') {
     $originHost = parse_url($origin, PHP_URL_HOST);
     $requestHost = preg_replace('/:\d+$/', '', (string) ($_SERVER['HTTP_HOST'] ?? ''));
-    if (!is_string($originHost) || strtolower($originHost) !== strtolower($requestHost)) json_response(403, ['success' => false, 'code' => 'request_rejected']);
+    if (!is_string($originHost) || strtolower($originHost) !== strtolower($requestHost)) {
+        error_log('[TEMP-DIAG] ' . gmdate('c') . ' leads.php request_rejected reason=origin_mismatch path=' . parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH));
+        json_response(403, ['success' => false, 'code' => 'request_rejected']);
+    }
 }
-if (!csrf_valid($_POST['csrf_token'] ?? null)) json_response(403, ['success' => false, 'code' => 'request_rejected']);
+if (!csrf_valid($_POST['csrf_token'] ?? null)) {
+    error_log('[TEMP-DIAG] ' . gmdate('c') . ' leads.php request_rejected reason=csrf_invalid path=' . parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH));
+    json_response(403, ['success' => false, 'code' => 'request_rejected']);
+}
 if (!RateLimiter::allow('lead', 5, 900)) json_response(429, ['success' => false, 'code' => 'rate_limited']);
 $honeypot = $_POST['website_url'] ?? '';
 if (is_string($honeypot) && trim($honeypot) !== '') json_response(200, ['success' => true]);

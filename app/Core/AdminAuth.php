@@ -22,3 +22,20 @@ function verify_admin_login(string $username, string $password): bool
     unset($_SESSION['csrf_token']);
     return true;
 }
+
+function logout_admin(): void
+{
+    $_SESSION = [];
+    if (ini_get('session.use_cookies')) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', [
+            'expires' => time() - 42000,
+            'path' => (string) ($params['path'] ?? '/'),
+            'domain' => (string) ($params['domain'] ?? ''),
+            'secure' => (bool) ($params['secure'] ?? true),
+            'httponly' => (bool) ($params['httponly'] ?? true),
+            'samesite' => (string) ($params['samesite'] ?? 'Lax'),
+        ]);
+    }
+    session_destroy();
+}

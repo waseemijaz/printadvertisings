@@ -136,6 +136,7 @@
     window.paOpenQuoteDialog = openDialog;
 
     document.addEventListener('click', function (event) {
+        if (event.target.closest('#pa-quote-dialog, [data-pa-lead-form], [data-pa-quote-inline-form]')) return;
         var trigger = event.target.closest('[data-pa-quote-open], .pa-header-button--quote, .product-outline-btn');
         if (!trigger && !event.target.closest('[data-pa-quote-inline-form]') && event.target.closest('a,button')) {
             var link = event.target.closest('a,button');
