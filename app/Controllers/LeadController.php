@@ -20,6 +20,7 @@ final class LeadController
             throw new InvalidArgumentException('invalid_input');
         }
         $name = $clean($input['name'] ?? null, 120);
+        $companyName = $clean($input['company_name'] ?? '', 160);
         $phone = $clean($input['phone'] ?? null, 30);
         $email = $clean($input['email'] ?? '', 254);
         $product = $clean($input['product'] ?? '', 120);
@@ -35,19 +36,21 @@ final class LeadController
         if (is_string($website) && $website !== '') $messageParts[] = 'Website: ' . $website;
         if ($messageParts !== []) $message = implode("\n", $messageParts) . ($message !== '' ? "\n\n" . $message : '');
         $digits = is_string($phone) ? preg_replace('/\D/', '', $phone) : '';
-        $phoneValid = is_string($phone) && ($phone === ''
-            ? $leadType === 'quick_enquiry'
-            : preg_match('/\A[0-9+(). -]{7,30}\z/', $phone) === 1 && strlen((string) $digits) >= 7 && strlen((string) $digits) <= 20);
+        $phoneValid = is_string($phone) && $phone !== ''
+            && preg_match('/\A[0-9+(). -]{7,30}\z/', $phone) === 1
+            && strlen((string) $digits) >= 7 && strlen((string) $digits) <= 20;
         $emailValid = is_string($email) && ($email !== '' || $leadType !== 'quick_enquiry')
             && ($email === '' || filter_var($email, FILTER_VALIDATE_EMAIL) !== false);
-        $valid = is_string($name) && $name !== '' && $phoneValid
+        $valid = is_string($name) && $name !== ''
+            && is_string($companyName) && ($leadType !== 'quick_enquiry' || $companyName !== '')
+            && $phoneValid
             && $emailValid
             && is_string($product) && is_string($category) && is_string($message)
             && ($leadType !== 'quick_enquiry' || $message !== '') && mb_strlen($message) <= 2000
             && is_string($topic) && is_string($budget) && is_string($website)
             && is_string($quantity) && ($quantity === '' || (preg_match('/\A[0-9]{1,10}\z/', $quantity) === 1 && (int) $quantity > 0 && (int) $quantity <= 1000000000));
         if (!$valid) throw new InvalidArgumentException('invalid_input');
-        return compact('name', 'phone', 'email', 'product', 'category', 'quantity', 'message') + ['lead_type' => $leadType];
+        return compact('name', 'companyName', 'phone', 'email', 'product', 'category', 'quantity', 'message', 'topic', 'budget') + ['lead_type' => $leadType, 'company_name' => $companyName];
     }
 
     public function create(array $validated): int

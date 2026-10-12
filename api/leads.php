@@ -40,5 +40,6 @@ try {
     json_response(422, ['success' => false, 'code' => 'invalid_input']);
 } catch (Throwable $error) {
     /* Do not return database, mail, or submitted personal data to the browser. */
+    error_log('[leads] request_failed type=' . get_class($error) . ' message=' . preg_replace('/[\r\n]+/', ' ', $error->getMessage()));
     json_response(503, ['success' => false, 'code' => 'temporarily_unavailable']);
 }

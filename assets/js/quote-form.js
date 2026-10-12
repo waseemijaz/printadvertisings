@@ -24,6 +24,7 @@
         '<input type="hidden" name="csrf_token" value=""><input type="hidden" name="lead_type" value="quote_request"><input type="hidden" name="category" value="">' +
         '<div class="pa-quote-fields">' +
         '<label class="pa-quote-field" for="pa-quote-name"><span>Name <b>*</b></span><input id="pa-quote-name" name="name" type="text" autocomplete="name" maxlength="120" required></label>' +
+        '<label class="pa-quote-field" for="pa-quote-company"><span>Company <small>Optional</small></span><input id="pa-quote-company" name="company_name" type="text" autocomplete="organization" maxlength="160"></label>' +
         '<label class="pa-quote-field" for="pa-quote-phone"><span>WhatsApp / Phone <b>*</b></span><input id="pa-quote-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" required></label>' +
         '<label class="pa-quote-field" for="pa-quote-product"><span>What do you need printed? <small>Optional</small></span><select id="pa-quote-product" class="pa-native-select" name="product"><option value="">Choose a category or product</option><optgroup label="Categories">' + categoryOptions + '</optgroup><optgroup label="Popular products">' + productOptions + '</optgroup></select></label>' +
         '<label class="pa-quote-field" for="pa-quote-quantity"><span>Approximate quantity <small>Optional</small></span><input id="pa-quote-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="1000000000" step="1" placeholder="e.g. 500"></label>' +
@@ -230,6 +231,10 @@
 
     document.querySelectorAll('[data-pa-lead-form]').forEach(function (leadForm) {
         var status = leadForm.querySelector('.pa-lead-status');
+        var leadPhone = leadForm.elements.phone;
+        if (leadPhone) leadPhone.addEventListener('input', function () {
+            leadPhone.setCustomValidity(phoneValidationMessage(leadPhone.value));
+        });
         requestToken(leadForm).catch(function () {
             status.textContent = 'The form is temporarily unavailable. Please try again shortly.';
             status.classList.add('error');
@@ -238,6 +243,7 @@
             event.preventDefault();
             status.textContent = '';
             status.classList.remove('success', 'error');
+            if (leadPhone) leadPhone.setCustomValidity(phoneValidationMessage(leadPhone.value));
             if (!leadForm.reportValidity()) return;
             var submit = leadForm.querySelector('[type="submit"]');
             submit.disabled = true;
@@ -257,7 +263,7 @@
                 submit.textContent = originalLabel;
                 status.focus();
             }).catch(function (error) {
-                status.textContent = error.code === 'rate_limited' ? 'Please wait a few minutes before trying again.' : error.code === 'invalid_input' ? 'Please check your name, email address and message, then try again.' : 'Oops! An error occurred and your message could not be sent. Please try again.';
+                status.textContent = error.code === 'rate_limited' ? 'Please wait a few minutes before trying again.' : error.code === 'invalid_input' ? 'Please complete the required name, company, business email, phone, service and message fields.' : 'We could not save your enquiry just now. Please try again or contact us on WhatsApp.';
                 status.classList.add('error');
                 submit.disabled = false;
                 submit.textContent = originalLabel;

@@ -25,6 +25,11 @@ final class QuoteMailer
         }
 
         try {
+            $recipient = trim((string) (getenv('PA_GRAPH_RECIPIENT') ?: self::NOTIFICATION_RECIPIENT));
+            if (!filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+                self::logFailure($leadId, 'recipient_invalid');
+                return false;
+            }
             $accessToken = self::accessToken($tenantId, $clientId, $clientSecret, $leadId);
             if ($accessToken === null) {
                 return false;
@@ -45,7 +50,7 @@ final class QuoteMailer
                         'emailAddress' => ['address' => $sender],
                     ],
                     'toRecipients' => [[
-                        'emailAddress' => ['address' => self::NOTIFICATION_RECIPIENT],
+                        'emailAddress' => ['address' => $recipient],
                     ]],
                     'replyTo' => self::replyTo($lead),
                 ],
@@ -143,8 +148,11 @@ final class QuoteMailer
             'Lead type: ' . (($lead['lead_type'] ?? 'quick_enquiry') === 'quote_request' ? 'Quote Request' : 'Quick Enquiry'),
             '',
             'Name: ' . self::value($lead, 'name'),
+            'Company: ' . self::value($lead, 'company_name'),
             'WhatsApp / Phone: ' . self::value($lead, 'phone'),
             'Email: ' . self::value($lead, 'email'),
+            'Discussion topic: ' . self::value($lead, 'topic'),
+            'Estimated budget: ' . self::value($lead, 'budget'),
             'Product: ' . self::value($lead, 'product'),
             'Category: ' . self::value($lead, 'category'),
             'Approximate quantity: ' . self::value($lead, 'quantity'),

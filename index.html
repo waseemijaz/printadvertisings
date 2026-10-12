@@ -2572,10 +2572,12 @@
                                 <input type="hidden" name="csrf_token" value="">
                                 <input type="hidden" name="lead_type" value="quick_enquiry">
                                 <div class="row g-4">
-                                    <div class="col-lg-6"><div class="form-clt"><input type="text" name="name" placeholder="What’s Your Name ?" maxlength="120" required></div></div>
-                                    <div class="col-lg-6"><div class="form-clt"><input type="email" name="email" placeholder="Email Address" maxlength="254" required></div></div>
-                                    <div class="col-lg-6"><div class="form-clt"><input type="text" name="topic" placeholder="Select Discussion Topic" maxlength="120"></div></div>
-                                    <div class="col-lg-6"><div class="form-clt"><input type="text" name="budget" placeholder="What’s your budget ?" maxlength="120"></div></div>
+                                    <div class="col-lg-6"><div class="form-clt"><input type="text" name="name" placeholder="Full Name*" maxlength="120" autocomplete="name" required></div></div>
+                                    <div class="col-lg-6"><div class="form-clt"><input type="text" name="company_name" placeholder="Company Name*" maxlength="160" autocomplete="organization" required></div></div>
+                                    <div class="col-lg-6"><div class="form-clt"><input type="email" name="email" placeholder="Business Email*" maxlength="254" autocomplete="email" required></div></div>
+                                    <div class="col-lg-6"><div class="form-clt"><input type="tel" name="phone" placeholder="Phone with country code*" maxlength="30" autocomplete="tel" required></div></div>
+                                    <div class="col-lg-6"><div class="form-clt"><select name="topic" required><option value="">Discussion Topic or Service*</option><option>Business Stationery</option><option>Marketing Print</option><option>Signage &amp; Banners</option><option>Corporate Gifts</option><option>Apparel &amp; Textiles</option><option>Other Print Services</option></select></div></div>
+                                    <div class="col-lg-6"><div class="form-clt"><select name="budget"><option value="">Estimated Budget (Optional)</option><option>Under AED 1,000</option><option>AED 1,000–5,000</option><option>AED 5,000–10,000</option><option>Over AED 10,000</option></select></div></div>
                                     <div class="col-lg-12"><div class="form-clt"><textarea name="message" placeholder="A brief discussion about this project" maxlength="1800" required></textarea></div></div>
                                     <div class="col-lg-12"><button type="submit" class="theme-btn w-100">SEND MESSAGE</button></div>
                                     <div class="col-lg-12"><p class="pa-lead-status form-message mt-3 mb-0" aria-live="polite" role="status" tabindex="-1"></p></div>
